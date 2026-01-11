@@ -10,19 +10,19 @@
         html { scroll-behavior: smooth; }
         .font-serif-light { font-family: 'Bodoni Moda', serif; font-style: italic; font-weight: 400; }
         
-        /* Ensure hidden sections are truly gone */
-        .gallery-section { display: none; }
-        .gallery-section.active { display: block; animation: fadeIn 0.5s ease-out forwards; }
+        /* The logic: Only .active is visible */
+        .gallery-section { display: none; opacity: 0; }
+        .gallery-section.active { display: block !important; opacity: 1; animation: fadeIn 0.4s ease-in forwards; }
         
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .image-slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; background: #222; }
         .image-slider::-webkit-scrollbar { display: none; }
         .slide-container { position: relative; flex-shrink: 0; width: 100%; scroll-snap-align: start; }
         .slide-container img { width: 100%; height: auto; display: block; }
 
-        .nav-link { position: relative; transition: all 0.3s ease; cursor: pointer; border: none; background: none; }
-        .nav-link.active { color: white; }
+        .nav-link { position: relative; transition: all 0.3s ease; cursor: pointer; color: #6b7280; text-decoration: none; }
+        .nav-link.active { color: white !important; }
         .nav-link.active::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 100%; height: 1px; background: white; }
         
         .spec-text { font-family: 'Inter', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: #777; line-height: 1.6; }
@@ -34,10 +34,10 @@
     <header class="pt-24 pb-16 px-6 flex flex-col items-center">
         <h1 class="font-serif-light text-5xl md:text-6xl text-white mb-12 tracking-tighter">Mike Stamper</h1>
         <nav class="flex flex-wrap justify-center gap-x-10 gap-y-6">
-            <button onclick="showCategory('sculpture')" id="nav-sculpture" class="nav-link active text-[10px] uppercase tracking-[0.4em] text-gray-500 hover:text-white transition">Sculpture</button>
-            <button onclick="showCategory('watercolour')" id="nav-watercolour" class="nav-link text-[10px] uppercase tracking-[0.4em] text-gray-500 hover:text-white transition">Watercolour</button>
-            <button onclick="showCategory('acrylic')" id="nav-acrylic" class="nav-link text-[10px] uppercase tracking-[0.4em] text-gray-500 hover:text-white transition">Acrylic</button>
-            <button onclick="showCategory('about')" id="nav-about" class="nav-link text-[10px] uppercase tracking-[0.4em] text-gray-500 hover:text-white transition">The Artist</button>
+            <a href="javascript:void(0)" onclick="showCategory('sculpture')" id="nav-sculpture" class="nav-link active text-[10px] uppercase tracking-[0.4em]">Sculpture</a>
+            <a href="javascript:void(0)" onclick="showCategory('watercolour')" id="nav-watercolour" class="nav-link text-[10px] uppercase tracking-[0.4em]">Watercolour</a>
+            <a href="javascript:void(0)" onclick="showCategory('acrylic')" id="nav-acrylic" class="nav-link text-[10px] uppercase tracking-[0.4em]">Acrylic</a>
+            <a href="javascript:void(0)" onclick="showCategory('about')" id="nav-about" class="nav-link text-[10px] uppercase tracking-[0.4em]">The Artist</a>
         </nav>
     </header>
 
@@ -64,41 +64,6 @@
                     <div class="spec-text mb-8">Hand-Carved Soapstone<br>DIMENSIONS</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Bear 01" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-                <div class="flex flex-col">
-                    <div class="image-slider aspect-square mb-8 shadow-2xl">
-                        <div class="slide-container"><img src="images/stamper-sculpturebear2a.jpg"></div>
-                        <div class="slide-container"><img src="images/stamper-sculpturebear2b.jpg"></div>
-                    </div>
-                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Bear Study 02</span><span class="text-lg font-bold">PRICE</span></div>
-                    <div class="spec-text mb-8">Hand-Carved Soapstone<br>DIMENSIONS</div>
-                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Bear 02" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
-                </div>
-                <div class="flex flex-col">
-                    <div class="image-slider aspect-square mb-8 shadow-2xl">
-                        <div class="slide-container"><img src="images/stamper-sculpturebear3a.jpg"></div>
-                        <div class="slide-container"><img src="images/stamper-sculpturebear3b.jpg"></div>
-                    </div>
-                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Bear Study 03</span><span class="text-lg font-bold">PRICE</span></div>
-                    <div class="spec-text mb-8">Hand-Carved Soapstone<br>DIMENSIONS</div>
-                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Bear 03" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
-                </div>
-                <div class="flex flex-col">
-                    <div class="image-slider aspect-square mb-8 shadow-2xl">
-                        <div class="slide-container"><img src="images/stamper-sculptureinuksuk1a.jpg"></div>
-                        <div class="slide-container"><img src="images/stamper-sculptureinuksuk1b.jpg"></div>
-                    </div>
-                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Inuksuk Sculpture</span><span class="text-lg font-bold">PRICE</span></div>
-                    <div class="spec-text mb-8">Hand-Carved Soapstone<br>DIMENSIONS</div>
-                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Inuksuk Sculpture" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
-                </div>
-                <div class="flex flex-col">
-                    <div class="image-slider aspect-square mb-8 shadow-2xl">
-                        <div class="slide-container"><img src="images/stamper-sculpturevase1.jpg"></div>
-                    </div>
-                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Vase Study</span><span class="text-lg font-bold">PRICE</span></div>
-                    <div class="spec-text mb-8">Hand-Carved Soapstone<br>DIMENSIONS</div>
-                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Vase Sculpture" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
-                </div>
             </div>
         </div>
 
@@ -113,33 +78,6 @@
                     <div class="spec-text mb-8">Ink-Wash on Cotton Paper<br>6" x 8"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Mariner 01" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-                <div class="flex flex-col">
-                    <div class="image-slider aspect-[3/4] mb-8 shadow-2xl">
-                        <div class="slide-container"><img src="images/stamper-watercoloursailboat2.jpg"></div>
-                        <div class="slide-container"><img src="images/stamper-watercoloursailboat2back.jpg"><div class="study-label">Reverse Study</div></div>
-                    </div>
-                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Mariner 02</span><span class="text-lg font-bold">$85</span></div>
-                    <div class="spec-text mb-8">Ink-Wash on Cotton Paper<br>6" x 8"</div>
-                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Mariner 02" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
-                </div>
-                <div class="flex flex-col">
-                    <div class="image-slider aspect-[3/4] mb-8 shadow-2xl">
-                        <div class="slide-container"><img src="images/stamper-watercoloursailboat3.jpg"></div>
-                        <div class="slide-container"><img src="images/stamper-watercoloursailboat3back.jpg"><div class="study-label">Reverse Study</div></div>
-                    </div>
-                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Mariner 03</span><span class="text-lg font-bold">$85</span></div>
-                    <div class="spec-text mb-8">Ink-Wash on Cotton Paper<br>6" x 8"</div>
-                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Mariner 03" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
-                </div>
-                <div class="flex flex-col">
-                    <div class="image-slider aspect-[3/4] mb-8 shadow-2xl">
-                        <div class="slide-container"><img src="images/stamper-watercoloursailboat4.jpg"></div>
-                        <div class="slide-container"><img src="images/stamper-watercoloursailboat4back.jpg"><div class="study-label">Reverse Study</div></div>
-                    </div>
-                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Mariner 04</span><span class="text-lg font-bold">$85</span></div>
-                    <div class="spec-text mb-8">Ink-Wash on Cotton Paper<br>6" x 8"</div>
-                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Mariner 04" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
-                </div>
             </div>
         </div>
 
@@ -151,29 +89,54 @@
                     <div class="spec-text mb-8">Acrylic on Canvas<br>DIMENSIONS</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Island Twins" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-                <div class="flex flex-col">
-                    <div class="image-slider aspect-[4/5] mb-8 shadow-2xl"><div class="slide-container"><img src="images/stamper-acrylicsunsetpines1.jpg"></div></div>
-                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Sunset Pines</span><span class="text-lg font-bold">PRICE</span></div>
-                    <div class="spec-text mb-8">Acrylic on Canvas<br>DIMENSIONS</div>
-                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Sunset Pines" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
-                </div>
-                <div class="flex flex-col">
-                    <div class="image-slider aspect-[4/5] mb-8 shadow-2xl"><div class="slide-container"><img src="images/stamper-acrylicclonepine1.jpg"></div></div>
-                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Lone Pine</span><span class="text-lg font-bold">PRICE</span></div>
-                    <div class="spec-text mb-8">Acrylic on Canvas<br>DIMENSIONS</div>
-                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Lone Pine" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
-                </div>
-                <div class="flex flex-col">
-                    <div class="image-slider aspect-[4/5] mb-8 shadow-2xl"><div class="slide-container"><img src="images/stamper-acrylicpinereflection1.jpg"></div></div>
-                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Pine Reflection</span><span class="text-lg font-bold">PRICE</span></div>
-                    <div class="spec-text mb-8">Acrylic on Canvas<br>DIMENSIONS</div>
-                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Pine Reflection" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
-                </div>
-                <div class="flex flex-col">
-                    <div class="image-slider aspect-[4/5] mb-8 shadow-2xl"><div class="slide-container"><img src="images/stamper-acrylicwintersun1.jpg"></div></div>
-                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Winter Sun</span><span class="text-lg font-bold">PRICE</span></div>
-                    <div class="spec-text mb-8">Acrylic on Canvas<br>DIMENSIONS</div>
-                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Winter Sun" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
-                </div>
-                <div class="flex flex-col">
-                    <div class="image-slider aspect-[4/5] mb-8 shadow-2xl"><div class="slide-container">
+            </div>
+        </div>
+
+        <div id="about" class="gallery-section max-w-2xl mx-auto py-12">
+            <h2 class="font-serif-light text-4xl text-white mb-10 italic">The Artist</h2>
+            <div class="space-y-8 text-gray-400 text-lg leading-relaxed font-light">
+                <p><strong class="text-white">Mike Stamper</strong> is a Canadian multi-disciplinary artist...</p>
+                <p>As a stone sculptor, painter, woodworker, and published poet, Stamper’s work is a dialogue between the physical and the lyrical.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Use a very explicit function name
+        function showCategory(id) {
+            console.log("Switching to: " + id); // This helps you see if it's working in the browser console
+            
+            // 1. Hide all sections immediately
+            const sections = document.getElementsByClassName('gallery-section');
+            for (let i = 0; i < sections.length; i++) {
+                sections[i].classList.remove('active');
+            }
+
+            // 2. Show the one you clicked
+            const target = document.getElementById(id);
+            if (target) {
+                target.classList.add('active');
+            }
+
+            // 3. Update Nav colors
+            const links = document.getElementsByClassName('nav-link');
+            for (let i = 0; i < links.length; i++) {
+                links[i].classList.remove('active');
+            }
+            
+            const activeLink = document.getElementById('nav-' + id);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+
+            window.scrollTo(0,0);
+        }
+
+        // Run once on load to ensure 'sculpture' is visible
+        window.onload = function() {
+            showCategory('sculpture');
+        };
+    </script>
+</body>
+</html>
