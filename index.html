@@ -10,24 +10,42 @@
         html { scroll-behavior: smooth; }
         .font-serif-light { font-family: 'Bodoni Moda', serif; font-style: italic; font-weight: 400; }
         
-        /* The Gallery Slider */
         .image-slider {
             display: flex;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             scrollbar-width: none;
-            -ms-overflow-style: none;
             background: #141414;
         }
         .image-slider::-webkit-scrollbar { display: none; }
         
-        .image-slider img {
-            scroll-snap-align: start;
+        .slide-container {
+            position: relative;
             flex-shrink: 0;
+            width: 100%;
+            scroll-snap-align: start;
+        }
+
+        .slide-container img {
             width: 100%;
             height: auto;
             aspect-ratio: 3/4;
             object-fit: cover;
+        }
+
+        /* The 'Studio Study' Label */
+        .study-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            padding: 8px 12px;
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #fff;
+            border-left: 1px solid #fff;
         }
     </style>
 </head>
@@ -51,30 +69,66 @@
                 
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[3/4] mb-6 border border-white/5 shadow-2xl">
-                        <img src="images/stamper-watercolour sailboat1.jpg" alt="Front" onerror="this.src='images/stamper-watercolour sailboat1.JPG'">
-                        <img src="images/stamper-watercolour sailboat1 detail.jpg" alt="Detail" onerror="this.src='images/stamper-watercolour sailboat1 detail.JPG'; this.onerror=function(){this.style.display='none'}">
-                        <img src="images/stamper-watercolour sailboat1 back.jpg" alt="Back" onerror="this.src='images/stamper-watercolour sailboat1 back.JPG'">
+                        <div class="slide-container"><img src="images/stamper-watercolour sailboat1.jpg" onerror="this.src='images/stamper-watercolour sailboat1.JPG'"></div>
+                        <div class="slide-container"><img src="images/stamper-watercolour sailboat1 detail.jpg" onerror="this.src='images/stamper-watercolour sailboat1 detail.JPG'; this.closest('.slide-container').style.display='none'"></div>
+                        <div class="slide-container">
+                            <img src="images/stamper-watercolour sailboat1 back.jpg" onerror="this.src='images/stamper-watercolour sailboat1 back.JPG'">
+                            <div class="study-label">Reverse: Secondary Studio Study</div>
+                        </div>
                     </div>
-                    <p class="text-[8px] uppercase tracking-[0.3em] text-gray-800 mb-4 text-center">Swipe: Front / Detail / Reverse</p>
                     <div class="flex justify-between items-baseline border-t border-white/5 pt-4">
                         <span class="font-serif-light text-2xl text-white/90 italic">Mariner 01</span>
                         <span class="text-[10px] font-bold text-gray-600">$85 CAD</span>
                     </div>
-                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 01" class="text-[9px] uppercase tracking-widest text-gray-500 hover:text-white transition mt-3 block">Inquire Direct</a>
+                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 01" class="text-[9px] uppercase tracking-widest text-gray-500 hover:text-white mt-3 block">Inquire Direct</a>
                 </div>
 
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[3/4] mb-6 border border-white/5 shadow-2xl">
-                        <img src="images/stamper-watercolour sailboat2.jpg" alt="Front" onerror="this.src='images/stamper-watercolour sailboat2.JPG'">
-                        <img src="images/stamper-watercolour sailboat2 detail.jpg" alt="Detail" onerror="this.src='images/stamper-watercolour sailboat2 detail.JPG'; this.onerror=function(){this.style.display='none'}">
-                        <img src="image/stamper-watercolour sailboat2 back.jpg" alt="Back" onerror="this.src='images/stamper-watercolour sailboat2 back.JPG'">
+                        <div class="slide-container"><img src="images/stamper-watercolour sailboat2.jpg" onerror="this.src='images/stamper-watercolour sailboat2.JPG'"></div>
+                        <div class="slide-container"><img src="images/stamper-watercolour sailboat2 detail.jpg" onerror="this.src='images/stamper-watercolour sailboat2 detail.JPG'; this.closest('.slide-container').style.display='none'"></div>
+                        <div class="slide-container">
+                            <img src="images/stamper-watercolour sailboat2 back.jpg" onerror="this.src='images/stamper-watercolour sailboat2 back.JPG'">
+                            <div class="study-label">Reverse: Secondary Studio Study</div>
+                        </div>
                     </div>
-                    <p class="text-[8px] uppercase tracking-[0.3em] text-gray-700 mb-4 text-center">Swipe: Front / Detail / Reverse</p>
                     <div class="flex justify-between items-baseline border-t border-white/5 pt-4">
                         <span class="font-serif-light text-2xl text-white/90 italic">Mariner 02</span>
                         <span class="text-[10px] font-bold text-gray-600">$85 CAD</span>
                     </div>
-                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 02" class="text-[9px] uppercase tracking-widest text-gray-500 hover:text-white transition mt-3 block">Inquire Direct</a>
+                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 02" class="text-[9px] uppercase tracking-widest text-gray-500 hover:text-white mt-3 block">Inquire Direct</a>
+                </div>
+
+                <div class="flex flex-col">
+                    <div class="image-slider aspect-[3/4] mb-6 border border-white/5 shadow-2xl">
+                        <div class="slide-container"><img src="images/stamper-watercolour sailboat3.jpg" onerror="this.src='images/stamper-watercolour sailboat3.JPG'"></div>
+                        <div class="slide-container"><img src="images/stamper-watercolour sailboat3 detail.jpg" onerror="this.src='images/stamper-watercolour sailboat3 detail.JPG'; this.closest('.slide-container').style.display='none'"></div>
+                        <div class="slide-container">
+                            <img src="images/stamper-watercolour sailboat3 back.jpg" onerror="this.src='images/stamper-watercolour sailboat3 back.JPG'">
+                            <div class="study-label">Reverse: Secondary Studio Study</div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-baseline border-t border-white/5 pt-4">
+                        <span class="font-serif-light text-2xl text-white/90 italic">Mariner 03</span>
+                        <span class="text-[10px] font-bold text-gray-600">$85 CAD</span>
+                    </div>
+                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 03" class="text-[9px] uppercase tracking-widest text-gray-500 hover:text-white mt-3 block">Inquire Direct</a>
+                </div>
+
+                <div class="flex flex-col">
+                    <div class="image-slider aspect-[3/4] mb-6 border border-white/5 shadow-2xl">
+                        <div class="slide-container"><img src="images/stamper-watercolour sailboat4.jpg" onerror="this.src='images/stamper-watercolour sailboat4.JPG'"></div>
+                        <div class="slide-container"><img src="images/stamper-watercolour sailboat4 detail.jpg" onerror="this.src='images/stamper-watercolour sailboat4 detail.JPG'; this.closest('.slide-container').style.display='none'"></div>
+                        <div class="slide-container">
+                            <img src="images/stamper-watercolour sailboat4 back.jpg" onerror="this.src='images/stamper-watercolour sailboat4 back.JPG'">
+                            <div class="study-label">Reverse: Secondary Studio Study</div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-baseline border-t border-white/5 pt-4">
+                        <span class="font-serif-light text-2xl text-white/90 italic">Mariner 04</span>
+                        <span class="text-[10px] font-bold text-gray-600">$85 CAD</span>
+                    </div>
+                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 04" class="text-[9px] uppercase tracking-widest text-gray-500 hover:text-white mt-3 block">Inquire Direct</a>
                 </div>
 
             </div>
