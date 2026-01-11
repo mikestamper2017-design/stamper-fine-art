@@ -9,19 +9,61 @@
         @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;1,400&family=Inter:wght@300;400;600&display=swap');
         html { scroll-behavior: smooth; }
         .font-serif-light { font-family: 'Bodoni Moda', serif; font-style: italic; font-weight: 400; }
-        .image-slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; background: #222; }
+        
+        .image-slider { 
+            display: flex; 
+            overflow-x: auto; 
+            scroll-snap-type: x mandatory; 
+            -webkit-overflow-scrolling: touch; 
+            scrollbar-width: none; 
+            background: #222; 
+        }
         .image-slider::-webkit-scrollbar { display: none; }
-        .slide-container { position: relative; flex-shrink: 0; width: 100%; scroll-snap-align: start; }
-        .slide-container img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; display: block; }
-        .study-label { position: absolute; bottom: 20px; left: 20px; background: rgba(255,255,255,0.9); padding: 10px 14px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: #111; border-left: 3px solid #111; pointer-events: none; }
-        .spec-text { font-family: 'Inter', sans-serif; font-size: 15px; text-transform: uppercase; letter-spacing: 0.05em; color: #888; line-height: 1.7; }
+        
+        .slide-container { 
+            position: relative; 
+            flex-shrink: 0; 
+            width: 100%; 
+            scroll-snap-align: start; 
+        }
+        .slide-container img { 
+            width: 100%; 
+            height: auto; 
+            aspect-ratio: 3/4; 
+            object-fit: cover; 
+            display: block; 
+        }
+
+        /* Label for the Back study */
+        .study-label { 
+            position: absolute; 
+            bottom: 20px; 
+            left: 20px; 
+            background: rgba(255,255,255,0.9); 
+            padding: 10px 14px; 
+            font-size: 10px; 
+            text-transform: uppercase; 
+            letter-spacing: 0.2em; 
+            color: #111; 
+            border-left: 3px solid #111; 
+            pointer-events: none; 
+        }
+
+        .spec-text { 
+            font-family: 'Inter', sans-serif; 
+            font-size: 15px; 
+            text-transform: uppercase; 
+            letter-spacing: 0.05em; 
+            color: #888; 
+            line-height: 1.7; 
+        }
     </style>
 </head>
 <body class="bg-[#1a1a1a] text-gray-200 font-sans">
 
     <header class="py-24 px-6 flex flex-col items-center border-b border-white/10">
         <h1 class="font-serif-light text-4xl md:text-5xl text-white mb-10 tracking-tight">Mike Stamper</h1>
-        <nav class="flex gap-10">
+        <nav class="flex flex-wrap justify-center gap-10">
             <a href="#watercolour" class="text-[11px] uppercase tracking-[0.3em] text-gray-400 hover:text-white transition">Watercolour</a>
             <a href="#acrylic" class="text-[11px] uppercase tracking-[0.3em] text-gray-400 hover:text-white transition">Acrylic</a>
             <a href="#sculpture" class="text-[11px] uppercase tracking-[0.3em] text-gray-400 hover:text-white transition">Sculpture</a>
@@ -35,7 +77,7 @@
             <div class="max-w-xl mx-auto text-center mb-24">
                 <h2 class="text-[11px] uppercase tracking-[0.6em] text-white/40 mb-8 font-bold">The Mariner Series</h2>
                 <p class="text-[14px] text-gray-400 uppercase tracking-[0.2em] leading-relaxed">
-                    Minimalist ink-wash studies on archival cotton. Double-sided originals.
+                    Minimalist ink-wash studies on archival cotton. Double-sided originals exploring the duality of the studio process.
                 </p>
             </div>
             
@@ -54,8 +96,8 @@
                         <span class="font-serif-light text-3xl text-white">Mariner 01</span>
                         <span class="text-lg font-bold text-white">$85</span>
                     </div>
-                    <div class="spec-text mb-8">6" x 8" • 100% Cotton Paper<br>Archival Pigments • Double-Sided</div>
-                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 01" class="bg-white text-black text-center py-5 text-[12px] font-bold uppercase tracking-widest hover:bg-gray-200">Inquire for Purchase</a>
+                    <div class="spec-text mb-8">6" x 8" • 100% Cotton Paper<br>Archival Pigments • Double-Sided Original</div>
+                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 01" class="bg-white text-black text-center py-5 text-[12px] font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors border border-white">Inquire for Purchase</a>
                 </div>
 
                 <div class="flex flex-col">
@@ -71,8 +113,8 @@
                         <span class="font-serif-light text-3xl text-white">Mariner 02</span>
                         <span class="text-lg font-bold text-white">$85</span>
                     </div>
-                    <div class="spec-text mb-8">6" x 8" • 100% Cotton Paper<br>Archival Pigments • Double-Sided</div>
-                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 02" class="bg-white text-black text-center py-5 text-[12px] font-bold uppercase tracking-widest hover:bg-gray-200">Inquire for Purchase</a>
+                    <div class="spec-text mb-8">6" x 8" • 100% Cotton Paper<br>Archival Pigments • Double-Sided Original</div>
+                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 02" class="bg-white text-black text-center py-5 text-[12px] font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors border border-white">Inquire for Purchase</a>
                 </div>
 
                 <div class="flex flex-col">
@@ -88,8 +130,8 @@
                         <span class="font-serif-light text-3xl text-white">Mariner 03</span>
                         <span class="text-lg font-bold text-white">$85</span>
                     </div>
-                    <div class="spec-text mb-8">6" x 8" • 100% Cotton Paper<br>Archival Pigments • Double-Sided</div>
-                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 03" class="bg-white text-black text-center py-5 text-[12px] font-bold uppercase tracking-widest hover:bg-gray-200">Inquire for Purchase</a>
+                    <div class="spec-text mb-8">6" x 8" • 100% Cotton Paper<br>Archival Pigments • Double-Sided Original</div>
+                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 03" class="bg-white text-black text-center py-5 text-[12px] font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors border border-white">Inquire for Purchase</a>
                 </div>
 
                 <div class="flex flex-col">
@@ -105,11 +147,19 @@
                         <span class="font-serif-light text-3xl text-white">Mariner 04</span>
                         <span class="text-lg font-bold text-white">$85</span>
                     </div>
-                    <div class="spec-text mb-8">6" x 8" • 100% Cotton Paper<br>Archival Pigments • Double-Sided</div>
-                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 04" class="bg-white text-black text-center py-5 text-[12px] font-bold uppercase tracking-widest hover:bg-gray-200">Inquire for Purchase</a>
+                    <div class="spec-text mb-8">6" x 8" • 100% Cotton Paper<br>Archival Pigments • Double-Sided Original</div>
+                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 04" class="bg-white text-black text-center py-5 text-[12px] font-bold uppercase tracking-widest hover:bg-gray-200 transition-colors border border-white">Inquire for Purchase</a>
                 </div>
 
             </div>
+        </section>
+
+        <section id="acrylic" class="py-20 border-t border-white/5 text-center">
+            <h2 class="text-[11px] uppercase tracking-[0.6em] text-white/20">Acrylic & Oil - Collections Pending</h2>
+        </section>
+
+        <section id="sculpture" class="py-20 border-t border-white/5 text-center">
+            <h2 class="text-[11px] uppercase tracking-[0.6em] text-white/20">Sculpture - Collections Pending</h2>
         </section>
 
         <section id="about" class="py-32 border-t border-white/10">
@@ -126,7 +176,7 @@
 
     <footer class="py-24 border-t border-white/10 bg-[#141414] text-center">
         <div class="mb-10 text-[10px] uppercase tracking-[0.4em] text-gray-600">Works held in collections of</div>
-        <div class="flex flex-wrap justify-center gap-8 md:gap-12 text-[11px] uppercase tracking-widest text-gray-400 mb-16">
+        <div class="flex flex-wrap justify-center gap-x-12 gap-y-6 px-6 text-[11px] uppercase tracking-widest text-gray-400 mb-16 max-w-4xl mx-auto">
             <span>Ikea</span><span>Starbucks</span><span>Pfizer</span><span>Placer Gold</span><span>Board of Education</span>
         </div>
         <p class="text-[10px] uppercase tracking-[0.4em] text-gray-700">Mike Stamper • Port Perry, ON</p>
