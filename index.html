@@ -10,18 +10,15 @@
         html { scroll-behavior: smooth; }
         .font-serif-light { font-family: 'Bodoni Moda', serif; font-style: italic; font-weight: 400; }
         
-        /* Tab Logic: Hide all by default, show .active */
         .gallery-section { display: none; opacity: 0; }
         .gallery-section.active { display: block; opacity: 1; animation: fadeIn 0.5s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Slider Styles */
         .image-slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; background: #222; }
         .image-slider::-webkit-scrollbar { display: none; }
         .slide-container { position: relative; flex-shrink: 0; width: 100%; scroll-snap-align: start; }
         .slide-container img { width: 100%; height: auto; display: block; }
 
-        /* Nav Link Styling */
         .nav-link { position: relative; transition: all 0.3s ease; cursor: pointer; }
         .nav-link.active { color: white; }
         .nav-link.active::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 100%; height: 1px; background: white; }
@@ -114,62 +111,24 @@
                     <div class="spec-text mb-8">Ink-Wash on Cotton Paper<br>6" x 8"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Mariner 01" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-                </div>
-        </div>
-
-        <div id="acrylic" class="gallery-section">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-32">
                 <div class="flex flex-col">
-                    <div class="image-slider aspect-[4/5] mb-8 shadow-2xl"><div class="slide-container"><img src="images/stamper-acrylicislandtwins1.jpg"></div></div>
-                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Island Twins</span><span class="text-lg font-bold">PRICE</span></div>
-                    <div class="spec-text mb-8">Acrylic on Canvas<br>DIMENSIONS</div>
-                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Island Twins" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
+                    <div class="image-slider aspect-[3/4] mb-8 shadow-2xl">
+                        <div class="slide-container"><img src="images/stamper-watercoloursailboat2.jpg"></div>
+                        <div class="slide-container"><img src="images/stamper-watercoloursailboat2back.jpg"><div class="study-label">Reverse Study</div></div>
+                    </div>
+                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Mariner 02</span><span class="text-lg font-bold">$85</span></div>
+                    <div class="spec-text mb-8">Ink-Wash on Cotton Paper<br>6" x 8"</div>
+                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Mariner 02" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
+                <div class="flex flex-col">
+                    <div class="image-slider aspect-[3/4] mb-8 shadow-2xl">
+                        <div class="slide-container"><img src="images/stamper-watercoloursailboat3.jpg"></div>
+                        <div class="slide-container"><img src="images/stamper-watercoloursailboat3back.jpg"><div class="study-label">Reverse Study</div></div>
+                    </div>
+                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Mariner 03</span><span class="text-lg font-bold">$85</span></div>
+                    <div class="spec-text mb-8">Ink-Wash on Cotton Paper<br>6" x 8"</div>
+                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Mariner 03" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-        </div>
-
-        <div id="about" class="gallery-section max-w-2xl mx-auto py-12">
-            <h2 class="font-serif-light text-4xl text-white mb-10 italic">The Artist</h2>
-            <div class="space-y-8 text-gray-400 text-lg leading-relaxed font-light">
-                <p><strong class="text-white">Mike Stamper</strong> is a Canadian multi-disciplinary artist...</p>
-            </div>
-        </div>
-
-    </main>
-
-    <footer class="py-24 border-t border-white/5 bg-[#0d0d0d] text-center px-6">
-        <div class="flex flex-wrap justify-center gap-x-12 gap-y-6 text-[10px] uppercase tracking-[0.3em] text-gray-400 max-w-4xl mx-auto">
-            <span>Ikea</span><span>Starbucks</span><span>Pfizer</span><span>Placer Gold</span><span>Board of Education</span>
-        </div>
-    </footer>
-
-    <script>
-        function showCategory(categoryId) {
-            // 1. Hide ALL sections
-            const sections = document.querySelectorAll('.gallery-section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-
-            // 2. Show the CLICKED section
-            const targetSection = document.getElementById(categoryId);
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
-
-            // 3. Update Nav Button Styles
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            const activeNav = document.getElementById('nav-' + categoryId);
-            if (activeNav) {
-                activeNav.classList.add('active');
-            }
-
-            // 4. Force scroll to top so the new content is visible
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
-</body>
-</html>
+                <div class="flex flex-col">
+                    <div class="image-slider aspect-[3/4] mb-8 shadow-2xl">
+                        <div class="slide-container"><img src="images/stamper-watercoloursailboat4.jpg"></div>
