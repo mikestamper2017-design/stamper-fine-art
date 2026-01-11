@@ -33,14 +33,29 @@
         .spec-text { font-family: 'Inter', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: #777; line-height: 1.6; }
         .study-label { position: absolute; bottom: 20px; left: 20px; background: rgba(255,255,255,0.95); padding: 8px 12px; font-size: 9px; text-transform: uppercase; color: #000; font-weight: 700; border-left: 3px solid #000; }
 
-        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(18,18,18,0.95); backdrop-filter: blur(10px); border-top: 1px solid rgba(255,255,255,0.05); z-index: 1000; padding: 15px 0; }
+        /* Floating Thumb-Friendly Nav */
+        .bottom-nav-container { 
+            position: fixed; 
+            bottom: 30px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 92%; 
+            max-width: 500px; 
+            background: rgba(26, 26, 26, 0.95); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 60px;
+            z-index: 1000; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            padding: 6px;
+        }
     </style>
 </head>
 <body id="top" class="bg-[#121212] text-gray-200 font-sans tracking-tight">
 
     <header class="pt-24 pb-16 px-6 flex flex-col items-center">
         <h1 class="font-serif-light text-5xl md:text-6xl text-white mb-12 tracking-tighter">Mike Stamper</h1>
-        <nav class="flex flex-wrap justify-center gap-x-10 gap-y-6">
+        <nav class="hidden md:flex flex-wrap justify-center gap-x-10 gap-y-6">
             <a href="#" onclick="showCategory('sculpture'); return false;" id="nav-sculpture" class="nav-link active text-[10px] uppercase tracking-[0.4em]">Sculpture</a>
             <a href="#" onclick="showCategory('watercolour'); return false;" id="nav-watercolour" class="nav-link text-[10px] uppercase tracking-[0.4em]">Watercolour</a>
             <a href="#" onclick="showCategory('acrylic'); return false;" id="nav-acrylic" class="nav-link text-[10px] uppercase tracking-[0.4em]">Acrylic</a>
@@ -48,7 +63,7 @@
         </nav>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 pb-48">
+    <main class="max-w-6xl mx-auto px-6 pb-64">
 
         <div id="sculpture" class="gallery-section active">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-32">
@@ -60,7 +75,6 @@
                     <div class="spec-text mb-8">Hand-Carved Chinese Soapstone<br>15" x 7" x 7"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Owl" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-square mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-sculpturebear4.jpg" loading="lazy"></div>
@@ -69,7 +83,6 @@
                     <div class="spec-text mb-8">Hand-Carved White Italian Alabaster<br>10" x 8" x 6"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Bear 04" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-square mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-sculpturewhale1a.jpg" loading="lazy"></div>
@@ -80,7 +93,6 @@
                     <div class="spec-text mb-8">Hand-Carved Chinese Soapstone<br>10" x 11" x 5"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Whale Sculpture" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-square mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-sculpturebear1a.jpg" loading="lazy"></div>
@@ -90,7 +102,6 @@
                     <div class="spec-text mb-8">Hand-Carved Brazilian Soapstone<br>17" x 8" x 8.5"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Bear 01" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-square mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-sculpturebear2a.jpg" loading="lazy"></div>
@@ -100,7 +111,6 @@
                     <div class="spec-text mb-8">Hand-Carved Brazilian Soapstone<br>17" x 7" x 8.5"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Bear 02" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-square mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-sculpturebear3a.jpg" loading="lazy"></div>
@@ -110,7 +120,6 @@
                     <div class="spec-text mb-8">Hand-Carved Chinese Soapstone<br>9" x 8" x 5"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Bear 03" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-square mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-sculptureinuksuk1a.jpg" loading="lazy"></div>
@@ -120,7 +129,6 @@
                     <div class="spec-text mb-8">Hand-Carved Brazilian Soapstone<br>9" x 7" x 4"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Inuksuk Sculpture" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-square mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-sculpturevase1.jpg" loading="lazy"></div>
@@ -143,7 +151,6 @@
                     <div class="spec-text mb-8">Ink-Wash on Cotton Paper<br>11" x 14"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: City Scape" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[3/4] mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-watercolourelsalvadorcity1.jpg" loading="lazy"></div>
@@ -153,7 +160,6 @@
                     <div class="spec-text mb-8">Ink-Wash on Cotton Paper<br>11" x 14"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: El Salvador City" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-video mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-watercolourmountianview1.jpg" loading="lazy"></div>
@@ -163,7 +169,6 @@
                     <div class="spec-text mb-8">8" x 12"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Mountain View" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-video mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-watercolourtimingtheentry1.jpg" loading="lazy"></div>
@@ -173,7 +178,6 @@
                     <div class="spec-text mb-8">8" x 12" | El Salvador Study</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Timing" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-video mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-watercoloursunsetonthelake1.jpg" loading="lazy"></div>
@@ -183,7 +187,6 @@
                     <div class="spec-text mb-8">8" x 12"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Lake Sunset" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-video mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-watercolourbuds1.jpg" loading="lazy"></div>
@@ -193,7 +196,6 @@
                     <div class="spec-text mb-8">8" x 12"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Buds" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[3/4] mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-watercoloursailboat1.jpg" loading="lazy"></div>
@@ -247,7 +249,6 @@
                     <div class="spec-text mb-8">Acrylic on Canvas<br>48" x 60"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Large Abstract" class="border border-white/10 text-center py-6 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-                
                 <div class="flex flex-col">
                     <div class="image-slider aspect-square mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-acrylicbalasamsunset1.jpg" loading="lazy"></div>
@@ -257,7 +258,6 @@
                     <div class="spec-text mb-8">20" x 20"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Balsam Sunset" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-square mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-acrylicstillmorninglake1.jpg" loading="lazy"></div>
@@ -267,7 +267,6 @@
                     <div class="spec-text mb-8">20" x 20"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Morning Lake" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-video mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-acrylicforrestforthetrees1.jpg" loading="lazy"></div>
@@ -277,7 +276,6 @@
                     <div class="spec-text mb-8">11" x 24"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Forest" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[1/2] mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-acrylicbentpine1.jpg" loading="lazy"></div>
@@ -287,7 +285,6 @@
                     <div class="spec-text mb-8">15" x 30"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Bent Pine" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[4/5] mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-acrylicislandtwins1.jpg" loading="lazy"></div>
@@ -296,7 +293,6 @@
                     <div class="spec-text mb-8">30" x 48"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Island Twins" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[4/5] mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-acrylicsunsetpines1.jpg" loading="lazy"></div>
@@ -305,7 +301,6 @@
                     <div class="spec-text mb-8">12" x 24"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Sunset Pines" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[4/5] mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-acryliclonepine1.jpg" loading="lazy"></div>
@@ -314,7 +309,6 @@
                     <div class="spec-text mb-8">15" x 30"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Lone Pine" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[4/5] mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-acrylicpinereflection1.jpg" loading="lazy"></div>
@@ -323,7 +317,6 @@
                     <div class="spec-text mb-8">24" x 30"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Pine Reflection" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[4/5] mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-acrylicwintersun1.jpg" loading="lazy"></div>
@@ -332,7 +325,6 @@
                     <div class="spec-text mb-8">18" x 24"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Winter Sun" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[4/5] mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-acrylictwinlookout1.jpg" loading="lazy"></div>
@@ -341,7 +333,6 @@
                     <div class="spec-text mb-8">12" x 16"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Twin Lookout" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[4/5] mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-acrylicinuksuk1.jpg" loading="lazy"></div>
@@ -350,48 +341,34 @@
                     <div class="spec-text mb-8">24" x 36"</div>
                     <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Inuksuk Canvas" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
-
-                <div class="flex flex-col">
-                    <div class="image-slider aspect-[4/5] mb-8 shadow-2xl">
-                        <div class="slide-container"><img src="images/stamper-acrylicfalls1.jpg" loading="lazy"></div>
-                    </div>
-                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">The Falls</span><span class="text-lg font-bold">CDN $1,650</span></div>
-                    <div class="spec-text mb-8">24" x 30"</div>
-                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Falls" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
-                </div>
             </div>
         </div>
 
         <div id="about" class="gallery-section max-w-2xl mx-auto py-12">
-            <h2 class="font-serif-light text-4xl text-white mb-10 italic">The Artist</h2>
+            <h2 class="font-serif-light text-4xl text-white mb-10 italic text-center">The Artist</h2>
             <div class="space-y-8 text-gray-400 text-lg leading-relaxed font-light">
-                <p><strong class="text-white">Mike Stamper</strong> is a Canadian multi-disciplinary artist whose work explores the intersection of fluid movement and structural form. With a career spanning decades, his pieces are held in private and corporate collections globally.</p>
-                <p>As a stone sculptor, painter, woodworker, and published poet, Stamper’s work is a dialogue between the physical and the lyrical. An avid surfer and foiler, he translates the raw energy of the elements into the minimalist lines of his ink studies and the tactile permanence of his sculpture.</p>
-                <p>His work is a reflection of a life lived outdoors, capturing the rugged geometry of the Canadian landscape and the constant motion of the water.</p>
+                <p><strong class="text-white">Mike Stamper</strong> is a Canadian multi-disciplinary artist whose work explores movement and form through various mediums including hand-carved soapstone, watercolour, and acrylics. His process is deeply rooted in the tactile nature of his materials, allowing the unique characteristics of each stone or brushstroke to guide the final expression.</p>
+                <p>Drawing inspiration from the rugged Canadian landscape and the fluidity of natural forms, Stamper's work captures a sense of quiet strength and organic grace. His sculptures often reveal the hidden spirit within the stone, while his paintings use light and texture to evoke the atmosphere of the wild.</p>
+                <p>With a career spanning several decades, his pieces are held in private collections across North America. He continues to push the boundaries of his craft from his studio, seeking new ways to translate the beauty of the natural world into enduring works of art.</p>
             </div>
         </div>
-
     </main>
 
-    <div class="bottom-nav">
-        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
-            <div class="flex gap-x-6">
-                <button onclick="showCategory('sculpture')" class="text-[9px] uppercase tracking-[0.2em] text-gray-400 hover:text-white transition">Sculpture</button>
-                <button onclick="showCategory('watercolour')" class="text-[9px] uppercase tracking-[0.2em] text-gray-400 hover:text-white transition">Watercolour</button>
-                <button onclick="showCategory('acrylic')" class="text-[9px] uppercase tracking-[0.2em] text-gray-400 hover:text-white transition">Acrylic</button>
-                <button onclick="showCategory('about')" class="text-[9px] uppercase tracking-[0.2em] text-gray-400 hover:text-white transition">Artist</button>
+    <div class="bottom-nav-container">
+        <div class="flex justify-between items-center px-4">
+            <div class="flex gap-x-1 w-full">
+                <button onclick="showCategory('sculpture')" class="flex-1 py-4 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition">Sculpture</button>
+                <button onclick="showCategory('watercolour')" class="flex-1 py-4 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition">Water</button>
+                <button onclick="showCategory('acrylic')" class="flex-1 py-4 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition">Acrylic</button>
+                <button onclick="showCategory('about')" class="flex-1 py-4 text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-white transition">Artist</button>
             </div>
-            <a href="#top" class="text-[9px] uppercase tracking-[0.3em] font-bold text-white border-b border-white/30 pb-1">Top ↑</a>
+            <a href="#top" class="ml-2 p-4 bg-white/5 rounded-full text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                </svg>
+            </a>
         </div>
     </div>
-
-    <footer class="py-32 border-t border-white/5 bg-[#0d0d0d] text-center px-6">
-        <div class="mb-10 text-[9px] uppercase tracking-[0.5em] text-gray-600 font-bold">Collections Held By</div>
-        <div class="flex flex-wrap justify-center gap-x-12 gap-y-6 text-[10px] uppercase tracking-[0.3em] text-gray-400 max-w-4xl mx-auto">
-            <span>Ikea</span><span>Starbucks</span><span>Pfizer</span><span>Placer Gold</span><span>Board of Education</span>
-        </div>
-        <p class="mt-20 text-[9px] text-gray-700 tracking-[0.2em] uppercase">© 2026 Mike Stamper Fine Art</p>
-    </footer>
 
     <script>
         function showCategory(id) {
@@ -405,20 +382,13 @@
                 target.classList.add('active');
                 target.style.setProperty('display', 'block', 'important');
             }
-            var links = document.getElementsByClassName('nav-link');
-            for (var i = 0; i < links.length; i++) {
-                links[i].classList.remove('active');
-            }
+            var links = document.querySelectorAll('.nav-link');
+            links.forEach(l => l.classList.remove('active'));
             var activeLink = document.getElementById('nav-' + id);
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
+            if (activeLink) activeLink.classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
-        window.onload = function() {
-            showCategory('sculpture');
-        };
+        window.onload = function() { showCategory('sculpture'); };
     </script>
 </body>
 </html>
