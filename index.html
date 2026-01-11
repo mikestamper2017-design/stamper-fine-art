@@ -10,19 +10,18 @@
         html { scroll-behavior: smooth; }
         .font-serif-light { font-family: 'Bodoni Moda', serif; font-style: italic; font-weight: 400; }
         
-        /* Tab Visibility Logic */
-        .gallery-section { display: none; opacity: 0; }
-        .gallery-section.active { display: block !important; opacity: 1; animation: fadeIn 0.5s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Rigid Display Logic */
+        .gallery-section { display: none !important; }
+        .gallery-section.active { display: block !important; opacity: 1; animation: fadeIn 0.4s ease-in; }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* Slider Styles */
         .image-slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; background: #222; }
         .image-slider::-webkit-scrollbar { display: none; }
         .slide-container { position: relative; flex-shrink: 0; width: 100%; scroll-snap-align: start; }
         .slide-container img { width: 100%; height: auto; display: block; }
 
-        /* Nav Link Styling */
-        .nav-link { position: relative; transition: all 0.3s ease; cursor: pointer; color: #6b7280; text-decoration: none; }
+        .nav-link { position: relative; transition: all 0.3s ease; cursor: pointer; color: #6b7280 !important; text-decoration: none !important; }
         .nav-link.active { color: white !important; }
         .nav-link.active::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 100%; height: 1px; background: white; }
         
@@ -35,10 +34,10 @@
     <header class="pt-24 pb-16 px-6 flex flex-col items-center">
         <h1 class="font-serif-light text-5xl md:text-6xl text-white mb-12 tracking-tighter">Mike Stamper</h1>
         <nav class="flex flex-wrap justify-center gap-x-10 gap-y-6">
-            <a href="javascript:void(0)" onclick="showCategory('sculpture')" id="nav-sculpture" class="nav-link active text-[10px] uppercase tracking-[0.4em]">Sculpture</a>
-            <a href="javascript:void(0)" onclick="showCategory('watercolour')" id="nav-watercolour" class="nav-link text-[10px] uppercase tracking-[0.4em]">Watercolour</a>
-            <a href="javascript:void(0)" onclick="showCategory('acrylic')" id="nav-acrylic" class="nav-link text-[10px] uppercase tracking-[0.4em]">Acrylic</a>
-            <a href="javascript:void(0)" onclick="showCategory('about')" id="nav-about" class="nav-link text-[10px] uppercase tracking-[0.4em]">The Artist</a>
+            <a href="#" onclick="showCategory('sculpture'); return false;" id="nav-sculpture" class="nav-link active text-[10px] uppercase tracking-[0.4em]">Sculpture</a>
+            <a href="#" onclick="showCategory('watercolour'); return false;" id="nav-watercolour" class="nav-link text-[10px] uppercase tracking-[0.4em]">Watercolour</a>
+            <a href="#" onclick="showCategory('acrylic'); return false;" id="nav-acrylic" class="nav-link text-[10px] uppercase tracking-[0.4em]">Acrylic</a>
+            <a href="#" onclick="showCategory('about'); return false;" id="nav-about" class="nav-link text-[10px] uppercase tracking-[0.4em]">The Artist</a>
         </nav>
     </header>
 
@@ -108,7 +107,6 @@
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[3/4] mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-watercoloursailboat1.jpg"></div>
-                        <div class="slide-container"><img src="images/stamper-watercoloursailboat1detail.jpg"></div>
                         <div class="slide-container"><img src="images/stamper-watercoloursailboat1back.jpg"><div class="study-label">Reverse Study</div></div>
                     </div>
                     <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Mariner 01</span><span class="text-lg font-bold">$85</span></div>
@@ -118,7 +116,6 @@
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[3/4] mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-watercoloursailboat2.jpg"></div>
-                        <div class="slide-container"><img src="images/stamper-watercoloursailboat2detail.jpg"></div>
                         <div class="slide-container"><img src="images/stamper-watercoloursailboat2back.jpg"><div class="study-label">Reverse Study</div></div>
                     </div>
                     <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Mariner 02</span><span class="text-lg font-bold">$85</span></div>
@@ -128,7 +125,6 @@
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[3/4] mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-watercoloursailboat3.jpg"></div>
-                        <div class="slide-container"><img src="images/stamper-watercoloursailboat3detail.jpg"></div>
                         <div class="slide-container"><img src="images/stamper-watercoloursailboat3back.jpg"><div class="study-label">Reverse Study</div></div>
                     </div>
                     <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Mariner 03</span><span class="text-lg font-bold">$85</span></div>
@@ -138,7 +134,6 @@
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[3/4] mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-watercoloursailboat4.jpg"></div>
-                        <div class="slide-container"><img src="images/stamper-watercoloursailboat4detail.jpg"></div>
                         <div class="slide-container"><img src="images/stamper-watercoloursailboat4back.jpg"><div class="study-label">Reverse Study</div></div>
                     </div>
                     <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Mariner 04</span><span class="text-lg font-bold">$85</span></div>
@@ -201,4 +196,50 @@
             </div>
         </div>
 
-        <div id
+        <div id="about" class="gallery-section max-w-2xl mx-auto py-12">
+            <h2 class="font-serif-light text-4xl text-white mb-10 italic">The Artist</h2>
+            <div class="space-y-8 text-gray-400 text-lg leading-relaxed font-light">
+                <p><strong class="text-white">Mike Stamper</strong> is a Canadian multi-disciplinary artist whose work explores the intersection of fluid movement and structural form. With a career spanning decades, his pieces are held in private and corporate collections globally.</p>
+                <p>As a stone sculptor, painter, woodworker, and published poet, Stamper’s work is a dialogue between the physical and the lyrical. An avid surfer and foiler, he translates the raw energy of the elements into the minimalist lines of his ink studies and the tactile permanence of his sculpture.</p>
+                <p>His work is a reflection of a life lived outdoors, capturing the rugged geometry of the Canadian landscape and the constant motion of the water.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function showCategory(id) {
+            // 1. Force hide all sections
+            var sections = document.getElementsByClassName('gallery-section');
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].classList.remove('active');
+                sections[i].style.display = 'none'; 
+            }
+
+            // 2. Force show the active one
+            var target = document.getElementById(id);
+            if (target) {
+                target.classList.add('active');
+                target.style.display = 'block';
+            }
+
+            // 3. Update Nav
+            var links = document.getElementsByClassName('nav-link');
+            for (var i = 0; i < links.length; i++) {
+                links[i].classList.remove('active');
+            }
+            var activeLink = document.getElementById('nav-' + id);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+
+            window.scrollTo(0, 0);
+        }
+
+        // Run once on load
+        window.onload = function() {
+            showCategory('sculpture');
+        };
+    </script>
+</body>
+</html>
