@@ -10,22 +10,24 @@
         html { scroll-behavior: smooth; }
         .font-serif-light { font-family: 'Bodoni Moda', serif; font-style: italic; font-weight: 400; }
         
+        /* Tab Logic */
         .gallery-section { display: none; opacity: 0; }
-        .gallery-section.active { display: block; opacity: 1; animation: fadeIn 0.6s ease-out forwards; }
-
+        .gallery-section.active { display: block; opacity: 1; animation: fadeIn 0.5s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .image-slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; background: #222; border-radius: 2px; }
+        /* Slider Styles */
+        .image-slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; background: #222; }
         .image-slider::-webkit-scrollbar { display: none; }
         .slide-container { position: relative; flex-shrink: 0; width: 100%; scroll-snap-align: start; }
-        .slide-container img { width: 100%; height: auto; display: block; object-fit: cover; }
+        .slide-container img { width: 100%; height: auto; display: block; }
 
+        /* Nav Link Styling */
         .nav-link { position: relative; transition: all 0.3s ease; }
         .nav-link.active { color: white; }
         .nav-link.active::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 100%; height: 1px; background: white; }
         
         .spec-text { font-family: 'Inter', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: #777; line-height: 1.6; }
-        .study-label { position: absolute; bottom: 20px; left: 20px; background: rgba(255,255,255,0.95); padding: 8px 12px; font-size: 9px; text-transform: uppercase; color: #000; font-weight: 700; border-left: 3px solid #000; pointer-events: none; }
+        .study-label { position: absolute; bottom: 20px; left: 20px; background: rgba(255,255,255,0.95); padding: 8px 12px; font-size: 9px; text-transform: uppercase; color: #000; font-weight: 700; border-left: 3px solid #000; }
     </style>
 </head>
 <body class="bg-[#121212] text-gray-200 font-sans tracking-tight">
@@ -48,25 +50,49 @@
                     <div class="image-slider aspect-[4/5] mb-8 shadow-2xl"><div class="slide-container"><img src="images/stamper-acrylicislandtwins1.jpg"></div></div>
                     <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Island Twins</span><span class="text-lg font-bold">PRICE</span></div>
                     <div class="spec-text mb-8">Acrylic on Canvas<br>DIMENSIONS</div>
-                    <a href="mailto:mike@stamper.art?subject=Inquiry: Island Twins" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire for Purchase</a>
+                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Island Twins" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[4/5] mb-8 shadow-2xl"><div class="slide-container"><img src="images/stamper-acrylicsunsetpines1.jpg"></div></div>
                     <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Sunset Pines</span><span class="text-lg font-bold">PRICE</span></div>
                     <div class="spec-text mb-8">Acrylic on Canvas<br>DIMENSIONS</div>
-                    <a href="mailto:mike@stamper.art?subject=Inquiry: Sunset Pines" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire for Purchase</a>
+                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Sunset Pines" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[4/5] mb-8 shadow-2xl"><div class="slide-container"><img src="images/stamper-acrylicclonepine1.jpg"></div></div>
                     <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Lone Pine</span><span class="text-lg font-bold">PRICE</span></div>
                     <div class="spec-text mb-8">Acrylic on Canvas<br>DIMENSIONS</div>
-                    <a href="mailto:mike@stamper.art?subject=Inquiry: Lone Pine" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire for Purchase</a>
+                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Lone Pine" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[4/5] mb-8 shadow-2xl"><div class="slide-container"><img src="images/stamper-acrylicpinereflection1.jpg"></div></div>
                     <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Pine Reflection</span><span class="text-lg font-bold">PRICE</span></div>
                     <div class="spec-text mb-8">Acrylic on Canvas<br>DIMENSIONS</div>
-                    <a href="mailto:mike@stamper.art?subject=Inquiry: Pine Reflection" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire for Purchase</a>
+                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Pine Reflection" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
+                </div>
+                <div class="flex flex-col">
+                    <div class="image-slider aspect-[4/5] mb-8 shadow-2xl"><div class="slide-container"><img src="images/stamper-acrylicwintersun1.jpg"></div></div>
+                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Winter Sun</span><span class="text-lg font-bold">PRICE</span></div>
+                    <div class="spec-text mb-8">Acrylic on Canvas<br>DIMENSIONS</div>
+                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Winter Sun" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
+                </div>
+                <div class="flex flex-col">
+                    <div class="image-slider aspect-[4/5] mb-8 shadow-2xl"><div class="slide-container"><img src="images/stamper-acrylictwinlookout1.jpg"></div></div>
+                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Twin Lookout</span><span class="text-lg font-bold">PRICE</span></div>
+                    <div class="spec-text mb-8">Acrylic on Canvas<br>DIMENSIONS</div>
+                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Twin Lookout" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
+                </div>
+                <div class="flex flex-col">
+                    <div class="image-slider aspect-[4/5] mb-8 shadow-2xl"><div class="slide-container"><img src="images/stamper-acrylicinuksuk1.jpg"></div></div>
+                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Inuksuk (Canvas)</span><span class="text-lg font-bold">PRICE</span></div>
+                    <div class="spec-text mb-8">Acrylic on Canvas<br>DIMENSIONS</div>
+                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Inuksuk Canvas" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
+                </div>
+                <div class="flex flex-col">
+                    <div class="image-slider aspect-[4/5] mb-8 shadow-2xl"><div class="slide-container"><img src="images/stamper-acrylicfalls1.jpg"></div></div>
+                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">The Falls</span><span class="text-lg font-bold">PRICE</span></div>
+                    <div class="spec-text mb-8">Acrylic on Canvas<br>DIMENSIONS</div>
+                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Falls" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire</a>
                 </div>
             </div>
         </div>
@@ -81,67 +107,4 @@
                     </div>
                     <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Whale Study</span><span class="text-lg font-bold">PRICE</span></div>
                     <div class="spec-text mb-8">Hand-Carved Soapstone<br>DIMENSIONS</div>
-                    <a href="mailto:mike@stamper.art?subject=Inquiry: Whale" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire for Purchase</a>
-                </div>
-                <div class="flex flex-col">
-                    <div class="image-slider aspect-square mb-8 shadow-2xl"><div class="slide-container"><img src="images/stamper-sculpturevase1.jpg"></div></div>
-                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Vase Form</span><span class="text-lg font-bold">PRICE</span></div>
-                    <div class="spec-text mb-8">Hand-Carved Soapstone<br>DIMENSIONS</div>
-                    <a href="mailto:mike@stamper.art?subject=Inquiry: Vase" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire for Purchase</a>
-                </div>
-            </div>
-        </div>
-
-        <div id="watercolour" class="gallery-section">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-32">
-                <div class="flex flex-col">
-                    <div class="image-slider aspect-[3/4] mb-8 shadow-2xl">
-                        <div class="slide-container"><img src="images/stamper-watercoloursailboat1.jpg"></div>
-                        <div class="slide-container"><img src="images/stamper-watercoloursailboat1back.jpg"><div class="study-label">Reverse Study</div></div>
-                    </div>
-                    <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Mariner 01</span><span class="text-lg font-bold">$85</span></div>
-                    <div class="spec-text mb-8">Ink-Wash on Cotton Paper<br>6" x 8"</div>
-                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 01" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">Inquire for Purchase</a>
-                </div>
-            </div>
-        </div>
-
-        <div id="about" class="gallery-section max-w-2xl mx-auto py-12">
-            <h2 class="font-serif-light text-4xl text-white mb-10 italic">The Artist</h2>
-            <div class="space-y-8 text-gray-400 text-lg leading-relaxed font-light">
-                <p><strong class="text-white">Mike Stamper</strong> is a Canadian multi-disciplinary artist whose work explores the intersection of fluid movement and structural form. With a career spanning decades, his pieces are held in private and corporate collections globally.</p>
-                <p>As a stone sculptor, painter, woodworker, and published poet, Stamper’s work is a dialogue between the physical and the lyrical. An avid surfer and foiler, he translates the raw energy of the elements into the minimalist lines of his ink studies and the tactile permanence of his sculpture.</p>
-            </div>
-        </div>
-
-    </main>
-
-    <footer class="py-24 border-t border-white/5 bg-[#0d0d0d] text-center px-6">
-        <div class="mb-10 text-[9px] uppercase tracking-[0.5em] text-gray-600 font-bold">Collections Held By</div>
-        <div class="flex flex-wrap justify-center gap-x-12 gap-y-6 text-[10px] uppercase tracking-[0.3em] text-gray-400 max-w-4xl mx-auto">
-            <span>Ikea</span><span>Starbucks</span><span>Pfizer</span><span>Placer Gold</span><span>Board of Education</span>
-        </div>
-    </footer>
-
-    <script>
-        function showCategory(categoryId) {
-            // Hide all gallery sections
-            document.querySelectorAll('.gallery-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            // Display the clicked section
-            document.getElementById(categoryId).classList.add('active');
-            
-            // Toggle active style on navigation buttons
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            document.getElementById('nav-' + categoryId).classList.add('active');
-
-            // Return user to the top of the content area smoothly
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
-
-</body>
-</html>
+                    <a href="mailto:mike_stamper@hotmail.com?subject=Inquiry: Whale Sculpture" class="border border-white/10 text-center py-5 text-[11px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition">In
