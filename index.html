@@ -8,28 +8,21 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,400;1,700&display=swap');
         html { scroll-behavior: smooth; }
-        /* This creates that 'signature' look without needing an image file */
-        .font-signature { 
-            font-family: 'Bodoni Moda', serif; 
-            font-style: italic; 
-            letter-spacing: -0.02em;
-        }
+        .font-signature { font-family: 'Bodoni Moda', serif; font-style: italic; letter-spacing: -0.02em; }
     </style>
 </head>
 <body class="bg-[#121212] text-gray-200 font-sans leading-relaxed">
 
     <header class="py-24 px-6 flex flex-col items-center border-b border-white/5">
-        <h1 class="font-signature text-5xl md:text-7xl text-white mb-4">Mike Stamper's fine art</h1>
-        <p class="text-[10px] uppercase tracking-[0.5em] text-gray-500 mb-12">Port Perry, Ontario • Studio Vault</p>
-        
-        <nav class="flex flex-wrap justify-center gap-8 md:gap-12 text-[10px] uppercase tracking-[0.4em] font-bold text-gray-600">
+        <h1 class="font-signature text-5xl md:text-7xl text-white mb-4 text-center">Mike Stamper's fine art</h1>
+        <p class="text-[10px] uppercase tracking-[0.5em] text-gray-500 mb-12 text-center">Port Perry, Ontario • Studio Vault</p>
+        <nav class="flex flex-wrap justify-center gap-8 text-[10px] uppercase tracking-[0.4em] font-bold text-gray-600">
             <a href="#watercolour" class="hover:text-white transition">The Mariner Series</a>
             <a href="#about" class="hover:text-white transition">Acquisition Info</a>
         </nav>
     </header>
 
     <main class="max-w-7xl mx-auto px-6">
-
         <section id="watercolour" class="py-24">
             <h3 class="text-sm font-bold uppercase tracking-[0.5em] mb-4 text-center text-gray-700 underline underline-offset-8">Available Works</h3>
             <p class="text-center text-[9px] uppercase tracking-widest text-gray-500 mb-20 italic">Hover image to view secondary studio study on reverse</p>
@@ -106,16 +99,7 @@
 
             </div>
         </section>
-
     </main>
-
-    <div style="display: none;">
-        <div id="saatchi-mariner-template">
-            TITLE: Mariner Series No. [X] - Original Watercolour
-            DESCRIPTION: Minimalist sailboat study on 140lb cold-press paper. This work is a double-sided original, featuring a secondary coastal study on the reverse. 6x8 inches.
-            KEYWORDS: Mike Stamper, Sailboat, Minimalism, Nautical, Canada, Port Perry, Ink Wash, Double-sided.
-        </div>
-    </div>
 
     <footer id="about" class="py-24 border-t border-white/5 bg-black/20">
         <div class="max-w-4xl mx-auto px-6 text-center">
@@ -123,11 +107,15 @@
                 Direct Bypass Acquisition: Pricing reflects studio-direct sales, excluding gallery commissions. 
                 All works are signed originals. Shipping via rigid structural mailers.
             </p>
-            <div class="text-[9px] uppercase tracking-[0.5em] text-gray-700">
-                &copy; 2026 Mike Stamper • All Rights Reserved
-            </div>
+            <div class="text-[9px] uppercase tracking-[0.5em] text-gray-700">&copy; 2026 Mike Stamper • Port Perry</div>
         </div>
     </footer>
+
+    <div style="display: none;">
+        TITLE: Mariner Series No. [X] - Original Watercolour
+        DESCRIPTION: 6x8 watercolor on 140lb cold-press paper. Double-sided original featuring secondary coastal study on reverse.
+        KEYWORDS: Mike Stamper, Sailboat, Minimalism, Nautical, Canada, Port Perry, Ink Wash, Double-sided.
+    </div>
 
 </body>
 </html>
