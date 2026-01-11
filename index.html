@@ -107,6 +107,7 @@
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[3/4] mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-watercoloursailboat1.jpg"></div>
+                        <div class="slide-container"><img src="images/stamper-watercoloursailboat1detail.jpg"></div>
                         <div class="slide-container"><img src="images/stamper-watercoloursailboat1back.jpg"><div class="study-label">Reverse Study</div></div>
                     </div>
                     <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Mariner 01</span><span class="text-lg font-bold">$85</span></div>
@@ -116,6 +117,7 @@
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[3/4] mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-watercoloursailboat2.jpg"></div>
+                        <div class="slide-container"><img src="images/stamper-watercoloursailboat2detail.jpg"></div>
                         <div class="slide-container"><img src="images/stamper-watercoloursailboat2back.jpg"><div class="study-label">Reverse Study</div></div>
                     </div>
                     <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Mariner 02</span><span class="text-lg font-bold">$85</span></div>
@@ -125,6 +127,7 @@
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[3/4] mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-watercoloursailboat3.jpg"></div>
+                        <div class="slide-container"><img src="images/stamper-watercoloursailboat3detail.jpg"></div>
                         <div class="slide-container"><img src="images/stamper-watercoloursailboat3back.jpg"><div class="study-label">Reverse Study</div></div>
                     </div>
                     <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Mariner 03</span><span class="text-lg font-bold">$85</span></div>
@@ -134,6 +137,7 @@
                 <div class="flex flex-col">
                     <div class="image-slider aspect-[3/4] mb-8 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-watercoloursailboat4.jpg"></div>
+                        <div class="slide-container"><img src="images/stamper-watercoloursailboat4detail.jpg"></div>
                         <div class="slide-container"><img src="images/stamper-watercoloursailboat4back.jpg"><div class="study-label">Reverse Study</div></div>
                     </div>
                     <div class="flex justify-between items-baseline mb-4"><span class="font-serif-light text-3xl text-white">Mariner 04</span><span class="text-lg font-bold">$85</span></div>
@@ -207,23 +211,26 @@
 
     </main>
 
+    <footer class="py-24 border-t border-white/5 bg-[#0d0d0d] text-center px-6">
+        <div class="mb-10 text-[9px] uppercase tracking-[0.5em] text-gray-600 font-bold">Collections Held By</div>
+        <div class="flex flex-wrap justify-center gap-x-12 gap-y-6 text-[10px] uppercase tracking-[0.3em] text-gray-400 max-w-4xl mx-auto">
+            <span>Ikea</span><span>Starbucks</span><span>Pfizer</span><span>Placer Gold</span><span>Board of Education</span>
+        </div>
+        <p class="mt-20 text-[9px] text-gray-700 tracking-[0.2em] uppercase">© 2026 Mike Stamper Fine Art</p>
+    </footer>
+
     <script>
         function showCategory(id) {
-            // 1. Force hide all sections
             var sections = document.getElementsByClassName('gallery-section');
             for (var i = 0; i < sections.length; i++) {
                 sections[i].classList.remove('active');
-                sections[i].style.display = 'none'; 
+                sections[i].style.setProperty('display', 'none', 'important');
             }
-
-            // 2. Force show the active one
             var target = document.getElementById(id);
             if (target) {
                 target.classList.add('active');
-                target.style.display = 'block';
+                target.style.setProperty('display', 'block', 'important');
             }
-
-            // 3. Update Nav
             var links = document.getElementsByClassName('nav-link');
             for (var i = 0; i < links.length; i++) {
                 links[i].classList.remove('active');
@@ -232,11 +239,8 @@
             if (activeLink) {
                 activeLink.classList.add('active');
             }
-
             window.scrollTo(0, 0);
         }
-
-        // Run once on load
         window.onload = function() {
             showCategory('sculpture');
         };
