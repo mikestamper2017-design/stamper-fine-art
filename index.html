@@ -6,7 +6,7 @@
     <title>Mike Stamper Fine Art</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;1,400&family=Inter:wght@300;400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;1,400&family=Inter:wght@300;400;600&display=swap');
         html { scroll-behavior: smooth; }
         .font-serif-light { font-family: 'Bodoni Moda', serif; font-style: italic; font-weight: 400; }
         
@@ -33,19 +33,27 @@
             object-fit: cover;
         }
 
-        /* The 'Studio Study' Label */
         .study-label {
             position: absolute;
             bottom: 20px;
             left: 20px;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(5px);
-            padding: 8px 12px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+            padding: 10px 14px;
             font-size: 8px;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.25em;
             color: #fff;
-            border-left: 1px solid #fff;
+            border-left: 2px solid #fff;
+        }
+
+        .spec-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #555;
+            line-height: 1.8;
         }
     </style>
 </head>
@@ -63,84 +71,70 @@
     <main class="max-w-6xl mx-auto px-4 md:px-6">
 
         <section id="watercolour" class="py-24">
-            <h2 class="text-[10px] uppercase tracking-[0.5em] text-gray-700 mb-16 text-center italic font-bold">The Mariner Series</h2>
+            <div class="max-w-xl mx-auto text-center mb-24">
+                <h2 class="text-[10px] uppercase tracking-[0.5em] text-gray-500 mb-6 italic font-bold">The Mariner Series</h2>
+                <p class="text-[11px] leading-relaxed text-gray-600 uppercase tracking-widest px-4">
+                    Minimalist nautical studies exploring form and ink-wash. Each work is an archival double-sided original—utilizing both faces of the paper to capture the duality of the studio process.
+                </p>
+            </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-32">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-32">
                 
                 <div class="flex flex-col">
-                    <div class="image-slider aspect-[3/4] mb-6 border border-white/5 shadow-2xl">
+                    <div class="image-slider aspect-[3/4] mb-8 border border-white/5 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-watercolour sailboat1.jpg" onerror="this.src='images/stamper-watercolour sailboat1.JPG'"></div>
                         <div class="slide-container"><img src="images/stamper-watercolour sailboat1 detail.jpg" onerror="this.src='images/stamper-watercolour sailboat1 detail.JPG'; this.closest('.slide-container').style.display='none'"></div>
                         <div class="slide-container">
                             <img src="images/stamper-watercolour sailboat1 back.jpg" onerror="this.src='images/stamper-watercolour sailboat1 back.JPG'">
-                            <div class="study-label">Reverse: Secondary Studio Study</div>
+                            <div class="study-label">Reverse: Studio Sketch</div>
                         </div>
                     </div>
-                    <div class="flex justify-between items-baseline border-t border-white/5 pt-4">
+                    
+                    <div class="flex justify-between items-baseline mb-4">
                         <span class="font-serif-light text-2xl text-white/90 italic">Mariner 01</span>
-                        <span class="text-[10px] font-bold text-gray-600">$85 CAD</span>
+                        <span class="text-xs font-bold text-gray-400">$85 CAD</span>
                     </div>
-                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 01" class="text-[9px] uppercase tracking-widest text-gray-500 hover:text-white mt-3 block">Inquire Direct</a>
+
+                    <div class="spec-text mb-6 pb-6 border-b border-white/5">
+                        6" x 8" • 140lb Cold-Press Cotton<br>
+                        Artist-Grade Archival Pigments<br>
+                        Double-Sided Original • Signed
+                    </div>
+
+                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 01" class="text-[10px] uppercase tracking-widest bg-white text-black text-center py-3 hover:bg-gray-200 transition">Inquire for Purchase</a>
                 </div>
 
                 <div class="flex flex-col">
-                    <div class="image-slider aspect-[3/4] mb-6 border border-white/5 shadow-2xl">
+                    <div class="image-slider aspect-[3/4] mb-8 border border-white/5 shadow-2xl">
                         <div class="slide-container"><img src="images/stamper-watercolour sailboat2.jpg" onerror="this.src='images/stamper-watercolour sailboat2.JPG'"></div>
                         <div class="slide-container"><img src="images/stamper-watercolour sailboat2 detail.jpg" onerror="this.src='images/stamper-watercolour sailboat2 detail.JPG'; this.closest('.slide-container').style.display='none'"></div>
                         <div class="slide-container">
                             <img src="images/stamper-watercolour sailboat2 back.jpg" onerror="this.src='images/stamper-watercolour sailboat2 back.JPG'">
-                            <div class="study-label">Reverse: Secondary Studio Study</div>
+                            <div class="study-label">Reverse: Studio Sketch</div>
                         </div>
                     </div>
-                    <div class="flex justify-between items-baseline border-t border-white/5 pt-4">
+                    
+                    <div class="flex justify-between items-baseline mb-4">
                         <span class="font-serif-light text-2xl text-white/90 italic">Mariner 02</span>
-                        <span class="text-[10px] font-bold text-gray-600">$85 CAD</span>
+                        <span class="text-xs font-bold text-gray-400">$85 CAD</span>
                     </div>
-                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 02" class="text-[9px] uppercase tracking-widest text-gray-500 hover:text-white mt-3 block">Inquire Direct</a>
+
+                    <div class="spec-text mb-6 pb-6 border-b border-white/5">
+                        6" x 8" • 140lb Cold-Press Cotton<br>
+                        Artist-Grade Archival Pigments<br>
+                        Double-Sided Original • Signed
+                    </div>
+
+                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 02" class="text-[10px] uppercase tracking-widest bg-white text-black text-center py-3 hover:bg-gray-200 transition">Inquire for Purchase</a>
                 </div>
 
-                <div class="flex flex-col">
-                    <div class="image-slider aspect-[3/4] mb-6 border border-white/5 shadow-2xl">
-                        <div class="slide-container"><img src="images/stamper-watercolour sailboat3.jpg" onerror="this.src='images/stamper-watercolour sailboat3.JPG'"></div>
-                        <div class="slide-container"><img src="images/stamper-watercolour sailboat3 detail.jpg" onerror="this.src='images/stamper-watercolour sailboat3 detail.JPG'; this.closest('.slide-container').style.display='none'"></div>
-                        <div class="slide-container">
-                            <img src="images/stamper-watercolour sailboat3 back.jpg" onerror="this.src='images/stamper-watercolour sailboat3 back.JPG'">
-                            <div class="study-label">Reverse: Secondary Studio Study</div>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-baseline border-t border-white/5 pt-4">
-                        <span class="font-serif-light text-2xl text-white/90 italic">Mariner 03</span>
-                        <span class="text-[10px] font-bold text-gray-600">$85 CAD</span>
-                    </div>
-                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 03" class="text-[9px] uppercase tracking-widest text-gray-500 hover:text-white mt-3 block">Inquire Direct</a>
                 </div>
-
-                <div class="flex flex-col">
-                    <div class="image-slider aspect-[3/4] mb-6 border border-white/5 shadow-2xl">
-                        <div class="slide-container"><img src="images/stamper-watercolour sailboat4.jpg" onerror="this.src='images/stamper-watercolour sailboat4.JPG'"></div>
-                        <div class="slide-container"><img src="images/stamper-watercolour sailboat4 detail.jpg" onerror="this.src='images/stamper-watercolour sailboat4 detail.JPG'; this.closest('.slide-container').style.display='none'"></div>
-                        <div class="slide-container">
-                            <img src="images/stamper-watercolour sailboat4 back.jpg" onerror="this.src='images/stamper-watercolour sailboat4 back.JPG'">
-                            <div class="study-label">Reverse: Secondary Studio Study</div>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-baseline border-t border-white/5 pt-4">
-                        <span class="font-serif-light text-2xl text-white/90 italic">Mariner 04</span>
-                        <span class="text-[10px] font-bold text-gray-600">$85 CAD</span>
-                    </div>
-                    <a href="mailto:mike@stamper.art?subject=Inquiry: Mariner 04" class="text-[9px] uppercase tracking-widest text-gray-500 hover:text-white mt-3 block">Inquire Direct</a>
-                </div>
-
-            </div>
         </section>
-
-        <section id="acrylic" class="py-32 border-t border-white/5"><h2 class="text-[10px] uppercase tracking-[0.5em] text-gray-900 text-center">Canvas Pending</h2></section>
-        <section id="sculpture" class="py-32 border-t border-white/5"><h2 class="text-[10px] uppercase tracking-[0.5em] text-gray-900 text-center">Form Pending</h2></section>
 
     </main>
 
     <footer class="py-32 border-t border-white/5 text-center">
-        <p class="text-[9px] uppercase tracking-[0.5em] text-gray-900">Mike Stamper • Port Perry, ON</p>
+        <p class="text-[9px] uppercase tracking-[0.4em] text-gray-800">Mike Stamper • Port Perry, ON</p>
     </footer>
 
 </body>
