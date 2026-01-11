@@ -375,24 +375,40 @@
     </div>
 
     <script>
-        function showCategory(id) {
-            var sections = document.getElementsByClassName('gallery-section');
-            for (var i = 0; i < sections.length; i++) {
-                sections[i].classList.remove('active');
-                sections[i].style.setProperty('display', 'none', 'important');
-            }
-            var target = document.getElementById(id);
-            if (target) {
-                target.classList.add('active');
-                target.style.setProperty('display', 'block', 'important');
-            }
-            var links = document.querySelectorAll('.nav-link');
-            links.forEach(l => l.classList.remove('active'));
-            var activeLink = document.getElementById('nav-' + id);
-            if (activeLink) activeLink.classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+    function showCategory(id) {
+        // 1. Hide all sections
+        const sections = document.querySelectorAll('.gallery-section');
+        sections.forEach(section => {
+            section.classList.remove('active');
+            section.style.display = 'none'; // Force hide
+        });
+
+        // 2. Show the selected section
+        const activeSection = document.getElementById(id);
+        if (activeSection) {
+            activeSection.classList.add('active');
+            activeSection.style.display = 'block'; // Force show
         }
-        window.onload = function() { showCategory('sculpture'); };
-    </script>
+
+        // 3. Update Nav Link Colors (Desktop & Mobile)
+        document.querySelectorAll('.nav-link, .bottom-nav-btn').forEach(link => {
+            link.classList.remove('active');
+        });
+
+        // Highlight top nav
+        const desktopLink = document.getElementById('nav-' + id);
+        if (desktopLink) desktopLink.classList.add('active');
+
+        // Highlight bottom nav
+        const mobileBtn = document.getElementById('mob-' + id);
+        if (mobileBtn) mobileBtn.classList.add('active');
+
+        // 4. Reset scroll to top so user sees the start of the new category
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Initialize the site on Sculpture by default
+    window.onload = () => showCategory('sculpture');
+</script>
 </body>
 </html>
