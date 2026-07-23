@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784843163150,
+    "title": "Sunset ant island",
+    "category": "Paintings",
+    "dimensions": "12x24",
+    "materials": "Acrylic on professional canvas ",
+    "price": 220,
+    "priceDisplay": "$220",
+    "images": [
+      "assets/images/sunset-ant-island-front-1784843163150.jpg",
+      "assets/images/sunset-ant-island-view-2-1784843163150.jpg",
+      "assets/images/sunset-ant-island-view-3-1784843163150.jpg"
+    ],
+    "dateAdded": "2026-07-23T21:46:10.344Z"
+  },
+  {
     "id": 1784842885731,
     "title": "Through the pines",
     "category": "Paintings",
