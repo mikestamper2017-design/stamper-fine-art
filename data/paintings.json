@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784838233431,
+    "title": "Grand peak",
+    "category": "Watercolour",
+    "dimensions": "4.5x5.5",
+    "materials": "100% cotton paper",
+    "price": 20,
+    "priceDisplay": "$20",
+    "images": [
+      "assets/images/grand-peak-front-1784838233431.jpg"
+    ],
+    "dateAdded": "2026-07-23T20:24:00.438Z"
+  },
+  {
     "id": 1784835197006,
     "title": "Inuksuk view",
     "category": "Watercolour",
