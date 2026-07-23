@@ -1,5 +1,19 @@
 [
   {
+    "id": 1784822857525,
+    "title": "Inuksuk at red moon",
+    "category": "Watercolour",
+    "dimensions": "5x8",
+    "materials": "100% cotton paper",
+    "price": 50,
+    "priceDisplay": "$50",
+    "images": [
+      "assets/images/inuksuk-at-red-moon-front-1784822857525.jpg",
+      "assets/images/inuksuk-at-red-moon-view-2-1784822857525.jpg"
+    ],
+    "dateAdded": "2026-07-23T16:07:40.625Z"
+  },
+  {
     "id": 1784820675200,
     "title": "Greenbank sunset",
     "category": "Paintings",
