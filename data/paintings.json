@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784840466323,
+    "title": "Late to the party",
+    "category": "Watercolour",
+    "dimensions": "7.5x12",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/late-to-the-party-front-1784840466323.jpg"
+    ],
+    "dateAdded": "2026-07-23T21:01:09.990Z"
+  },
+  {
     "id": 1784840346860,
     "title": "Long hike down",
     "category": "Watercolour",
@@ -70,7 +83,7 @@
   },
   {
     "id": 1784839567379,
-    "title": "Two sided art: z boys and manÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂs best friend",
+    "title": "Two sided art: z boys and manÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂs best friend",
     "category": "Watercolour",
     "dimensions": "8x12",
     "materials": "100% cotton paper",
