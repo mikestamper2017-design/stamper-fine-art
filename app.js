@@ -34,18 +34,20 @@ function previewAndCompress(event) {
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
 
-      // Resize long edge to max 2000px (Plenty for high-res web viewing)
-      const maxDim = 2000;
-      let width = img.width;
-      let height = img.height;
+      // Quick fix inside previewAndCompress() in app.js:
+const maxDim = 1800;
+let width = img.width;
+let height = img.height;
 
-      if (width > height && width > maxDim) {
-        height = Math.round((height * maxDim) / width);
-        width = maxDim;
-      } else if (height > maxDim) {
-        width = Math.round((width * maxDim) / height);
-        height = maxDim;
-      }
+if (width > maxDim || height > maxDim) {
+  if (width > height) {
+    height = Math.round((height * maxDim) / width);
+    width = maxDim;
+  } else {
+    width = Math.round((width * maxDim) / height);
+    height = maxDim;
+  }
+}
 
       canvas.width = width;
       canvas.height = height;
