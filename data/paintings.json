@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784842885731,
+    "title": "Through the pines",
+    "category": "Paintings",
+    "dimensions": "24x36",
+    "materials": "Acrylic on professional grade canvas ",
+    "price": 650,
+    "priceDisplay": "$650",
+    "images": [
+      "assets/images/through-the-pines-front-1784842885731.jpg",
+      "assets/images/through-the-pines-view-2-1784842885731.jpg",
+      "assets/images/through-the-pines-view-3-1784842885731.jpg"
+    ],
+    "dateAdded": "2026-07-23T21:41:32.001Z"
+  },
+  {
     "id": 1784841489778,
     "title": "Two sided art: morning beach and island dreams",
     "category": "Watercolour",
