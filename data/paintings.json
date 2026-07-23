@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784838491446,
+    "title": "Birds on a wire",
+    "category": "Watercolour",
+    "dimensions": "5x5",
+    "materials": "100% cotton paper",
+    "price": 20,
+    "priceDisplay": "$20",
+    "images": [
+      "assets/images/birds-on-a-wire-front-1784838491446.jpg"
+    ],
+    "dateAdded": "2026-07-23T20:28:16.441Z"
+  },
+  {
     "id": 1784838398102,
     "title": "Inuksuk ledge",
     "category": "Watercolour",
