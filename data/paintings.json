@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784819784055,
+    "title": "Frosty surf",
+    "category": "Watercolour",
+    "dimensions": "6x8",
+    "materials": "100% cotton paper ",
+    "price": 50,
+    "priceDisplay": "50",
+    "images": [
+      "assets/images/frosty-surf-front-1784819784055.jpg"
+    ],
+    "dateAdded": "2026-07-23T15:16:25.878Z"
+  },
+  {
     "id": 1784815560128,
     "title": "Forest haze",
     "category": "Watercolour",
@@ -13,5 +26,4 @@
     ],
     "dateAdded": "2026-07-23T14:06:07.004Z"
   }
-  
 ]
