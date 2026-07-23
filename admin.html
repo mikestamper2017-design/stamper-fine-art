@@ -2,64 +2,140 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Studio Capture | Art Intake</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Studio Intake Tool</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Phone-Friendly Admin Overrides */
+    body.admin-body {
+      background: #f4f5f7;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 15px;
+      font-size: 18px;
+    }
+    .admin-card {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+    .admin-card h2 {
+      margin-top: 0;
+      font-size: 24px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: #333;
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 14px;
+      font-size: 18px; /* Prevents auto-zoom on iOS */
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      background: #fafafa;
+    }
+    .btn-action {
+      width: 100%;
+      background: #007aff;
+      color: white;
+      border: none;
+      padding: 16px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn-action:disabled {
+      background: #a2a2a2;
+    }
+    #preview-container img {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+    #compression-stats {
+      font-size: 15px;
+      font-weight: 600;
+      color: #2e7d32;
+      margin-top: 8px;
+    }
+    #status-message {
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
 </head>
 <body class="admin-body">
-  <main class="container">
-    <h2>Studio Intake Tool</h2>
+  <main style="max-width: 500px; margin: 0 auto;">
     
-    <!-- Token Setup (Saved locally in browser) -->
-    <div id="token-section" class="card">
-      <label for="gh-token">GitHub Personal Access Token:</label>
-      <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxx">
-      <button onclick="saveToken()">Save Token to Device</button>
-      <p class="help-text">Token stays stored locally on your phone/browser.</p>
+    <!-- Token Setup -->
+    <div class="admin-card">
+      <h2>1. Access Setup</h2>
+      <div class="form-group">
+        <label for="gh-token">GitHub Personal Access Token:</label>
+        <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxx">
+      </div>
+      <button class="btn-action" style="background:#333;" onclick="saveToken()">Save Token to Phone</button>
     </div>
 
     <!-- Capture Form -->
-    <form id="artwork-form" class="card" onsubmit="handleUpload(event)">
+    <form id="artwork-form" class="admin-card" onsubmit="handleUpload(event)">
+      <h2>2. Artwork Intake</h2>
+      
       <div class="form-group">
-        <label>Capture Artwork:</label>
+        <label for="image-input">Photo of Artwork:</label>
         <input type="file" id="image-input" accept="image/*" capture="environment" required onchange="previewAndCompress(event)">
       </div>
 
       <div id="preview-container">
-        <img id="image-preview" src="" alt="Preview" style="display:none; max-width:100%; height:auto;">
-        <p id="compression-stats"></p>
+        <img id="image-preview" src="" alt="Preview" style="display:none;">
+        <div id="compression-stats"></div>
+      </div>
+
+      <div class="form-group" style="margin-top: 15px;">
+        <label for="art-title">Title:</label>
+        <input type="text" id="art-title" required placeholder="e.g. Frosty Surf">
       </div>
 
       <div class="form-group">
-        <label>Title:</label>
-        <input type="text" id="art-title" required placeholder="e.g. Morning Mist">
+        <label for="art-category">Category:</label>
+        <select id="art-category">
+          <option value="Watercolour">Watercolour</option>
+          <option value="Paintings">Paintings</option>
+          <option value="Sculpture">Sculpture</option>
+        </select>
       </div>
 
       <div class="form-group">
-  <label>Category:</label>
-  <select id="art-category">
-    <option value="Sculpture">Sculpture</option>
-    <option value="Paintings">Paintings</option>
-    <option value="Watercolour">Watercolour</option>
-  </select>
-</div>
-
-      <div class="form-group">
-        <label>Dimensions:</label>
-        <input type="text" id="art-size" placeholder="e.g. 12 x 18 in">
+        <label for="art-size">Dimensions:</label>
+        <input type="text" id="art-size" placeholder="e.g. 6x8 in">
       </div>
 
       <div class="form-group">
-        <label>Materials / Paper:</label>
-        <input type="text" id="art-materials" placeholder="e.g. Arches 300lb, Winsor & Newton">
+        <label for="art-materials">Materials / Paper:</label>
+        <input type="text" id="art-materials" placeholder="e.g. 100% Cotton Paper">
       </div>
 
       <div class="form-group">
-        <label>Price ($) / Status:</label>
-        <input type="text" id="art-price" placeholder="e.g. $450 or Sold">
+        <label for="art-price">Price ($) / Status:</label>
+        <input type="text" id="art-price" placeholder="e.g. $50">
       </div>
 
-      <button type="submit" id="submit-btn">Compress & Publish Artwork</button>
+      <button type="submit" id="submit-btn" class="btn-action">Publish Artwork</button>
       <div id="status-message"></div>
     </form>
   </main>
