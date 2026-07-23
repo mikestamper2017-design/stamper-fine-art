@@ -1,7 +1,21 @@
 [
   {
+    "id": 1784839730098,
+    "title": "Two sided art: follow the pack and alone",
+    "category": "Watercolour",
+    "dimensions": "8x12",
+    "materials": "100% Cotton",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/two-sided-art-follow-the-pack-and-alone-front-1784839730098.jpg",
+      "assets/images/two-sided-art-follow-the-pack-and-alone-view-2-1784839730098.jpg"
+    ],
+    "dateAdded": "2026-07-23T20:48:53.127Z"
+  },
+  {
     "id": 1784839567379,
-    "title": "Two sided art: z boys and man’s best friend",
+    "title": "Two sided art: z boys and manâs best friend",
     "category": "Watercolour",
     "dimensions": "8x12",
     "materials": "100% cotton paper",
