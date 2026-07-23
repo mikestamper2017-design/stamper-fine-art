@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784838398102,
+    "title": "Inuksuk ledge",
+    "category": "Watercolour",
+    "dimensions": "3.5x5.5",
+    "materials": "100% cotton paper",
+    "price": 20,
+    "priceDisplay": "$20",
+    "images": [
+      "assets/images/inuksuk-ledge-front-1784838398102.jpg"
+    ],
+    "dateAdded": "2026-07-23T20:26:48.697Z"
+  },
+  {
     "id": 1784838233431,
     "title": "Grand peak",
     "category": "Watercolour",
