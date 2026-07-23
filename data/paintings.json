@@ -1,5 +1,19 @@
 [
   {
+    "id": 1784834987308,
+    "title": "Two sided art. Beach view and setting sun",
+    "category": "Watercolour",
+    "dimensions": "5x5",
+    "materials": "100% cotton paper",
+    "price": 30,
+    "priceDisplay": "$30",
+    "images": [
+      "assets/images/two-sided-art-beach-view-and-setting-sun-front-1784834987308.jpg",
+      "assets/images/two-sided-art-beach-view-and-setting-sun-view-2-1784834987308.jpg"
+    ],
+    "dateAdded": "2026-07-23T19:29:54.743Z"
+  },
+  {
     "id": 1784834829140,
     "title": "Assessing the lineup",
     "category": "Watercolour",
