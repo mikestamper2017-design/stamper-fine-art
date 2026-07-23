@@ -1,5 +1,19 @@
 [
   {
+    "id": 1784815560128,
+    "title": "Forest haze",
+    "category": "Watercolour",
+    "dimensions": "5x8.5",
+    "materials": "100% cotton paper",
+    "price": 50,
+    "priceDisplay": "$50",
+    "images": [
+      "assets/images/forest-haze-front-1784815560128.jpg",
+      "assets/images/forest-haze-view-2-1784815560128.jpg"
+    ],
+    "dateAdded": "2026-07-23T14:06:07.004Z"
+  },
+  {
     "id": 1721739200000,
     "title": "Frosty Surf (Double-Sided)",
     "category": "Watercolour",
