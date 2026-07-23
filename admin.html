@@ -57,8 +57,19 @@
       margin-top: 10px;
     }
     .btn-rotate {
-      width: 100%;
       background: #5856d6;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 15px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 8px;
+      width: 100%;
+    }
+    .btn-secondary {
+      background: #34c759;
       color: white;
       border: none;
       padding: 12px;
@@ -67,19 +78,18 @@
       border-radius: 8px;
       cursor: pointer;
       margin-top: 10px;
-    }
-    .btn-action:disabled {
-      background: #a2a2a2;
-    }
-    #preview-container img {
       width: 100%;
-      border-radius: 8px;
-      margin-top: 10px;
     }
-    #compression-stats {
-      font-size: 15px;
-      font-weight: 600;
-      color: #2e7d32;
+    .photo-card {
+      background: #f9f9f9;
+      border: 1px dashed #ccc;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+    .photo-card img {
+      width: 100%;
+      border-radius: 6px;
       margin-top: 8px;
     }
     #status-message {
@@ -107,18 +117,16 @@
     <form id="artwork-form" class="admin-card" onsubmit="handleUpload(event)">
       <h2>2. Artwork Intake</h2>
       
+      <!-- Photos Container -->
       <div class="form-group">
-        <label for="image-input">Photo of Artwork:</label>
-        <input type="file" id="image-input" accept="image/*" capture="environment" required onchange="handleFileSelect(event)">
+        <label>Artwork Photos (Front, Back, Details):</label>
+        <div id="photos-list">
+          <!-- Dynamic photo slots added here -->
+        </div>
+        <button type="button" class="btn-secondary" onclick="addPhotoSlot()">+ Add Another Photo / Back Side</button>
       </div>
 
-      <div id="preview-container" style="display:none;">
-        <img id="image-preview" src="" alt="Preview">
-        <button type="button" class="btn-rotate" onclick="rotateImage()">Rotate 90°</button>
-        <div id="compression-stats"></div>
-      </div>
-
-      <div class="form-group" style="margin-top: 15px;">
+      <div class="form-group" style="margin-top: 20px;">
         <label for="art-title">Title:</label>
         <input type="text" id="art-title" required placeholder="e.g. Frosty Surf">
       </div>
@@ -139,7 +147,7 @@
 
       <div class="form-group">
         <label for="art-materials">Materials / Paper:</label>
-        <input type="text" id="art-materials" placeholder="e.g. 100% Cotton Paper">
+        <input type="text" id="art-materials" placeholder="e.g. 100% Cotton (Double Sided)">
       </div>
 
       <div class="form-group">
@@ -152,7 +160,6 @@
     </form>
   </main>
 
-  <!-- Notice the ?v=2 at the end - this forces Safari to load the new JS! -->
-  <script src="app.js?v=2"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>
