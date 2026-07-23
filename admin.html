@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Capture | Art Intake</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-body">
+  <main class="container">
+    <h2>Studio Intake Tool</h2>
+    
+    <!-- Token Setup (Saved locally in browser) -->
+    <div id="token-section" class="card">
+      <label for="gh-token">GitHub Personal Access Token:</label>
+      <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxx">
+      <button onclick="saveToken()">Save Token to Device</button>
+      <p class="help-text">Token stays stored locally on your phone/browser.</p>
+    </div>
+
+    <!-- Capture Form -->
+    <form id="artwork-form" class="card" onsubmit="handleUpload(event)">
+      <div class="form-group">
+        <label>Capture Artwork:</label>
+        <input type="file" id="image-input" accept="image/*" capture="environment" required onchange="previewAndCompress(event)">
+      </div>
+
+      <div id="preview-container">
+        <img id="image-preview" src="" alt="Preview" style="display:none; max-width:100%; height:auto;">
+        <p id="compression-stats"></p>
+      </div>
+
+      <div class="form-group">
+        <label>Title:</label>
+        <input type="text" id="art-title" required placeholder="e.g. Morning Mist">
+      </div>
+
+      <div class="form-group">
+        <label>Category:</label>
+        <select id="art-category">
+          <option value="Landscapes">Landscapes</option>
+          <option value="Florals">Florals</option>
+          <option value="Abstracts">Abstracts</option>
+          <option value="Portraits">Portraits</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Dimensions:</label>
+        <input type="text" id="art-size" placeholder="e.g. 12 x 18 in">
+      </div>
+
+      <div class="form-group">
+        <label>Materials / Paper:</label>
+        <input type="text" id="art-materials" placeholder="e.g. Arches 300lb, Winsor & Newton">
+      </div>
+
+      <div class="form-group">
+        <label>Price ($) / Status:</label>
+        <input type="text" id="art-price" placeholder="e.g. $450 or Sold">
+      </div>
+
+      <button type="submit" id="submit-btn">Compress & Publish Artwork</button>
+      <div id="status-message"></div>
+    </form>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
