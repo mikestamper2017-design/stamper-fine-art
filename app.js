@@ -1,6 +1,6 @@
 // --- CONFIGURATION ---
-const REPO_OWNER = "YOUR_GITHUB_USERNAME"; // Replace with your username
-const REPO_NAME = "watercolour-gallery";   // Replace with your repo name
+const REPO_OWNER = "mikestamper2017-design";
+const REPO_NAME = "stamper-fine-art";
 let compressedBlob = null;
 let base64Image = null;
 
