@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784820675200,
+    "title": "Greenbank sunset",
+    "category": "Paintings",
+    "dimensions": "15x30",
+    "materials": "Acrylic on professional canvas ",
+    "price": 500,
+    "priceDisplay": "$500",
+    "images": [
+      "assets/images/greenbank-sunset-front-1784820675200.jpg",
+      "assets/images/greenbank-sunset-view-2-1784820675200.jpg",
+      "assets/images/greenbank-sunset-view-3-1784820675200.jpg"
+    ],
+    "dateAdded": "2026-07-23T15:31:19.468Z"
+  },
+  {
     "id": 1784819784055,
     "title": "Frosty surf",
     "category": "Watercolour",
