@@ -31,23 +31,15 @@ function setupFilterButtons() {
 function applyFiltersAndSort() {
   let items = [...catalogData];
 
-  // 1. Filter by Category
   if (activeCategory !== 'all') {
     items = items.filter(item => item.category.toLowerCase() === activeCategory.toLowerCase());
   }
 
-  // 2. Sort Items
   const sortValue = document.getElementById('sort-select').value;
   items.sort((a, b) => {
     if (sortValue === 'newest') return (b.id || 0) - (a.id || 0);
     if (sortValue === 'price-low') return (a.price || 0) - (b.price || 0);
     if (sortValue === 'price-high') return (b.price || 0) - (a.price || 0);
-    
-    // Sort by surface area (Height x Width)
-    const areaA = (a.heightInches || 0) * (a.widthInches || 0);
-    const areaB = (b.heightInches || 0) * (b.widthInches || 0);
-    if (sortValue === 'size-small') return areaA - areaB;
-    if (sortValue === 'size-large') return areaB - areaA;
   });
 
   renderGrid(items);
@@ -62,20 +54,32 @@ function renderGrid(items) {
     return;
   }
 
-  items.forEach(item => {
+  items.forEach((item, index) => {
     const card = document.createElement('article');
     card.className = 'art-card';
 
-    // Build mailto link for specific inquiry
+    // Backwards compatibility: handle single "image" vs array "images"
+    const imageList = item.images && item.images.length > 0 ? item.images : [item.image];
+    const mainImg = imageList[0];
+    const hasMultiple = imageList.length > 1;
+
     const emailSubject = encodeURIComponent(`Inquiry: ${item.title}`);
     const emailBody = encodeURIComponent(`Hello Mike,\n\nI am interested in acquiring "${item.title}" (${item.dimensions}, ${item.priceDisplay}). Please let me know if it is still available.\n\nThank you!`);
-    const mailLink = `mailto:your-email@example.com?subject=${emailSubject}&body=${emailBody}`;
+    const mailLink = `mailto:mike_stamper@hotmail.com;
+
+    // Generate lightbox hidden links for extra photos
+    let extraLightboxLinks = '';
+    for (let i = 1; i < imageList.length; i++) {
+      extraLightboxLinks += `<a href="${imageList[i]}" class="glightbox" data-gallery="gallery-${index}" data-title="${item.title} (View ${i + 1})" data-description="${item.materials} • ${item.dimensions}" style="display:none;"></a>`;
+    }
 
     card.innerHTML = `
       <div class="image-wrapper">
-        <a href="${item.image}" class="glightbox" data-gallery="art-gallery" data-title="${item.title}" data-description="${item.materials} • ${item.dimensions}">
-          <img src="${item.image}" alt="${item.title}" loading="lazy">
+        <a href="${mainImg}" class="glightbox" data-gallery="gallery-${index}" data-title="${item.title}" data-description="${item.materials} • ${item.dimensions}">
+          <img src="${mainImg}" alt="${item.title}" loading="lazy">
         </a>
+        ${hasMultiple ? `<span class="photo-badge">${imageList.length} Photos (Double-Sided/Views)</span>` : ''}
+        ${extraLightboxLinks}
       </div>
       <div class="card-details">
         <div class="card-header">
@@ -92,6 +96,5 @@ function renderGrid(items) {
     grid.appendChild(card);
   });
 
-  // Re-initialize lightbox popups for zoomed viewing
   GLightbox({ selector: '.glightbox' });
 }
