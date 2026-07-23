@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Studio Intake Tool</title>
-  <!-- Cropper.js CSS -->
+  <title>Studio Intake & Manager</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
@@ -23,10 +22,39 @@
     }
     .admin-card h2 {
       margin-top: 0;
-      font-size: 24px;
+      font-size: 22px;
       border-bottom: 2px solid #eee;
       padding-bottom: 10px;
     }
+    /* Tab Navigation */
+    .tab-nav {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      border: 1px solid #ccc;
+      background: #e5e5ea;
+      color: #333;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .tab-btn.active {
+      background: #007aff;
+      color: white;
+      border-color: #007aff;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+
     .form-group {
       margin-bottom: 18px;
     }
@@ -58,30 +86,6 @@
       cursor: pointer;
       margin-top: 10px;
     }
-    .btn-rotate {
-      background: #5856d6;
-      color: white;
-      border: none;
-      padding: 10px;
-      font-size: 15px;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 8px;
-      flex: 1;
-    }
-    .btn-crop {
-      background: #34c759;
-      color: white;
-      border: none;
-      padding: 10px;
-      font-size: 15px;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 8px;
-      flex: 1;
-    }
     .btn-secondary {
       background: #34c759;
       color: white;
@@ -94,6 +98,19 @@
       margin-top: 10px;
       width: 100%;
     }
+    .btn-rotate, .btn-crop {
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 15px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      flex: 1;
+    }
+    .btn-rotate { background: #5856d6; }
+    .btn-crop { background: #34c759; }
+
     .photo-card {
       background: #f9f9f9;
       border: 1px dashed #ccc;
@@ -103,19 +120,52 @@
     }
     .crop-wrapper {
       max-width: 100%;
-      max-height: 400px;
+      max-height: 350px;
       margin-top: 10px;
       overflow: hidden;
       border-radius: 8px;
     }
-    .crop-wrapper img {
-      max-width: 100%;
-    }
     .button-group {
       display: flex;
       gap: 8px;
+      margin-top: 8px;
     }
-    #status-message {
+
+    /* Catalog Management List */
+    .edit-item-card {
+      border: 1px solid #e0e0e0;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      background: #fafafa;
+    }
+    .edit-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .btn-danger {
+      background: #ff3b30;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn-edit-save {
+      background: #007aff;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: bold;
+      width: 100%;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+    #status-message, #manage-status-message {
       margin-top: 15px;
       font-size: 16px;
       font-weight: bold;
@@ -136,56 +186,72 @@
       <button class="btn-action" style="background:#333;" onclick="saveToken()">Save Token to Phone</button>
     </div>
 
-    <!-- Capture Form -->
-    <form id="artwork-form" class="admin-card" onsubmit="handleUpload(event)">
-      <h2>2. Artwork Intake</h2>
-      
-      <!-- Photos Container -->
-      <div class="form-group">
-        <label>Artwork Photos (Front, Back, Details):</label>
-        <div id="photos-list">
-          <!-- Dynamic photo slots added here -->
+    <!-- Tab Buttons -->
+    <div class="tab-nav">
+      <button type="button" class="tab-btn active" onclick="switchTab('upload')">Add New Artwork</button>
+      <button type="button" class="tab-btn" onclick="switchTab('manage')">Manage Catalog</button>
+    </div>
+
+    <!-- TAB 1: Upload Form -->
+    <div id="tab-upload" class="tab-content active">
+      <form id="artwork-form" class="admin-card" onsubmit="handleUpload(event)">
+        <h2>Upload Artwork</h2>
+        
+        <div class="form-group">
+          <label>Artwork Photos (Front, Back, Details):</label>
+          <div id="photos-list"></div>
+          <button type="button" class="btn-secondary" onclick="addPhotoSlot()">+ Add Another Photo / Back Side</button>
         </div>
-        <button type="button" class="btn-secondary" onclick="addPhotoSlot()">+ Add Another Photo / Back Side</button>
-      </div>
 
-      <div class="form-group" style="margin-top: 20px;">
-        <label for="art-title">Title:</label>
-        <input type="text" id="art-title" required placeholder="e.g. Frosty Surf">
-      </div>
+        <div class="form-group" style="margin-top: 20px;">
+          <label for="art-title">Title:</label>
+          <input type="text" id="art-title" required placeholder="e.g. Frosty Surf">
+        </div>
 
-      <div class="form-group">
-        <label for="art-category">Category:</label>
-        <select id="art-category">
-          <option value="Watercolour">Watercolour</option>
-          <option value="Paintings">Paintings</option>
-          <option value="Sculpture">Sculpture</option>
-        </select>
-      </div>
+        <div class="form-group">
+          <label for="art-category">Category:</label>
+          <select id="art-category">
+            <option value="Watercolour">Watercolour</option>
+            <option value="Paintings">Paintings</option>
+            <option value="Sculpture">Sculpture</option>
+          </select>
+        </div>
 
-      <div class="form-group">
-        <label for="art-size">Dimensions:</label>
-        <input type="text" id="art-size" placeholder="e.g. 6x8 in">
-      </div>
+        <div class="form-group">
+          <label for="art-size">Dimensions:</label>
+          <input type="text" id="art-size" placeholder="e.g. 6x8 in">
+        </div>
 
-      <div class="form-group">
-        <label for="art-materials">Materials / Paper:</label>
-        <input type="text" id="art-materials" placeholder="e.g. 100% Cotton Paper">
-      </div>
+        <div class="form-group">
+          <label for="art-materials">Materials / Paper:</label>
+          <input type="text" id="art-materials" placeholder="e.g. 100% Cotton Paper">
+        </div>
 
-      <div class="form-group">
-        <label for="art-price">Price ($) / Status:</label>
-        <input type="text" id="art-price" placeholder="e.g. $50">
-      </div>
+        <div class="form-group">
+          <label for="art-price">Price ($) / Status:</label>
+          <input type="text" id="art-price" placeholder="e.g. $50 or SOLD">
+        </div>
 
-      <button type="submit" id="submit-btn" class="btn-action">Publish Artwork</button>
-      <div id="status-message"></div>
-    </form>
+        <button type="submit" id="submit-btn" class="btn-action">Publish Artwork</button>
+        <div id="status-message"></div>
+      </form>
+    </div>
+
+    <!-- TAB 2: Manage / Edit Existing Items -->
+    <div id="tab-manage" class="tab-content">
+      <div class="admin-card">
+        <h2>Manage Existing Catalog</h2>
+        <button type="button" class="btn-action" style="background:#5856d6; margin-bottom:15px;" onclick="fetchAndRenderCatalogList()">Refresh Catalog List</button>
+        <div id="manage-catalog-list">
+          <p style="text-align:center; color:#666;">Tap button above to load items.</p>
+        </div>
+        <div id="manage-status-message"></div>
+      </div>
+    </div>
+
   </main>
 
-  <!-- Cropper JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
-  <script src="app.js?v=4"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>
