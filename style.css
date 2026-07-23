@@ -40,27 +40,6 @@ body {
   margin-top: 0.5rem;
 }
 
-/* Card image container */
-.image-wrapper {
-  width: 100%;
-  height: 320px; /* Fixed card height */
-  background-color: #f7f7f7; /* Subtle background for aspect ratio padding */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-/* Force image to fit fully without cropping any edge */
-.image-wrapper img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain; /* Shows full painting, no cropping */
-  display: block;
-}
-
 /* Controls Bar */
 .controls-bar {
   display: flex;
@@ -88,7 +67,8 @@ body {
   transition: all 0.2s ease;
 }
 
-.filter-btn.active, .filter-btn:hover {
+.filter-btn.active, 
+.filter-btn:hover {
   background: var(--accent-color);
   color: #fff;
   border-color: var(--accent-color);
@@ -119,17 +99,27 @@ body {
   flex-direction: column;
 }
 
+/* Unified Card Image Container */
 .image-wrapper {
-  background: #f4f4f4;
-  aspect-ratio: 4/5;
+  width: 100%;
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: column; /* Stacks image above photo counter */
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   margin-bottom: 1rem;
+  padding: 1.5rem 0 1rem; /* Clean breathing room for artwork frame */
 }
 
+/* Image scaling */
 .image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 420px; /* Generous height room on mobile */
+  width: auto;
+  height: auto;
+  object-fit: contain; /* Shows full painting, no cropping */
+  display: block;
   transition: transform 0.3s ease;
 }
 
@@ -137,6 +127,19 @@ body {
   transform: scale(1.02);
 }
 
+/* Centered Photo Count Badge */
+.photo-count,
+.image-wrapper .photo-count {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  font-weight: 400;
+}
+
+/* Details Section */
 .card-header {
   display: flex;
   justify-content: space-between;
