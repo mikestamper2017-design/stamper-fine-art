@@ -1,7 +1,7 @@
 const REPO_OWNER = "mikestamper2017-design";
 const REPO_NAME = "stamper-fine-art";
 
-// Tracks photos: [{ file, rotation, b64Data, origSize, blobSize }]
+// Tracks instances per slot: [{ file, cropper, b64Data, origSize }]
 let photosState = [];
 
 function saveToken() {
@@ -17,13 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (savedToken && document.getElementById('gh-token')) {
     document.getElementById('gh-token').value = savedToken;
   }
-  // Initialize with one photo slot
   addPhotoSlot();
 });
 
 function addPhotoSlot() {
   const index = photosState.length;
-  photosState.push({ file: null, rotation: 0, b64Data: null, origSize: 0 });
+  photosState.push({ file: null, cropper: null, b64Data: null, origSize: 0 });
 
   const container = document.getElementById('photos-list');
   const slotDiv = document.createElement('div');
@@ -36,9 +35,14 @@ function addPhotoSlot() {
     <label style="font-size:15px; font-weight:bold;">${labelText}</label>
     <input type="file" accept="image/*" capture="environment" onchange="handleFileSelect(event, ${index})">
     <div id="preview-wrapper-${index}" style="display:none;">
-      <img id="img-preview-${index}" src="" alt="Preview">
-      <button type="button" class="btn-rotate" onclick="rotatePhoto(${index})">Rotate 90°</button>
-      <div id="stats-${index}" style="font-size:14px; font-weight:600; color:#2e7d32; margin-top:6px;"></div>
+      <div class="crop-wrapper">
+        <img id="img-crop-${index}" src="" alt="Crop Area">
+      </div>
+      <div class="button-group">
+        <button type="button" class="btn-rotate" onclick="rotatePhoto(${index})">Rotate 90°</button>
+        <button type="button" class="btn-crop" onclick="applyCrop(${index})">Apply Crop & Save</button>
+      </div>
+      <div id="stats-${index}" style="font-size:14px; font-weight:600; color:#2e7d32; margin-top:8px;"></div>
     </div>
   `;
   container.appendChild(slotDiv);
@@ -50,81 +54,67 @@ function handleFileSelect(event, index) {
 
   photosState[index].file = file;
   photosState[index].origSize = file.size;
-  photosState[index].rotation = 0;
+  photosState[index].b64Data = null; // reset cropped state
 
   const reader = new FileReader();
   reader.onload = (e) => {
-    const imgObj = new Image();
-    imgObj.onload = () => {
-      photosState[index].imgObj = imgObj;
-      processPhoto(index);
-    };
-    imgObj.src = e.target.result;
+    const previewWrapper = document.getElementById(`preview-wrapper-${index}`);
+    const cropImg = document.getElementById(`img-crop-${index}`);
+    
+    // Destroy previous cropper instance if re-selecting photo
+    if (photosState[index].cropper) {
+      photosState[index].cropper.destroy();
+    }
+
+    cropImg.src = e.target.result;
+    previewWrapper.style.display = 'block';
+
+    // Initialize Cropper.js
+    photosState[index].cropper = new Cropper(cropImg, {
+      viewMode: 1,
+      autoCropArea: 0.95,
+      responsive: true,
+      zoomable: true,
+      rotatable: true
+    });
+
+    document.getElementById(`stats-${index}`).innerText = "Pinch/drag to adjust crop, then tap 'Apply Crop & Save'.";
   };
   reader.readAsDataURL(file);
 }
 
 function rotatePhoto(index) {
-  if (!photosState[index].imgObj) return;
-  photosState[index].rotation = (photosState[index].rotation + 90) % 360;
-  processPhoto(index);
+  const item = photosState[index];
+  if (item.cropper) {
+    item.cropper.rotate(90);
+  }
 }
 
-function processPhoto(index) {
+function applyCrop(index) {
   const item = photosState[index];
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
+  if (!item.cropper) return;
 
-  let width = item.imgObj.width;
-  let height = item.imgObj.height;
-
-  const maxDim = 1600;
-  if (width > maxDim || height > maxDim) {
-    if (width > height) {
-      height = Math.round((height * maxDim) / width);
-      width = maxDim;
-    } else {
-      width = Math.round((width * maxDim) / height);
-      height = maxDim;
-    }
-  }
-
-  if (item.rotation === 90 || item.rotation === 270) {
-    canvas.width = height;
-    canvas.height = width;
-  } else {
-    canvas.width = width;
-    canvas.height = height;
-  }
-
-  ctx.save();
-  ctx.translate(canvas.width / 2, canvas.height / 2);
-  ctx.rotate((item.rotation * Math.PI) / 180);
-
-  if (item.rotation === 90 || item.rotation === 270) {
-    ctx.drawImage(item.imgObj, -height / 2, -width / 2, height, width);
-  } else {
-    ctx.drawImage(item.imgObj, -width / 2, -height / 2, width, height);
-  }
-  ctx.restore();
+  // Render cropped canvas limited to maximum 1600px dimension
+  const canvas = item.cropper.getCroppedCanvas({
+    maxWidth: 1600,
+    maxHeight: 1600,
+    imageSmoothingEnabled: true,
+    imageSmoothingQuality: 'high'
+  });
 
   canvas.toBlob((blob) => {
-    const previewWrapper = document.getElementById(`preview-wrapper-${index}`);
-    const previewImg = document.getElementById(`img-preview-${index}`);
-    previewImg.src = URL.createObjectURL(blob);
-    previewWrapper.style.display = 'block';
-
     const origMB = (item.origSize / (1024 * 1024)).toFixed(2);
     const newKB = (blob.size / 1024).toFixed(1);
+
     document.getElementById(`stats-${index}`).innerText = 
-      `Compressed: ${newKB} KB (Down from ${origMB} MB)`;
+      `✓ Cropped & Compressed: ${newKB} KB (Reduced from ${origMB} MB)`;
 
     const b64Reader = new FileReader();
     b64Reader.onloadend = () => {
-      photosState[index].b64Data = b64Reader.result.split(',')[1];
+      item.b64Data = b64Reader.result.split(',')[1];
     };
     b64Reader.readAsDataURL(blob);
-  }, 'image/jpeg', 0.8);
+  }, 'image/jpeg', 0.82);
 }
 
 async function handleUpload(event) {
@@ -135,7 +125,13 @@ async function handleUpload(event) {
     return;
   }
 
-  // Filter to slots that actually have an image ready
+  // Ensure all selected photos have had "Apply Crop" tapped
+  const uncropped = photosState.filter(p => p.file !== null && p.b64Data === null);
+  if (uncropped.length > 0) {
+    alert("Please tap 'Apply Crop & Save' for each photo before publishing.");
+    return;
+  }
+
   const activePhotos = photosState.filter(p => p.b64Data !== null);
   if (activePhotos.length === 0) {
     alert("Please select or capture at least one photo.");
@@ -146,7 +142,7 @@ async function handleUpload(event) {
   const submitBtn = document.getElementById('submit-btn');
   submitBtn.disabled = true;
   statusEl.style.color = "#007aff";
-  statusEl.innerText = `Publishing artwork (${activePhotos.length} photos)...`;
+  statusEl.innerText = `Publishing artwork (${activePhotos.length} cropped photos)...`;
 
   try {
     const title = document.getElementById('art-title').value.trim();
@@ -154,13 +150,13 @@ async function handleUpload(event) {
     const timestamp = Date.now();
     const uploadedImagePaths = [];
 
-    // 1. Upload each photo sequentially
+    // 1. Upload photos sequentially
     for (let i = 0; i < activePhotos.length; i++) {
       const suffix = i === 0 ? 'front' : `view-${i + 1}`;
       const filename = `${cleanSlug}-${suffix}-${timestamp}.jpg`;
       const imagePath = `assets/images/${filename}`;
 
-      statusEl.innerText = `Uploading photo ${i + 1} of ${activePhotos.length}...`;
+      statusEl.innerText = `Uploading cropped photo ${i + 1} of ${activePhotos.length}...`;
       await uploadFileToGitHub(imagePath, activePhotos[i].b64Data, `Add image ${i + 1}: ${title}`, token);
       uploadedImagePaths.push(imagePath);
     }
@@ -183,7 +179,7 @@ async function handleUpload(event) {
       materials: document.getElementById('art-materials').value,
       price: numericPrice,
       priceDisplay: priceStr,
-      images: uploadedImagePaths, // Array of photo paths
+      images: uploadedImagePaths,
       dateAdded: new Date().toISOString()
     };
 
@@ -195,8 +191,9 @@ async function handleUpload(event) {
 
     statusEl.style.color = "#2e7d32";
     statusEl.innerText = "Success! Published to catalog.";
-    
-    // Reset state
+
+    // Reset forms and cropper instances
+    photosState.forEach(p => { if (p.cropper) p.cropper.destroy(); });
     document.getElementById('artwork-form').reset();
     document.getElementById('photos-list').innerHTML = '';
     photosState = [];
