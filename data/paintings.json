@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784835197006,
+    "title": "Inuksuk view",
+    "category": "Watercolour",
+    "dimensions": "5x5",
+    "materials": "100% cotton paper",
+    "price": 30,
+    "priceDisplay": "$30",
+    "images": [
+      "assets/images/inuksuk-view-front-1784835197006.jpg"
+    ],
+    "dateAdded": "2026-07-23T19:33:19.544Z"
+  },
+  {
     "id": 1784835104628,
     "title": "Nova Scotia line up",
     "category": "Watercolour",
