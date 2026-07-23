@@ -1,5 +1,19 @@
 [
   {
+    "id": 1784839905194,
+    "title": "Two sided art: sunset palm and pine islands",
+    "category": "Watercolour",
+    "dimensions": "7.5x12",
+    "materials": "100% Cotton",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/two-sided-art-sunset-palm-and-pine-islands-front-1784839905194.jpg",
+      "assets/images/two-sided-art-sunset-palm-and-pine-islands-view-2-1784839905194.jpg"
+    ],
+    "dateAdded": "2026-07-23T20:52:01.523Z"
+  },
+  {
     "id": 1784839730098,
     "title": "Two sided art: follow the pack and alone",
     "category": "Watercolour",
@@ -15,7 +29,7 @@
   },
   {
     "id": 1784839567379,
-    "title": "Two sided art: z boys and manâs best friend",
+    "title": "Two sided art: z boys and manÃ¢ÂÂs best friend",
     "category": "Watercolour",
     "dimensions": "8x12",
     "materials": "100% cotton paper",
