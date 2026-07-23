@@ -1,5 +1,19 @@
 [
   {
+    "id": 1784839130543,
+    "title": "Two sided art: maple leaf study 2 and meadow",
+    "category": "Watercolour",
+    "dimensions": "5.5x7.5",
+    "materials": "100% cotton paper",
+    "price": 50,
+    "priceDisplay": "$50",
+    "images": [
+      "assets/images/two-sided-art-maple-leaf-study-2-and-meadow-front-1784839130543.jpg",
+      "assets/images/two-sided-art-maple-leaf-study-2-and-meadow-view-2-1784839130543.jpg"
+    ],
+    "dateAdded": "2026-07-23T20:38:55.239Z"
+  },
+  {
     "id": 1784838963329,
     "title": "Two sided art: Maple leaf study 1 and Burch colours",
     "category": "Watercolour",
