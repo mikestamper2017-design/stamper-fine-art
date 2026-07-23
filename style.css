@@ -17,9 +17,17 @@ body {
   line-height: 1.5;
 }
 
+/* Outer Wrapper - Creates breathable margins from screen edges */
+.container, 
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem; /* Adds comfortable spacing from phone edges */
+}
+
 /* Header */
 .site-header {
-  padding: 3rem 1.5rem 1.5rem;
+  padding: 3rem 1.25rem 1.5rem;
   text-align: center;
   border-bottom: 1px solid var(--border-color);
 }
@@ -47,7 +55,8 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 2.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--border-color);
 }
@@ -91,7 +100,7 @@ body {
 .art-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2.5rem;
+  gap: 3rem;
 }
 
 .art-card {
@@ -99,26 +108,28 @@ body {
   flex-direction: column;
 }
 
-/* Unified Card Image Container */
+/* Card Image Container */
 .image-wrapper {
   width: 100%;
   background-color: #f7f7f7;
+  border-radius: 4px; /* Optional: Softens sharp card edges slightly */
   display: flex;
-  flex-direction: column; /* Stacks image above photo counter */
+  flex-direction: column; /* Stacks image above photo count */
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-bottom: 1rem;
-  padding: 1.5rem 0 1rem; /* Clean breathing room for artwork frame */
+  margin-bottom: 1.25rem;
+  padding: 1.5rem 1rem; /* Padding inside the grey artwork frame */
+  box-sizing: border-box;
 }
 
 /* Image scaling */
 .image-wrapper img {
   max-width: 100%;
-  max-height: 420px; /* Generous height room on mobile */
+  max-height: 420px;
   width: auto;
   height: auto;
-  object-fit: contain; /* Shows full painting, no cropping */
+  object-fit: contain;
   display: block;
   transition: transform 0.3s ease;
 }
@@ -134,9 +145,10 @@ body {
   width: 100%;
   text-align: center;
   margin-top: 1rem;
-  font-size: 0.9rem;
-  color: var(--text-dark);
+  font-size: 0.85rem;
+  color: var(--text-muted);
   font-weight: 400;
+  letter-spacing: 0.03em;
 }
 
 /* Details Section */
@@ -160,26 +172,27 @@ body {
 .item-meta {
   color: var(--text-muted);
   font-size: 0.85rem;
-  margin: 0.2rem 0;
+  margin: 0.25rem 0;
 }
 
 .item-materials {
   font-size: 0.8rem;
   color: #888;
-  margin: 0 0 1rem 0;
+  margin: 0 0 1.25rem 0;
 }
 
 .btn-inquire {
   display: inline-block;
   width: 100%;
   text-align: center;
-  padding: 0.6rem 0;
+  padding: 0.75rem 0;
   border: 1px solid var(--text-dark);
   color: var(--text-dark);
   text-decoration: none;
   font-size: 0.85rem;
   letter-spacing: 0.05em;
   transition: background 0.2s ease, color 0.2s ease;
+  box-sizing: border-box;
 }
 
 .btn-inquire:hover {
@@ -190,7 +203,7 @@ body {
 /* Footer */
 .site-footer {
   text-align: center;
-  padding: 4rem 1.5rem;
+  padding: 4rem 1.25rem;
   background: #f5f5f5;
   margin-top: 4rem;
 }
