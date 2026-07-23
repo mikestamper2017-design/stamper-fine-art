@@ -1,10 +1,8 @@
 const REPO_OWNER = "mikestamper2017-design";
 const REPO_NAME = "stamper-fine-art";
 
-let originalImageObj = null;
-let currentRotation = 0; // 0, 90, 180, 270 degrees
-let base64Image = null;
-let originalFileSize = 0;
+// Tracks photos: [{ file, rotation, b64Data, origSize, blobSize }]
+let photosState = [];
 
 function saveToken() {
   const token = document.getElementById('gh-token').value.trim();
@@ -19,40 +17,67 @@ document.addEventListener('DOMContentLoaded', () => {
   if (savedToken && document.getElementById('gh-token')) {
     document.getElementById('gh-token').value = savedToken;
   }
+  // Initialize with one photo slot
+  addPhotoSlot();
 });
 
-function handleFileSelect(event) {
+function addPhotoSlot() {
+  const index = photosState.length;
+  photosState.push({ file: null, rotation: 0, b64Data: null, origSize: 0 });
+
+  const container = document.getElementById('photos-list');
+  const slotDiv = document.createElement('div');
+  slotDiv.className = 'photo-card';
+  slotDiv.id = `photo-slot-${index}`;
+
+  const labelText = index === 0 ? "Main Photo (Front)" : `Additional Photo #${index + 1} (Back / Detail)`;
+
+  slotDiv.innerHTML = `
+    <label style="font-size:15px; font-weight:bold;">${labelText}</label>
+    <input type="file" accept="image/*" capture="environment" onchange="handleFileSelect(event, ${index})">
+    <div id="preview-wrapper-${index}" style="display:none;">
+      <img id="img-preview-${index}" src="" alt="Preview">
+      <button type="button" class="btn-rotate" onclick="rotatePhoto(${index})">Rotate 90°</button>
+      <div id="stats-${index}" style="font-size:14px; font-weight:600; color:#2e7d32; margin-top:6px;"></div>
+    </div>
+  `;
+  container.appendChild(slotDiv);
+}
+
+function handleFileSelect(event, index) {
   const file = event.target.files[0];
   if (!file) return;
 
-  originalFileSize = file.size;
-  currentRotation = 0;
+  photosState[index].file = file;
+  photosState[index].origSize = file.size;
+  photosState[index].rotation = 0;
 
   const reader = new FileReader();
   reader.onload = (e) => {
-    originalImageObj = new Image();
-    originalImageObj.onload = () => {
-      processAndDisplayImage();
+    const imgObj = new Image();
+    imgObj.onload = () => {
+      photosState[index].imgObj = imgObj;
+      processPhoto(index);
     };
-    originalImageObj.src = e.target.result;
+    imgObj.src = e.target.result;
   };
   reader.readAsDataURL(file);
 }
 
-function rotateImage() {
-  if (!originalImageObj) return;
-  currentRotation = (currentRotation + 90) % 360;
-  processAndDisplayImage();
+function rotatePhoto(index) {
+  if (!photosState[index].imgObj) return;
+  photosState[index].rotation = (photosState[index].rotation + 90) % 360;
+  processPhoto(index);
 }
 
-function processAndDisplayImage() {
+function processPhoto(index) {
+  const item = photosState[index];
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
 
-  let width = originalImageObj.width;
-  let height = originalImageObj.height;
+  let width = item.imgObj.width;
+  let height = item.imgObj.height;
 
-  // Max dimension 1600px
   const maxDim = 1600;
   if (width > maxDim || height > maxDim) {
     if (width > height) {
@@ -64,8 +89,7 @@ function processAndDisplayImage() {
     }
   }
 
-  // Swap canvas dimensions if rotated 90 or 270 deg
-  if (currentRotation === 90 || currentRotation === 270) {
+  if (item.rotation === 90 || item.rotation === 270) {
     canvas.width = height;
     canvas.height = width;
   } else {
@@ -73,33 +97,31 @@ function processAndDisplayImage() {
     canvas.height = height;
   }
 
-  // Rotate Canvas context around center
   ctx.save();
   ctx.translate(canvas.width / 2, canvas.height / 2);
-  ctx.rotate((currentRotation * Math.PI) / 180);
+  ctx.rotate((item.rotation * Math.PI) / 180);
 
-  if (currentRotation === 90 || currentRotation === 270) {
-    ctx.drawImage(originalImageObj, -height / 2, -width / 2, height, width);
+  if (item.rotation === 90 || item.rotation === 270) {
+    ctx.drawImage(item.imgObj, -height / 2, -width / 2, height, width);
   } else {
-    ctx.drawImage(originalImageObj, -width / 2, -height / 2, width, height);
+    ctx.drawImage(item.imgObj, -width / 2, -height / 2, width, height);
   }
   ctx.restore();
 
-  // Compress to standard JPEG (80% quality)
   canvas.toBlob((blob) => {
-    const previewContainer = document.getElementById('preview-container');
-    const previewImg = document.getElementById('image-preview');
+    const previewWrapper = document.getElementById(`preview-wrapper-${index}`);
+    const previewImg = document.getElementById(`img-preview-${index}`);
     previewImg.src = URL.createObjectURL(blob);
-    previewContainer.style.display = 'block';
+    previewWrapper.style.display = 'block';
 
-    const origMB = (originalFileSize / (1024 * 1024)).toFixed(2);
+    const origMB = (item.origSize / (1024 * 1024)).toFixed(2);
     const newKB = (blob.size / 1024).toFixed(1);
-    document.getElementById('compression-stats').innerText = 
-      `Compressed: ${newKB} KB (Reduced from ${origMB} MB)`;
+    document.getElementById(`stats-${index}`).innerText = 
+      `Compressed: ${newKB} KB (Down from ${origMB} MB)`;
 
     const b64Reader = new FileReader();
     b64Reader.onloadend = () => {
-      base64Image = b64Reader.result.split(',')[1];
+      photosState[index].b64Data = b64Reader.result.split(',')[1];
     };
     b64Reader.readAsDataURL(blob);
   }, 'image/jpeg', 0.8);
@@ -113,8 +135,10 @@ async function handleUpload(event) {
     return;
   }
 
-  if (!base64Image) {
-    alert("Please select or capture a photo first.");
+  // Filter to slots that actually have an image ready
+  const activePhotos = photosState.filter(p => p.b64Data !== null);
+  if (activePhotos.length === 0) {
+    alert("Please select or capture at least one photo.");
     return;
   }
 
@@ -122,19 +146,27 @@ async function handleUpload(event) {
   const submitBtn = document.getElementById('submit-btn');
   submitBtn.disabled = true;
   statusEl.style.color = "#007aff";
-  statusEl.innerText = "Publishing artwork to GitHub...";
+  statusEl.innerText = `Publishing artwork (${activePhotos.length} photos)...`;
 
   try {
     const title = document.getElementById('art-title').value.trim();
     const cleanSlug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
     const timestamp = Date.now();
-    const filename = `${cleanSlug}-${timestamp}.jpg`;
-    const imagePath = `assets/images/${filename}`;
+    const uploadedImagePaths = [];
 
-    // 1. Upload Image
-    await uploadFileToGitHub(imagePath, base64Image, `Add image: ${title}`, token);
+    // 1. Upload each photo sequentially
+    for (let i = 0; i < activePhotos.length; i++) {
+      const suffix = i === 0 ? 'front' : `view-${i + 1}`;
+      const filename = `${cleanSlug}-${suffix}-${timestamp}.jpg`;
+      const imagePath = `assets/images/${filename}`;
 
-    // 2. Fetch current JSON
+      statusEl.innerText = `Uploading photo ${i + 1} of ${activePhotos.length}...`;
+      await uploadFileToGitHub(imagePath, activePhotos[i].b64Data, `Add image ${i + 1}: ${title}`, token);
+      uploadedImagePaths.push(imagePath);
+    }
+
+    // 2. Fetch current paintings.json
+    statusEl.innerText = "Updating catalog database...";
     const jsonPath = `data/paintings.json`;
     const jsonFileData = await getFileFromGitHub(jsonPath, token);
     const paintingsList = JSON.parse(atob(jsonFileData.content));
@@ -151,23 +183,24 @@ async function handleUpload(event) {
       materials: document.getElementById('art-materials').value,
       price: numericPrice,
       priceDisplay: priceStr,
-      image: imagePath,
+      images: uploadedImagePaths, // Array of photo paths
       dateAdded: new Date().toISOString()
     };
 
     paintingsList.unshift(newEntry);
 
-    // 4. Save JSON back to GitHub
+    // 4. Save updated catalog JSON
     const updatedJsonB64 = btoa(unescape(encodeURIComponent(JSON.stringify(paintingsList, null, 2))));
     await uploadFileToGitHub(jsonPath, updatedJsonB64, `Add metadata: ${title}`, token, jsonFileData.sha);
 
     statusEl.style.color = "#2e7d32";
     statusEl.innerText = "Success! Published to catalog.";
+    
+    // Reset state
     document.getElementById('artwork-form').reset();
-    document.getElementById('preview-container').style.display = 'none';
-    document.getElementById('compression-stats').innerText = '';
-    base64Image = null;
-    originalImageObj = null;
+    document.getElementById('photos-list').innerHTML = '';
+    photosState = [];
+    addPhotoSlot();
   } catch (err) {
     console.error(err);
     statusEl.style.color = "#d32f2f";
