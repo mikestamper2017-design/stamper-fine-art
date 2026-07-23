@@ -1,6 +1,10 @@
 const REPO_OWNER = "mikestamper2017-design";
 const REPO_NAME = "stamper-fine-art";
+
+let originalImageObj = null;
+let currentRotation = 0; // 0, 90, 180, 270 degrees
 let base64Image = null;
+let originalFileSize = 0;
 
 function saveToken() {
   const token = document.getElementById('gh-token').value.trim();
@@ -17,58 +21,88 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Fixed In-Browser Compression (JPEG 80% with Max 1600px edge)
-function previewAndCompress(event) {
+function handleFileSelect(event) {
   const file = event.target.files[0];
   if (!file) return;
 
+  originalFileSize = file.size;
+  currentRotation = 0;
+
   const reader = new FileReader();
   reader.onload = (e) => {
-    const img = new Image();
-    img.src = e.target.result;
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-
-      // Cap maximum dimension to 1600px for web
-      const maxDim = 1600;
-      let width = img.width;
-      let height = img.height;
-
-      if (width > maxDim || height > maxDim) {
-        if (width > height) {
-          height = Math.round((height * maxDim) / width);
-          width = maxDim;
-        } else {
-          width = Math.round((width * maxDim) / height);
-          height = maxDim;
-        }
-      }
-
-      canvas.width = width;
-      canvas.height = height;
-      ctx.drawImage(img, 0, 0, width, height);
-
-      // Compress using JPEG (significantly more reliable across iOS versions)
-      canvas.toBlob((blob) => {
-        const preview = document.getElementById('image-preview');
-        preview.src = URL.createObjectURL(blob);
-        preview.style.display = 'block';
-
-        const origMB = (file.size / (1024 * 1024)).toFixed(2);
-        const newKB = (blob.size / 1024).toFixed(1);
-        document.getElementById('compression-stats').innerText = 
-          `Compressed: ${newKB} KB (Reduced from ${origMB} MB)`;
-
-        const b64Reader = new FileReader();
-        b64Reader.onloadend = () => {
-          base64Image = b64Reader.result.split(',')[1];
-        };
-        b64Reader.readAsDataURL(blob);
-      }, 'image/jpeg', 0.8);
+    originalImageObj = new Image();
+    originalImageObj.onload = () => {
+      processAndDisplayImage();
     };
+    originalImageObj.src = e.target.result;
   };
   reader.readAsDataURL(file);
+}
+
+function rotateImage() {
+  if (!originalImageObj) return;
+  currentRotation = (currentRotation + 90) % 360;
+  processAndDisplayImage();
+}
+
+function processAndDisplayImage() {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+
+  let width = originalImageObj.width;
+  let height = originalImageObj.height;
+
+  // Max dimension 1600px
+  const maxDim = 1600;
+  if (width > maxDim || height > maxDim) {
+    if (width > height) {
+      height = Math.round((height * maxDim) / width);
+      width = maxDim;
+    } else {
+      width = Math.round((width * maxDim) / height);
+      height = maxDim;
+    }
+  }
+
+  // Swap canvas dimensions if rotated 90 or 270 deg
+  if (currentRotation === 90 || currentRotation === 270) {
+    canvas.width = height;
+    canvas.height = width;
+  } else {
+    canvas.width = width;
+    canvas.height = height;
+  }
+
+  // Rotate Canvas context around center
+  ctx.save();
+  ctx.translate(canvas.width / 2, canvas.height / 2);
+  ctx.rotate((currentRotation * Math.PI) / 180);
+
+  if (currentRotation === 90 || currentRotation === 270) {
+    ctx.drawImage(originalImageObj, -height / 2, -width / 2, height, width);
+  } else {
+    ctx.drawImage(originalImageObj, -width / 2, -height / 2, width, height);
+  }
+  ctx.restore();
+
+  // Compress to standard JPEG (80% quality)
+  canvas.toBlob((blob) => {
+    const previewContainer = document.getElementById('preview-container');
+    const previewImg = document.getElementById('image-preview');
+    previewImg.src = URL.createObjectURL(blob);
+    previewContainer.style.display = 'block';
+
+    const origMB = (originalFileSize / (1024 * 1024)).toFixed(2);
+    const newKB = (blob.size / 1024).toFixed(1);
+    document.getElementById('compression-stats').innerText = 
+      `Compressed: ${newKB} KB (Reduced from ${origMB} MB)`;
+
+    const b64Reader = new FileReader();
+    b64Reader.onloadend = () => {
+      base64Image = b64Reader.result.split(',')[1];
+    };
+    b64Reader.readAsDataURL(blob);
+  }, 'image/jpeg', 0.8);
 }
 
 async function handleUpload(event) {
@@ -105,7 +139,6 @@ async function handleUpload(event) {
     const jsonFileData = await getFileFromGitHub(jsonPath, token);
     const paintingsList = JSON.parse(atob(jsonFileData.content));
 
-    // Parse price string to number for sorting
     const priceStr = document.getElementById('art-price').value.trim();
     const numericPrice = parseFloat(priceStr.replace(/[^0-9.]/g, '')) || 0;
 
@@ -131,9 +164,10 @@ async function handleUpload(event) {
     statusEl.style.color = "#2e7d32";
     statusEl.innerText = "Success! Published to catalog.";
     document.getElementById('artwork-form').reset();
-    document.getElementById('image-preview').style.display = 'none';
+    document.getElementById('preview-container').style.display = 'none';
     document.getElementById('compression-stats').innerText = '';
     base64Image = null;
+    originalImageObj = null;
   } catch (err) {
     console.error(err);
     statusEl.style.color = "#d32f2f";
