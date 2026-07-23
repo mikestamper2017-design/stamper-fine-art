@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784838766357,
+    "title": "Homestead",
+    "category": "Watercolour",
+    "dimensions": "5x8",
+    "materials": "100% cotton paper",
+    "price": 50,
+    "priceDisplay": "$50",
+    "images": [
+      "assets/images/homestead-front-1784838766357.jpg"
+    ],
+    "dateAdded": "2026-07-23T20:32:48.339Z"
+  },
+  {
     "id": 1784838644815,
     "title": "Two sided painting: looking to the point and sandy treeline",
     "category": "Watercolour",
