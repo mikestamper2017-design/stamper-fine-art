@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784834709009,
+    "title": "Misty mountains",
+    "category": "Watercolour",
+    "dimensions": "4x5",
+    "materials": "100% cotton paper",
+    "price": 30,
+    "priceDisplay": "$30",
+    "images": [
+      "assets/images/misty-mountains-front-1784834709009.jpg"
+    ],
+    "dateAdded": "2026-07-23T19:25:11.443Z"
+  },
+  {
     "id": 1784823376949,
     "title": "Canoe Island",
     "category": "Paintings",
