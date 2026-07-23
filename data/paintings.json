@@ -1,15 +1,16 @@
 [
   {
     "id": 1721739200000,
-    "title": "Glacial Stream",
+    "title": "Frosty Surf (Double-Sided)",
     "category": "Watercolour",
-    "dimensions": "12\" x 18\"",
-    "heightInches": 12,
-    "widthInches": 18,
-    "materials": "Arches 300lb Cold Press",
-    "price": 450,
-    "priceDisplay": "$450 CAD",
-    "status": "Available",
-    "image": "assets/images/glacial-stream-1721739200000.webp"
+    "dimensions": "6x8 in",
+    "materials": "100% Cotton Paper",
+    "price": 50,
+    "priceDisplay": "$50",
+    "images": [
+      "assets/images/frosty-surf-front-1721739200000.jpg",
+      "assets/images/frosty-surf-back-1721739200000.jpg"
+    ],
+    "dateAdded": "2026-07-23T13:50:00.000Z"
   }
 ]
