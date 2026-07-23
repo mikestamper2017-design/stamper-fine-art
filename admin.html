@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Studio Intake Tool</title>
+  <!-- Cropper.js CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
     body.admin-body {
@@ -66,7 +68,19 @@
       border-radius: 6px;
       cursor: pointer;
       margin-top: 8px;
-      width: 100%;
+      flex: 1;
+    }
+    .btn-crop {
+      background: #34c759;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 15px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 8px;
+      flex: 1;
     }
     .btn-secondary {
       background: #34c759;
@@ -87,10 +101,19 @@
       border-radius: 8px;
       margin-bottom: 12px;
     }
-    .photo-card img {
-      width: 100%;
-      border-radius: 6px;
-      margin-top: 8px;
+    .crop-wrapper {
+      max-width: 100%;
+      max-height: 400px;
+      margin-top: 10px;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .crop-wrapper img {
+      max-width: 100%;
+    }
+    .button-group {
+      display: flex;
+      gap: 8px;
     }
     #status-message {
       margin-top: 15px;
@@ -147,7 +170,7 @@
 
       <div class="form-group">
         <label for="art-materials">Materials / Paper:</label>
-        <input type="text" id="art-materials" placeholder="e.g. 100% Cotton (Double Sided)">
+        <input type="text" id="art-materials" placeholder="e.g. 100% Cotton Paper">
       </div>
 
       <div class="form-group">
@@ -160,6 +183,9 @@
     </form>
   </main>
 
-  <script src="app.js?v=3"></script>
+  <!-- Cropper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>
