@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784823376949,
+    "title": "Canoe Island",
+    "category": "Paintings",
+    "dimensions": "24x48",
+    "materials": "Acrylic on professional canvas framed with cedar wood",
+    "price": 1200,
+    "priceDisplay": "$1200.00",
+    "images": [
+      "assets/images/canoe-island-front-1784823376949.jpg",
+      "assets/images/canoe-island-view-2-1784823376949.jpg",
+      "assets/images/canoe-island-view-3-1784823376949.jpg"
+    ],
+    "dateAdded": "2026-07-23T16:16:21.579Z"
+  },
+  {
     "id": 1784822857525,
     "title": "Inuksuk at red moon",
     "category": "Watercolour",
