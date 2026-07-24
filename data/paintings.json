@@ -1,5 +1,19 @@
 [
   {
+    "id": 1784901960052,
+    "title": "Two sided art: wind swept and pairs",
+    "category": "Watercolour",
+    "dimensions": "8x12",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/two-sided-art-wind-swept-and-pairs-front-1784901960052.jpg",
+      "assets/images/two-sided-art-wind-swept-and-pairs-view-2-1784901960052.jpg"
+    ],
+    "dateAdded": "2026-07-24T14:06:03.378Z"
+  },
+  {
     "id": 1784901844940,
     "title": "Two sided art: telling stories and waiting for the set",
     "category": "Watercolour",
