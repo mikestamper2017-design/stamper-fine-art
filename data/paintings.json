@@ -1,5 +1,19 @@
 [
   {
+    "id": 1784899497629,
+    "title": "Two sided art: with friends and fading light",
+    "category": "Watercolour",
+    "dimensions": "5.5x7.5",
+    "materials": "100% cotton paper",
+    "price": 80,
+    "priceDisplay": "$80",
+    "images": [
+      "assets/images/two-sided-art-with-friends-and-fading-light-front-1784899497629.jpg",
+      "assets/images/two-sided-art-with-friends-and-fading-light-view-2-1784899497629.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:25:01.583Z"
+  },
+  {
     "id": 1784899330864,
     "title": "Two sided art: Beams and warmth",
     "category": "Watercolour",
