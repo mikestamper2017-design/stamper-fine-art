@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784900669672,
+    "title": "A walk in paradise",
+    "category": "Watercolour",
+    "dimensions": "6.5x8.5",
+    "materials": "100% cotton paper",
+    "price": 60,
+    "priceDisplay": "$60",
+    "images": [
+      "assets/images/a-walk-in-paradise-front-1784900669672.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:44:31.360Z"
+  },
+  {
     "id": 1784900604622,
     "title": "Alone",
     "category": "Watercolour",
