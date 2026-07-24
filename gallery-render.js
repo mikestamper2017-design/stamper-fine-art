@@ -92,16 +92,90 @@ function applyFiltersAndSort() {
   renderReelAndStage(filteredItems);
 }
 
+let flipInterval = null;
+
 function renderReelAndStage(items) {
   const reel = document.getElementById('art-strip-reel');
   if (!reel) return;
 
   reel.innerHTML = '';
+  if (flipInterval) clearInterval(flipInterval);
 
   if (items.length === 0) {
     reel.innerHTML = `<p class="no-results">No artwork found in this category.</p>`;
     clearStage();
     return;
+  }
+
+  const multiImageCards = [];
+
+  // 1. Build Thumbnail Strip
+  items.forEach((item, index) => {
+    const imageList = Array.isArray(item.images) && item.images.length > 0 
+      ? item.images 
+      : (item.image ? [item.image] : ['assets/images/placeholder.jpg']);
+
+    const frontImg = imageList[0];
+    const backImg = imageList.length > 1 ? imageList[1] : null;
+
+    const thumbBtn = document.createElement('button');
+    thumbBtn.className = `reel-thumb ${index === 0 ? 'active' : ''}`;
+    thumbBtn.setAttribute('aria-label', `View ${item.title}`);
+
+    if (backImg) {
+      // 3D Flip Structure for multi-photo pieces
+      thumbBtn.innerHTML = `
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <img src="${frontImg}" alt="${escapeHtml(item.title)} Front" loading="lazy">
+            <span class="flip-indicator">2 views</span>
+          </div>
+          <div class="flip-back">
+            <img src="${backImg}" alt="${escapeHtml(item.title)} Back/Detail" loading="lazy">
+          </div>
+        </div>
+      `;
+      multiImageCards.push(thumbBtn);
+    } else {
+      // Standard single image structure
+      thumbBtn.innerHTML = `
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <img src="${frontImg}" alt="${escapeHtml(item.title)}" loading="lazy">
+          </div>
+        </div>
+      `;
+    }
+
+    thumbBtn.addEventListener('click', () => {
+      document.querySelectorAll('.reel-thumb').forEach(t => t.classList.remove('active'));
+      thumbBtn.classList.add('active');
+      
+      displayArtworkOnStage(item);
+    });
+
+    reel.appendChild(thumbBtn);
+  });
+
+  // 2. Load initial item to stage
+  displayArtworkOnStage(items[0]);
+
+  // 3. Staggered Auto-Flip Loop for multi-view artworks
+  if (multiImageCards.length > 0) {
+    let currentCardIdx = 0;
+    
+    flipInterval = setInterval(() => {
+      const cardInner = multiImageCards[currentCardIdx].querySelector('.flip-card-inner');
+      if (cardInner) {
+        // Toggle 3D flip state
+        cardInner.classList.toggle('is-flipped');
+      }
+
+      // Move to next multi-image card in line
+      currentCardIdx = (currentCardIdx + 1) % multiImageCards.length;
+    }, 3500); // Flips a card every 3.5 seconds
+  }
+}
   }
 
   // 1. Create exactly ONE thumbnail per artwork item in the reel
