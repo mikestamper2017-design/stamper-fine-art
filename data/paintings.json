@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784921174585,
+    "title": "On the tundra",
+    "category": "Watercolour",
+    "dimensions": "9x12",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/on-the-tundra-front-1784921174585.jpg"
+    ],
+    "dateAdded": "2026-07-24T19:26:16.087Z"
+  },
+  {
     "id": 1784921040966,
     "title": "Fall colours on the island",
     "category": "Watercolour",
