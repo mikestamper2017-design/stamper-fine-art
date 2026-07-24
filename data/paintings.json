@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784900604622,
+    "title": "Alone",
+    "category": "Watercolour",
+    "dimensions": "6x9",
+    "materials": "100% cotton paper",
+    "price": 50,
+    "priceDisplay": "$50",
+    "images": [
+      "assets/images/alone-front-1784900604622.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:43:26.159Z"
+  },
+  {
     "id": 1784900539905,
     "title": "Breaking through",
     "category": "Watercolour",
