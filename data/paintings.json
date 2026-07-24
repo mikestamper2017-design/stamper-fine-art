@@ -1,5 +1,19 @@
 [
   {
+    "id": 1784899646681,
+    "title": "Two sided art: calm and washed",
+    "category": "Watercolour",
+    "dimensions": "5.5x7.5",
+    "materials": "100% cotton paper",
+    "price": 80,
+    "priceDisplay": "$80",
+    "images": [
+      "assets/images/two-sided-art-calm-and-washed-front-1784899646681.jpg",
+      "assets/images/two-sided-art-calm-and-washed-view-2-1784899646681.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:27:32.591Z"
+  },
+  {
     "id": 1784899497629,
     "title": "Two sided art: with friends and fading light",
     "category": "Watercolour",
