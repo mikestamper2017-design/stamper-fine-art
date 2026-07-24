@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784907003499,
+    "title": "Bent pine",
+    "category": "Paintings",
+    "dimensions": "15x30",
+    "materials": "Acrylic and oil on professional grade canvas framed with cedar wood",
+    "price": 380,
+    "priceDisplay": "$380.00",
+    "images": [
+      "assets/images/bent-pine-front-1784907003499.jpg",
+      "assets/images/bent-pine-view-2-1784907003499.jpg",
+      "assets/images/bent-pine-view-3-1784907003499.jpg"
+    ],
+    "dateAdded": "2026-07-24T15:30:07.584Z"
+  },
+  {
     "id": 1784906854318,
     "title": "Mountains",
     "category": "Paintings",
