@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784906091598,
+    "title": "Purple sunset",
+    "category": "Paintings",
+    "dimensions": "10x20",
+    "materials": "Acrylic on canvas custom framed ",
+    "price": 180,
+    "priceDisplay": "$180.00",
+    "images": [
+      "assets/images/purple-sunset-front-1784906091598.jpg",
+      "assets/images/purple-sunset-view-2-1784906091598.jpg",
+      "assets/images/purple-sunset-view-3-1784906091598.jpg"
+    ],
+    "dateAdded": "2026-07-24T15:15:02.267Z"
+  },
+  {
     "id": 1784905965643,
     "title": "Nelson sunset",
     "category": "Paintings",
