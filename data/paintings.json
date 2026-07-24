@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784901267727,
+    "title": "Crowded island",
+    "category": "Watercolour",
+    "dimensions": "8.5x12",
+    "materials": "100% cotton",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/crowded-island-front-1784901267727.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:54:29.253Z"
+  },
+  {
     "id": 1784901181298,
     "title": "Heading to the island",
     "category": "Watercolour",
