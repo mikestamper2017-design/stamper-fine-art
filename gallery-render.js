@@ -112,8 +112,6 @@ function renderReelAndStage(items) {
 }
 
 function displayArtworkOnStage(item) {
-  const stageImg = document.getElementById('main-art-img');
-  const stageLightbox = document.getElementById('stage-lightbox-link');
   const stageTitle = document.getElementById('main-art-title');
   const stagePrice = document.getElementById('main-art-price');
   const stageMeta = document.getElementById('main-art-meta');
@@ -133,65 +131,67 @@ function displayArtworkOnStage(item) {
   );
   const mailLink = `mailto:mike_stamper@hotmail.com?subject=${emailSubject}&body=${emailBody}`;
 
-  // Update DOM Details
-  if (stageImg) {
-    stageImg.src = mainImg;
-    stageImg.alt = escapeHtml(item.title);
-  }
-  if (stageLightbox) {
-    stageLightbox.href = mainImg;
-    stageLightbox.setAttribute('data-title', escapeHtml(item.title));
-    stageLightbox.setAttribute('data-description', `${escapeHtml(item.materials || '')} • ${escapeHtml(item.dimensions || '')}`);
-  }
+  // Update DOM Metadata
   if (stageTitle) stageTitle.textContent = item.title;
   if (stagePrice) stagePrice.textContent = item.priceDisplay || '';
   if (stageMeta) stageMeta.textContent = `${item.category || ''} ${item.dimensions ? '• ' + item.dimensions : ''}`;
   if (stageMaterials) stageMaterials.textContent = item.materials || '';
   if (stageInquire) stageInquire.href = mailLink;
 
-  // Build secondary photo hidden links inside image wrapper for GLightbox gallery navigation
+  // Rebuild image-wrapper content dynamically to ensure clean anchor click events
   const imageWrapper = document.querySelector('.image-wrapper');
   if (imageWrapper) {
-    const existingSecondaryGroup = document.getElementById('secondary-lightbox-links');
-    if (existingSecondaryGroup) existingSecondaryGroup.remove();
+    imageWrapper.innerHTML = '';
 
-    const secondaryGroup = document.createElement('div');
-    secondaryGroup.id = 'secondary-lightbox-links';
+    // Primary Lightbox Link wrapping the hero image
+    const mainAnchor = document.createElement('a');
+    mainAnchor.href = mainImg;
+    mainAnchor.className = 'stage-glightbox';
+    mainAnchor.setAttribute('data-gallery', 'hero-gallery');
+    mainAnchor.setAttribute('data-title', `${escapeHtml(item.title)} ${imageList.length > 1 ? '(1/' + imageList.length + ')' : ''}`);
+    mainAnchor.setAttribute('data-description', `${escapeHtml(item.materials || '')} • ${escapeHtml(item.dimensions || '')}`);
+    
+    // Prevent default standard page navigation on tap
+    mainAnchor.addEventListener('click', (e) => e.preventDefault());
 
-    // Append secondary image links for multi-photo works
+    const heroImg = document.createElement('img');
+    heroImg.id = 'main-art-img';
+    heroImg.src = mainImg;
+    heroImg.alt = escapeHtml(item.title);
+    heroImg.style.cursor = 'pointer';
+
+    mainAnchor.appendChild(heroImg);
+    imageWrapper.appendChild(mainAnchor);
+
+    // Hidden secondary image links for multi-photo works
     for (let i = 1; i < imageList.length; i++) {
       const extraLink = document.createElement('a');
       extraLink.href = imageList[i];
-      extraLink.className = 'glightbox';
+      extraLink.className = 'stage-glightbox';
       extraLink.setAttribute('data-gallery', 'hero-gallery');
-      extraLink.setAttribute('data-title', `${escapeHtml(item.title)} (View ${i + 1}/${imageList.length})`);
+      extraLink.setAttribute('data-title', `${escapeHtml(item.title)} (${i + 1}/${imageList.length})`);
       extraLink.setAttribute('data-description', `${escapeHtml(item.materials || '')} • ${escapeHtml(item.dimensions || '')}`);
       extraLink.style.display = 'none';
-      secondaryGroup.appendChild(extraLink);
+      imageWrapper.appendChild(extraLink);
     }
-    imageWrapper.appendChild(secondaryGroup);
 
-    // Update photo count badge
-    const oldBadge = imageWrapper.querySelector('.photo-count');
-    if (oldBadge) oldBadge.remove();
-
+    // Add badge for multi-photo pieces that triggers the same lightbox
     if (imageList.length > 1) {
       const badge = document.createElement('span');
       badge.className = 'photo-count';
-      badge.textContent = `Tap Image to View All ${imageList.length} Photos`;
+      badge.style.cursor = 'pointer';
+      badge.textContent = `Tap Image to View ${imageList.length} Photos & Details`;
+      badge.addEventListener('click', () => {
+        if (lightboxInstance) lightboxInstance.open();
+      });
       imageWrapper.appendChild(badge);
     }
   }
 
-  // Ensure primary anchor is tagged for hero gallery grouping
-  if (stageLightbox) {
-    stageLightbox.setAttribute('data-gallery', 'hero-gallery');
-  }
-
-  // Re-initialize GLightbox instance cleanly
+  // Re-initialize GLightbox instance cleanly for stage elements
   if (typeof GLightbox !== 'undefined') {
     if (lightboxInstance) lightboxInstance.destroy();
-    lightboxInstance = GLightbox({ selector: '.glightbox' });
+    lightboxInstance = GLightbox({ selector: '.stage-glightbox' });
   }
 }
 
@@ -200,9 +200,8 @@ function clearStage() {
   document.getElementById('main-art-price').textContent = '';
   document.getElementById('main-art-meta').textContent = '';
   document.getElementById('main-art-materials').textContent = '';
-  document.getElementById('main-art-img').src = '';
-  const oldBadge = document.querySelector('.image-wrapper .photo-count');
-  if (oldBadge) oldBadge.remove();
+  const wrapper = document.querySelector('.image-wrapper');
+  if (wrapper) wrapper.innerHTML = '';
 }
 
 function getPrimaryImage(item) {
