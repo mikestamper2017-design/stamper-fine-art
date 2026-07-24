@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784904139970,
+    "title": "Ant island",
+    "category": "Paintings",
+    "dimensions": "18x24",
+    "materials": "Acrylic on professional grade canvas",
+    "price": 345,
+    "priceDisplay": "$345.00",
+    "images": [
+      "assets/images/ant-island-front-1784904139970.jpg",
+      "assets/images/ant-island-view-2-1784904139970.jpg",
+      "assets/images/ant-island-view-3-1784904139970.jpg"
+    ],
+    "dateAdded": "2026-07-24T14:42:28.432Z"
+  },
+  {
     "id": 1784903958460,
     "title": "Pine pallet knife island",
     "category": "Paintings",
