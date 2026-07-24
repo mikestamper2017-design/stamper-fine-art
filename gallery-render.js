@@ -43,13 +43,20 @@ function setupFilterButtons() {
   });
 }
 
+function parseArea(dimStr) {
+  if (!dimStr || typeof dimStr !== 'string') return 0;
+  const parts = dimStr.toLowerCase().split('x').map(p => parseFloat(p.trim())).filter(n => !isNaN(n));
+  if (parts.length === 0) return 0;
+  return parts.reduce((acc, val) => acc * val, 1);
+}
+
 function applyFiltersAndSort() {
   let items = [...catalogData];
 
-  // 1. Category Filter
+  // 1. Category Filter (Robust handling with whitespace trimming)
   if (activeCategory !== 'all') {
     items = items.filter(item => {
-      return item.category && item.category.toLowerCase() === activeCategory.toLowerCase();
+      return item.category && item.category.trim().toLowerCase() === activeCategory.trim().toLowerCase();
     });
   }
 
@@ -63,9 +70,9 @@ function applyFiltersAndSort() {
     } else if (sortValue === 'price-high') {
       return (b.price || 0) - (a.price || 0);
     } else if (sortValue === 'size-small') {
-      return (parseInt(a.dimensions) || 0) - (parseInt(a.dimensions) || 0);
+      return parseArea(a.dimensions) - parseArea(b.dimensions);
     } else if (sortValue === 'size-large') {
-      return (parseInt(b.dimensions) || 0) - (parseInt(a.dimensions) || 0);
+      return parseArea(b.dimensions) - parseArea(a.dimensions);
     } else {
       const dateA = a.id || new Date(a.dateAdded || 0).getTime();
       const dateB = b.id || new Date(b.dateAdded || 0).getTime();
@@ -156,7 +163,9 @@ function renderReelAndStage(items) {
   });
 
   // 2. Load initial item to stage
-  displayArtworkOnStage(items[0]);
+  if (items[0]) {
+    displayArtworkOnStage(items[0]);
+  }
 
   // 3. Staggered Auto-Flip Loop for multi-view artworks
   if (multiImageCards.length > 0) {
@@ -173,6 +182,8 @@ function renderReelAndStage(items) {
 }
 
 function displayArtworkOnStage(item) {
+  if (!item) return;
+
   const stageTitle = document.getElementById('main-art-title');
   const stagePrice = document.getElementById('main-art-price');
   const stageMeta = document.getElementById('main-art-meta');
