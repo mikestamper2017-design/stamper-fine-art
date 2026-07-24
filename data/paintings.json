@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784903958460,
+    "title": "Pine pallet knife island",
+    "category": "Paintings",
+    "dimensions": "11x14",
+    "materials": "Acrylic and oil on professional grade canvas",
+    "price": 120,
+    "priceDisplay": "$120.00",
+    "images": [
+      "assets/images/pine-pallet-knife-island-front-1784903958460.jpg",
+      "assets/images/pine-pallet-knife-island-view-2-1784903958460.jpg",
+      "assets/images/pine-pallet-knife-island-view-3-1784903958460.jpg"
+    ],
+    "dateAdded": "2026-07-24T14:39:25.323Z"
+  },
+  {
     "id": 1784903807878,
     "title": "Cliff lookout",
     "category": "Paintings",
