@@ -133,10 +133,15 @@ function displayArtworkOnStage(item) {
   );
   const mailLink = `mailto:mike_stamper@hotmail.com?subject=${emailSubject}&body=${emailBody}`;
 
-  // Update DOM Text Details
+  // Update DOM Details
   if (stageImg) {
     stageImg.src = mainImg;
     stageImg.alt = escapeHtml(item.title);
+  }
+  if (stageLightbox) {
+    stageLightbox.href = mainImg;
+    stageLightbox.setAttribute('data-title', escapeHtml(item.title));
+    stageLightbox.setAttribute('data-description', `${escapeHtml(item.materials || '')} • ${escapeHtml(item.dimensions || '')}`);
   }
   if (stageTitle) stageTitle.textContent = item.title;
   if (stagePrice) stagePrice.textContent = item.priceDisplay || '';
@@ -144,68 +149,49 @@ function displayArtworkOnStage(item) {
   if (stageMaterials) stageMaterials.textContent = item.materials || '';
   if (stageInquire) stageInquire.href = mailLink;
 
-  // Build the Lightbox Gallery Container inside the image wrapper
+  // Build secondary photo hidden links inside image wrapper for GLightbox gallery navigation
   const imageWrapper = document.querySelector('.image-wrapper');
   if (imageWrapper) {
-    // Remove old hidden lightbox elements if present
-    const existingLightboxGroup = document.getElementById('lightbox-group');
-    if (existingLightboxGroup) existingLightboxGroup.remove();
+    const existingSecondaryGroup = document.getElementById('secondary-lightbox-links');
+    if (existingSecondaryGroup) existingSecondaryGroup.remove();
 
-    const lightboxGroup = document.createElement('div');
-    lightboxGroup.id = 'lightbox-group';
+    const secondaryGroup = document.createElement('div');
+    secondaryGroup.id = 'secondary-lightbox-links';
 
-    // Generate hidden <a> anchors for all photos (Primary + Details/Back views)
-    imageList.forEach((imgUrl, i) => {
-      const a = document.createElement('a');
-      a.href = imgUrl;
-      a.className = 'stage-glightbox';
-      a.setAttribute('data-gallery', 'hero-gallery');
-      a.setAttribute('data-title', `${escapeHtml(item.title)} ${imageList.length > 1 ? `(${i + 1}/${imageList.length})` : ''}`);
-      a.setAttribute('data-description', `${escapeHtml(item.materials || '')} • ${escapeHtml(item.dimensions || '')}`);
-      
-      // First link wraps/binds to the main hero click
-      if (i === 0) {
-        a.id = 'stage-lightbox-trigger';
-      } else {
-        a.style.display = 'none';
-      }
-      lightboxGroup.appendChild(a);
-    });
+    // Append secondary image links for multi-photo works
+    for (let i = 1; i < imageList.length; i++) {
+      const extraLink = document.createElement('a');
+      extraLink.href = imageList[i];
+      extraLink.className = 'glightbox';
+      extraLink.setAttribute('data-gallery', 'hero-gallery');
+      extraLink.setAttribute('data-title', `${escapeHtml(item.title)} (View ${i + 1}/${imageList.length})`);
+      extraLink.setAttribute('data-description', `${escapeHtml(item.materials || '')} • ${escapeHtml(item.dimensions || '')}`);
+      extraLink.style.display = 'none';
+      secondaryGroup.appendChild(extraLink);
+    }
+    imageWrapper.appendChild(secondaryGroup);
 
-    imageWrapper.appendChild(lightboxGroup);
-
-    // Remove existing photo count badge if present
+    // Update photo count badge
     const oldBadge = imageWrapper.querySelector('.photo-count');
     if (oldBadge) oldBadge.remove();
 
-    // Add badge if piece has multiple detail shots
     if (imageList.length > 1) {
       const badge = document.createElement('span');
       badge.className = 'photo-count';
-      badge.style.cursor = 'pointer';
-      badge.textContent = `Tap Image to View ${imageList.length} Photos & Details`;
-      badge.addEventListener('click', triggerLightbox);
+      badge.textContent = `Tap Image to View All ${imageList.length} Photos`;
       imageWrapper.appendChild(badge);
     }
   }
 
-  // Click handler on main image to launch full gallery
-  if (stageImg) {
-    stageImg.style.cursor = 'pointer';
-    stageImg.onclick = triggerLightbox;
+  // Ensure primary anchor is tagged for hero gallery grouping
+  if (stageLightbox) {
+    stageLightbox.setAttribute('data-gallery', 'hero-gallery');
   }
 
-  // Initialize GLightbox instance
+  // Re-initialize GLightbox instance cleanly
   if (typeof GLightbox !== 'undefined') {
     if (lightboxInstance) lightboxInstance.destroy();
-    lightboxInstance = GLightbox({ selector: '.stage-glightbox' });
-  }
-}
-
-function triggerLightbox() {
-  const trigger = document.getElementById('stage-lightbox-trigger');
-  if (trigger && lightboxInstance) {
-    lightboxInstance.open();
+    lightboxInstance = GLightbox({ selector: '.glightbox' });
   }
 }
 
