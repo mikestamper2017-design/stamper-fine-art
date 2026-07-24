@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784901117520,
+    "title": "Canoe at sunset",
+    "category": "Watercolour",
+    "dimensions": "8.5x12",
+    "materials": "100% cotton paper ",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/canoe-at-sunset-front-1784901117520.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:52:00.472Z"
+  },
+  {
     "id": 1784901047046,
     "title": "Marsh colours",
     "category": "Watercolour",
