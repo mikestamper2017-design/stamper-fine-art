@@ -1,5 +1,19 @@
 [
   {
+    "id": 1784909063365,
+    "title": "Inuksuk",
+    "category": "Sculpture",
+    "dimensions": "7x9",
+    "materials": "Soapstone ",
+    "price": 55,
+    "priceDisplay": "$55.00",
+    "images": [
+      "assets/images/inuksuk-front-1784909063365.jpg",
+      "assets/images/inuksuk-view-2-1784909063365.jpg"
+    ],
+    "dateAdded": "2026-07-24T16:04:34.284Z"
+  },
+  {
     "id": 1784908954690,
     "title": "Shouldering the load",
     "category": "Sculpture",
