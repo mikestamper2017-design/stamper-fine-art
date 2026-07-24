@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784908634422,
+    "title": "Beach days",
+    "category": "Watercolour",
+    "dimensions": "4x6",
+    "materials": "100% cotton paper",
+    "price": 30,
+    "priceDisplay": "$30",
+    "images": [
+      "assets/images/beach-days-front-1784908634422.jpg"
+    ],
+    "dateAdded": "2026-07-24T15:57:18.727Z"
+  },
+  {
     "id": 1784908543895,
     "title": "Sunrise through the mountains",
     "category": "Watercolour",
