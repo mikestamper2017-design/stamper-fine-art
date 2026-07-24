@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784906519513,
+    "title": "Pine on the rocks",
+    "category": "Paintings",
+    "dimensions": "16x40",
+    "materials": "Acrylic on professional canvas",
+    "price": 520,
+    "priceDisplay": "$520.00",
+    "images": [
+      "assets/images/pine-on-the-rocks-front-1784906519513.jpg",
+      "assets/images/pine-on-the-rocks-view-2-1784906519513.jpg",
+      "assets/images/pine-on-the-rocks-view-3-1784906519513.jpg"
+    ],
+    "dateAdded": "2026-07-24T15:22:08.891Z"
+  },
+  {
     "id": 1784906264686,
     "title": "El Salvador sunrise",
     "category": "Paintings",
