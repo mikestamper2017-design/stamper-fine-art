@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784908039898,
+    "title": "Stormy shores",
+    "category": "Paintings",
+    "dimensions": "14x18",
+    "materials": "Acrylic and oil on professional grade canvas ",
+    "price": 200,
+    "priceDisplay": "$200.00",
+    "images": [
+      "assets/images/stormy-shores-front-1784908039898.jpg",
+      "assets/images/stormy-shores-view-2-1784908039898.jpg",
+      "assets/images/stormy-shores-view-3-1784908039898.jpg"
+    ],
+    "dateAdded": "2026-07-24T15:47:31.347Z"
+  },
+  {
     "id": 1784907794329,
     "title": "Two sided art: laid back and peek",
     "category": "Watercolour",
