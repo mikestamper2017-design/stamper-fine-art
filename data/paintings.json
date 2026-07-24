@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784908954690,
+    "title": "Shouldering the load",
+    "category": "Sculpture",
+    "dimensions": "6.5x7",
+    "materials": "Metal and stone ",
+    "price": 50,
+    "priceDisplay": "$50.00",
+    "images": [
+      "assets/images/shouldering-the-load-front-1784908954690.jpg",
+      "assets/images/shouldering-the-load-view-2-1784908954690.jpg",
+      "assets/images/shouldering-the-load-view-3-1784908954690.jpg"
+    ],
+    "dateAdded": "2026-07-24T16:02:54.380Z"
+  },
+  {
     "id": 1784908634422,
     "title": "Beach days",
     "category": "Watercolour",
