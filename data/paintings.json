@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784924330822,
+    "title": "Soul rider",
+    "category": "Watercolour",
+    "dimensions": "7.5x12",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/soul-rider-front-1784924330822.jpg"
+    ],
+    "dateAdded": "2026-07-24T20:18:52.301Z"
+  },
+  {
     "id": 1784924193557,
     "title": "Making music in the waves",
     "category": "Watercolour",
