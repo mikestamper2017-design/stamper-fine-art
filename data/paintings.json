@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784924472016,
+    "title": "Architecture",
+    "category": "Watercolour",
+    "dimensions": "8x10",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/architecture-front-1784924472016.jpg"
+    ],
+    "dateAdded": "2026-07-24T20:21:13.642Z"
+  },
+  {
     "id": 1784924330822,
     "title": "Soul rider",
     "category": "Watercolour",
