@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784898793091,
+    "title": "10 speed",
+    "category": "Watercolour",
+    "dimensions": "5.6x8",
+    "materials": "100% cotton paper",
+    "price": 80,
+    "priceDisplay": "$80",
+    "images": [
+      "assets/images/10-speed-front-1784898793091.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:13:14.955Z"
+  },
+  {
     "id": 1784898720569,
     "title": "Inuksuk under the lights",
     "category": "Watercolour",
