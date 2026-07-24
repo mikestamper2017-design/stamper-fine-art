@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784899205919,
+    "title": "Pink sky",
+    "category": "Watercolour",
+    "dimensions": "5.5x8",
+    "materials": "100% cotton paper",
+    "price": 60,
+    "priceDisplay": "$60",
+    "images": [
+      "assets/images/pink-sky-front-1784899205919.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:20:07.488Z"
+  },
+  {
     "id": 1784899086707,
     "title": "Two sided art: simple days and inside",
     "category": "Watercolour",
