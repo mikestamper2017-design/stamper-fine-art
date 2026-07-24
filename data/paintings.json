@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784903455557,
+    "title": "Waterfalls",
+    "category": "Paintings",
+    "dimensions": "24x30",
+    "materials": "Acrylic on professional grade canvas",
+    "price": 575,
+    "priceDisplay": "$575.00",
+    "images": [
+      "assets/images/waterfalls-front-1784903455557.jpg",
+      "assets/images/waterfalls-view-2-1784903455557.jpg",
+      "assets/images/waterfalls-view-3-1784903455557.jpg"
+    ],
+    "dateAdded": "2026-07-24T14:31:06.048Z"
+  },
+  {
     "id": 1784903296355,
     "title": "Line pine",
     "category": "Paintings",
