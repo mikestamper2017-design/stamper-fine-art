@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784903131653,
+    "title": "Mountain view",
+    "category": "Watercolour",
+    "dimensions": "8x10",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/mountain-view-front-1784903131653.jpg"
+    ],
+    "dateAdded": "2026-07-24T14:25:42.763Z"
+  },
+  {
     "id": 1784903064765,
     "title": "Lake reflection",
     "category": "Watercolour",
