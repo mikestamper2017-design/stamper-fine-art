@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784922535739,
+    "title": "Fishing on the bow",
+    "category": "Watercolour",
+    "dimensions": "8x12",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/fishing-on-the-bow-front-1784922535739.jpg"
+    ],
+    "dateAdded": "2026-07-24T19:49:01.409Z"
+  },
+  {
     "id": 1784922363695,
     "title": "Misty morning",
     "category": "Watercolour",
