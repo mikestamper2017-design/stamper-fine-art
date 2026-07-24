@@ -1,5 +1,21 @@
 [
   {
+    "id": 1784924933940,
+    "title": "Testing the air",
+    "category": "Sculpture",
+    "dimensions": "18x 9",
+    "materials": "Soapstone",
+    "price": 8000,
+    "priceDisplay": "$8000.00",
+    "images": [
+      "assets/images/testing-the-air-front-1784924933940.jpg",
+      "assets/images/testing-the-air-view-2-1784924933940.jpg",
+      "assets/images/testing-the-air-view-3-1784924933940.jpg",
+      "assets/images/testing-the-air-view-4-1784924933940.jpg"
+    ],
+    "dateAdded": "2026-07-24T20:28:58.453Z"
+  },
+  {
     "id": 1784924727359,
     "title": "Two sided art: singing palms and path to town",
     "category": "Watercolour",
