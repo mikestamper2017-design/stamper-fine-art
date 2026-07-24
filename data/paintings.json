@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784908417604,
+    "title": "Night surf",
+    "category": "Paintings",
+    "dimensions": "12x24",
+    "materials": "Oil and acrylic on canvas custom framed ",
+    "price": 220,
+    "priceDisplay": "$220.00",
+    "images": [
+      "assets/images/night-surf-front-1784908417604.jpg",
+      "assets/images/night-surf-view-2-1784908417604.jpg",
+      "assets/images/night-surf-view-3-1784908417604.jpg"
+    ],
+    "dateAdded": "2026-07-24T15:53:47.570Z"
+  },
+  {
     "id": 1784908219680,
     "title": "Dark sky",
     "category": "Paintings",
