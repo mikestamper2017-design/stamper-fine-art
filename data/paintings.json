@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784923619378,
+    "title": "Rainy city",
+    "category": "Watercolour",
+    "dimensions": "8x10",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/rainy-city-front-1784923619378.jpg"
+    ],
+    "dateAdded": "2026-07-24T20:07:00.939Z"
+  },
+  {
     "id": 1784923572002,
     "title": "Rainy city",
     "category": "Watercolour",
