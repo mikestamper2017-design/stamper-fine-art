@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784905965643,
+    "title": "Nelson sunset",
+    "category": "Paintings",
+    "dimensions": "12x24",
+    "materials": "Oil on professional grade canvas",
+    "price": 220,
+    "priceDisplay": "$220.00",
+    "images": [
+      "assets/images/nelson-sunset-front-1784905965643.jpg",
+      "assets/images/nelson-sunset-view-2-1784905965643.jpg",
+      "assets/images/nelson-sunset-view-3-1784905965643.jpg"
+    ],
+    "dateAdded": "2026-07-24T15:12:56.612Z"
+  },
+  {
     "id": 1784905711764,
     "title": "Winter sun",
     "category": "Paintings",
