@@ -1,5 +1,19 @@
 [
   {
+    "id": 1784899330864,
+    "title": "Two sided art: Beams and warmth",
+    "category": "Watercolour",
+    "dimensions": "5.5x8",
+    "materials": "100% cotton paper",
+    "price": 80,
+    "priceDisplay": "$80",
+    "images": [
+      "assets/images/two-sided-art-beams-and-warmth-front-1784899330864.jpg",
+      "assets/images/two-sided-art-beams-and-warmth-view-2-1784899330864.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:22:14.749Z"
+  },
+  {
     "id": 1784899205919,
     "title": "Pink sky",
     "category": "Watercolour",
