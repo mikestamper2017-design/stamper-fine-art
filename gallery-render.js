@@ -91,42 +91,45 @@ function renderReelAndStage(items) {
     return;
   }
 
-  // 1. Populate Thumbnail Strip
-  items.forEach((item, index) => {
-    const mainImg = getPrimaryImage(item);
-    
-    const thumbBtn = document.createElement('button');
-    thumbBtn.className = `reel-thumb ${index === 0 ? 'active' : ''}`;
-    thumbBtn.setAttribute('aria-label', `View ${item.title}`);
-    thumbBtn.innerHTML = `<img src="${mainImg}" alt="${escapeHtml(item.title)}" loading="lazy">`;
+  let isFirstThumb = true;
 
-    thumbBtn.addEventListener('click', () => {
-      // Update active thumbnail border
-      document.querySelectorAll('.reel-thumb').forEach(t => t.classList.remove('active'));
-      thumbBtn.classList.add('active');
+  // 1. Loop through each artwork item
+  items.forEach((item) => {
+    // Get all images for this item (handles arrays or single image string)
+    const imageList = Array.isArray(item.images) && item.images.length > 0 
+      ? item.images 
+      : (item.image ? [item.image] : ['assets/images/placeholder.jpg']);
+
+    // 2. Create a thumbnail for EVERY photo in the item's image array
+    imageList.forEach((imgUrl, imgIndex) => {
+      const thumbBtn = document.createElement('button');
+      thumbBtn.className = `reel-thumb ${isFirstThumb ? 'active' : ''}`;
       
-      // Update main display stage
-      displayArtworkOnStage(item);
+      const viewLabel = imageList.length > 1 ? ` (View ${imgIndex + 1})` : '';
+      thumbBtn.setAttribute('aria-label', `View ${item.title}${viewLabel}`);
+      thumbBtn.innerHTML = `<img src="${imgUrl}" alt="${escapeHtml(item.title)}${viewLabel}" loading="lazy">`;
+
+      thumbBtn.addEventListener('click', () => {
+        // Update active thumbnail indicator border
+        document.querySelectorAll('.reel-thumb').forEach(t => t.classList.remove('active'));
+        thumbBtn.classList.add('active');
+        
+        // Display specific image view on main stage
+        displayArtworkOnStage(item, imgUrl, imgIndex);
+      });
+
+      reel.appendChild(thumbBtn);
+
+      if (isFirstThumb) {
+        // Display first photo on the main stage initially
+        displayArtworkOnStage(item, imgUrl, 0);
+        isFirstThumb = false;
+      }
     });
-
-    reel.appendChild(thumbBtn);
   });
-
-  // 2. Default to displaying the first item on stage
-  displayArtworkOnStage(items[0]);
 }
 
-function displayArtworkOnStage(item) {
-  const mainImg = getPrimaryImage(item);
-  
-  // Mailto link dynamically created for the selected artwork
-  const emailSubject = encodeURIComponent(`Inquiry: ${item.title}`);
-  const emailBody = encodeURIComponent(
-    `Hello Mike,\n\nI am interested in acquiring "${item.title}" (${item.dimensions || ''}, ${item.priceDisplay || ''}). Please let me know if it is still available.\n\nThank you!`
-  );
-  const mailLink = `mailto:mike_stamper@hotmail.com?subject=${emailSubject}&body=${emailBody}`;
-
-  // Update DOM elements
+function displayArtworkOnStage(item, targetImgUrl, imgIndex = 0) {
   const stageImg = document.getElementById('main-art-img');
   const stageLightbox = document.getElementById('stage-lightbox-link');
   const stageTitle = document.getElementById('main-art-title');
@@ -135,12 +138,29 @@ function displayArtworkOnStage(item) {
   const stageMaterials = document.getElementById('main-art-materials');
   const stageInquire = document.getElementById('main-art-inquire');
 
-  if (stageImg) stageImg.src = mainImg;
-  if (stageImg) stageImg.alt = escapeHtml(item.title);
-  if (stageLightbox) stageLightbox.href = mainImg;
+  const imageList = Array.isArray(item.images) && item.images.length > 0 
+    ? item.images 
+    : (item.image ? [item.image] : ['assets/images/placeholder.jpg']);
+
+  const activeImg = targetImgUrl || imageList[0];
+  const viewSuffix = imageList.length > 1 ? ` • View ${imgIndex + 1} of ${imageList.length}` : '';
+
+  // Mailto link dynamically created for the selected artwork
+  const emailSubject = encodeURIComponent(`Inquiry: ${item.title}`);
+  const emailBody = encodeURIComponent(
+    `Hello Mike,\n\nI am interested in acquiring "${item.title}" (${item.dimensions || ''}, ${item.priceDisplay || ''}). Please let me know if it is still available.\n\nThank you!`
+  );
+  const mailLink = `mailto:mike_stamper@hotmail.com?subject=${emailSubject}&body=${emailBody}`;
+
+  // Update DOM elements
+  if (stageImg) {
+    stageImg.src = activeImg;
+    stageImg.alt = escapeHtml(item.title);
+  }
+  if (stageLightbox) stageLightbox.href = activeImg;
   if (stageTitle) stageTitle.textContent = item.title;
   if (stagePrice) stagePrice.textContent = item.priceDisplay || '';
-  if (stageMeta) stageMeta.textContent = `${item.category || ''} ${item.dimensions ? '• ' + item.dimensions : ''}`;
+  if (stageMeta) stageMeta.textContent = `${item.category || ''} ${item.dimensions ? '• ' + item.dimensions : ''}${viewSuffix}`;
   if (stageMaterials) stageMaterials.textContent = item.materials || '';
   if (stageInquire) stageInquire.href = mailLink;
 
@@ -157,15 +177,6 @@ function clearStage() {
   document.getElementById('main-art-meta').textContent = '';
   document.getElementById('main-art-materials').textContent = '';
   document.getElementById('main-art-img').src = '';
-}
-
-function getPrimaryImage(item) {
-  if (Array.isArray(item.images) && item.images.length > 0) {
-    return item.images[0];
-  } else if (item.image) {
-    return item.image;
-  }
-  return 'assets/images/placeholder.jpg';
 }
 
 // Utility helper to prevent HTML injection
