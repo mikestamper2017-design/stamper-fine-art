@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784905190689,
+    "title": "Black and white pines",
+    "category": "Paintings",
+    "dimensions": "12x24",
+    "materials": "Acrylic on canvas framed in pine ",
+    "price": 220,
+    "priceDisplay": "$220.00",
+    "images": [
+      "assets/images/black-and-white-pines-front-1784905190689.jpg",
+      "assets/images/black-and-white-pines-view-2-1784905190689.jpg",
+      "assets/images/black-and-white-pines-view-3-1784905190689.jpg"
+    ],
+    "dateAdded": "2026-07-24T14:59:54.803Z"
+  },
+  {
     "id": 1784905040811,
     "title": "Windswept pine island",
     "category": "Paintings",
