@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784908219680,
+    "title": "Dark sky",
+    "category": "Paintings",
+    "dimensions": "14x14",
+    "materials": "Oil and acrylic on professional canvas custom framed",
+    "price": 180,
+    "priceDisplay": "$180.00",
+    "images": [
+      "assets/images/dark-sky-front-1784908219680.jpg",
+      "assets/images/dark-sky-view-2-1784908219680.jpg",
+      "assets/images/dark-sky-view-3-1784908219680.jpg"
+    ],
+    "dateAdded": "2026-07-24T15:50:27.345Z"
+  },
+  {
     "id": 1784908039898,
     "title": "Stormy shores",
     "category": "Paintings",
