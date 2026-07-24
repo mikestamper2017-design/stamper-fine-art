@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784907123437,
+    "title": "Windswept pine point",
+    "category": "Paintings",
+    "dimensions": "15x30",
+    "materials": "Acrylic and oil on professional grade canvas ",
+    "price": 360,
+    "priceDisplay": "$360.00",
+    "images": [
+      "assets/images/windswept-pine-point-front-1784907123437.jpg",
+      "assets/images/windswept-pine-point-view-2-1784907123437.jpg",
+      "assets/images/windswept-pine-point-view-3-1784907123437.jpg"
+    ],
+    "dateAdded": "2026-07-24T15:32:09.789Z"
+  },
+  {
     "id": 1784907003499,
     "title": "Bent pine",
     "category": "Paintings",
