@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784900473591,
+    "title": "Standing tall",
+    "category": "Watercolour",
+    "dimensions": "5.5x8",
+    "materials": "100% cotton paper",
+    "price": 50,
+    "priceDisplay": "$50",
+    "images": [
+      "assets/images/standing-tall-front-1784900473591.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:41:15.236Z"
+  },
+  {
     "id": 1784900399388,
     "title": "Horizon",
     "category": "Watercolour",
