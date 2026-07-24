@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784904663738,
+    "title": "Lone pine island",
+    "category": "Paintings",
+    "dimensions": "30x40",
+    "materials": "Acrylic and oil on professional grade canvas",
+    "price": 960,
+    "priceDisplay": "$960.00",
+    "images": [
+      "assets/images/lone-pine-island-front-1784904663738.jpg",
+      "assets/images/lone-pine-island-view-2-1784904663738.jpg",
+      "assets/images/lone-pine-island-view-3-1784904663738.jpg"
+    ],
+    "dateAdded": "2026-07-24T14:51:10.143Z"
+  },
+  {
     "id": 1784904501685,
     "title": "Twin pines",
     "category": "Paintings",
