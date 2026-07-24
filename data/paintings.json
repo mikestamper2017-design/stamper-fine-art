@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784907285402,
+    "title": "Bonsai pine",
+    "category": "Paintings",
+    "dimensions": "16x40",
+    "materials": "Acrylic and oil on professional grade canvas ",
+    "price": 520,
+    "priceDisplay": "$520.00",
+    "images": [
+      "assets/images/bonsai-pine-front-1784907285402.jpg",
+      "assets/images/bonsai-pine-view-2-1784907285402.jpg",
+      "assets/images/bonsai-pine-view-3-1784907285402.jpg"
+    ],
+    "dateAdded": "2026-07-24T15:34:55.701Z"
+  },
+  {
     "id": 1784907123437,
     "title": "Windswept pine point",
     "category": "Paintings",
