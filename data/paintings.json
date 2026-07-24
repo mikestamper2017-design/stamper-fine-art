@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784900897025,
+    "title": "Old port Montreal",
+    "category": "Watercolour",
+    "dimensions": "8x10",
+    "materials": "100% cotton paper",
+    "price": 100,
+    "priceDisplay": "$100",
+    "images": [
+      "assets/images/old-port-montreal-front-1784900897025.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:48:18.844Z"
+  },
+  {
     "id": 1784900826265,
     "title": "Two sided art: dream session and tree study",
     "category": "Watercolour",
