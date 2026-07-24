@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784907588653,
+    "title": "Abstract grey",
+    "category": "Paintings",
+    "dimensions": "36x48",
+    "materials": "Acrylic and oil on professional canvas",
+    "price": 1200,
+    "priceDisplay": "$1200.00",
+    "images": [
+      "assets/images/abstract-grey-front-1784907588653.jpg",
+      "assets/images/abstract-grey-view-2-1784907588653.jpg",
+      "assets/images/abstract-grey-view-3-1784907588653.jpg"
+    ],
+    "dateAdded": "2026-07-24T15:39:59.215Z"
+  },
+  {
     "id": 1784907433535,
     "title": "Through the pines",
     "category": "Paintings",
