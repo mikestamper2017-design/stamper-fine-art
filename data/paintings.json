@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784900962415,
+    "title": "Rainy market",
+    "category": "Watercolour",
+    "dimensions": "8x10",
+    "materials": "100% cotton paper",
+    "price": 100,
+    "priceDisplay": "$100",
+    "images": [
+      "assets/images/rainy-market-front-1784900962415.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:49:24.069Z"
+  },
+  {
     "id": 1784900897025,
     "title": "Old port Montreal",
     "category": "Watercolour",
