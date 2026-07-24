@@ -1,5 +1,19 @@
 [
   {
+    "id": 1784907794329,
+    "title": "Two sided art: laid back and peek",
+    "category": "Watercolour",
+    "dimensions": "8x12",
+    "materials": "100% cotton paper ",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/two-sided-art-laid-back-and-peek-front-1784907794329.jpg",
+      "assets/images/two-sided-art-laid-back-and-peek-view-2-1784907794329.jpg"
+    ],
+    "dateAdded": "2026-07-24T15:43:17.138Z"
+  },
+  {
     "id": 1784907588653,
     "title": "Abstract grey",
     "category": "Paintings",
