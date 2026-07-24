@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784902608520,
+    "title": "Calm under pressure",
+    "category": "Watercolour",
+    "dimensions": "9x12",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/calm-under-pressure-front-1784902608520.jpg"
+    ],
+    "dateAdded": "2026-07-24T14:16:54.297Z"
+  },
+  {
     "id": 1784902534240,
     "title": "Stanley Park",
     "category": "Watercolour",
