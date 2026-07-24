@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784905711764,
+    "title": "Winter sun",
+    "category": "Paintings",
+    "dimensions": "18x24",
+    "materials": "Acrylic on canvas custom framed ",
+    "price": 350,
+    "priceDisplay": "$350.00",
+    "images": [
+      "assets/images/winter-sun-front-1784905711764.jpg",
+      "assets/images/winter-sun-view-2-1784905711764.jpg",
+      "assets/images/winter-sun-view-3-1784905711764.jpg"
+    ],
+    "dateAdded": "2026-07-24T15:08:45.407Z"
+  },
+  {
     "id": 1784905570019,
     "title": "The scream study",
     "category": "Paintings",
