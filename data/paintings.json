@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784905570019,
+    "title": "The scream study",
+    "category": "Paintings",
+    "dimensions": "18x24",
+    "materials": "Acrylic on canvas custom framed ",
+    "price": 350,
+    "priceDisplay": "$350.00",
+    "images": [
+      "assets/images/the-scream-study-front-1784905570019.jpg",
+      "assets/images/the-scream-study-view-2-1784905570019.jpg",
+      "assets/images/the-scream-study-view-3-1784905570019.jpg"
+    ],
+    "dateAdded": "2026-07-24T15:06:17.714Z"
+  },
+  {
     "id": 1784905360220,
     "title": "Pine point",
     "category": "Paintings",
