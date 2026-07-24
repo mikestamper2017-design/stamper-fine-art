@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784904501685,
+    "title": "Twin pines",
+    "category": "Paintings",
+    "dimensions": "12x16",
+    "materials": "Acrylic and oil on canvas framed with cedar wood",
+    "price": 180,
+    "priceDisplay": "$180.00",
+    "images": [
+      "assets/images/twin-pines-front-1784904501685.jpg",
+      "assets/images/twin-pines-view-2-1784904501685.jpg",
+      "assets/images/twin-pines-view-3-1784904501685.jpg"
+    ],
+    "dateAdded": "2026-07-24T14:48:25.760Z"
+  },
+  {
     "id": 1784904323510,
     "title": "Orange sunset",
     "category": "Paintings",
