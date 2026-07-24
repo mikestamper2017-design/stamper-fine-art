@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784923258022,
+    "title": "Shelter bay",
+    "category": "Watercolour",
+    "dimensions": "8x12",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/shelter-bay-front-1784923258022.jpg"
+    ],
+    "dateAdded": "2026-07-24T20:00:59.505Z"
+  },
+  {
     "id": 1784923122015,
     "title": "At anchor",
     "category": "Watercolour",
