@@ -2,6 +2,7 @@ let catalogData = [];
 let activeCategory = 'all';
 let filteredItems = [];
 let lightboxInstance = null;
+let flipInterval = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
   await loadCatalog();
@@ -92,8 +93,6 @@ function applyFiltersAndSort() {
   renderReelAndStage(filteredItems);
 }
 
-let flipInterval = null;
-
 function renderReelAndStage(items) {
   const reel = document.getElementById('art-strip-reel');
   if (!reel) return;
@@ -101,7 +100,7 @@ function renderReelAndStage(items) {
   reel.innerHTML = '';
   if (flipInterval) clearInterval(flipInterval);
 
-  if (items.length === 0) {
+  if (!items || items.length === 0) {
     reel.innerHTML = `<p class="no-results">No artwork found in this category.</p>`;
     clearStage();
     return;
@@ -150,7 +149,6 @@ function renderReelAndStage(items) {
     thumbBtn.addEventListener('click', () => {
       document.querySelectorAll('.reel-thumb').forEach(t => t.classList.remove('active'));
       thumbBtn.classList.add('active');
-      
       displayArtworkOnStage(item);
     });
 
@@ -167,38 +165,11 @@ function renderReelAndStage(items) {
     flipInterval = setInterval(() => {
       const cardInner = multiImageCards[currentCardIdx].querySelector('.flip-card-inner');
       if (cardInner) {
-        // Toggle 3D flip state
         cardInner.classList.toggle('is-flipped');
       }
-
-      // Move to next multi-image card in line
       currentCardIdx = (currentCardIdx + 1) % multiImageCards.length;
-    }, 3500); // Flips a card every 3.5 seconds
+    }, 3500); // Flips a thumbnail every 3.5 seconds
   }
-}
-  }
-
-  // 1. Create exactly ONE thumbnail per artwork item in the reel
-  items.forEach((item, index) => {
-    const mainImg = getPrimaryImage(item);
-    
-    const thumbBtn = document.createElement('button');
-    thumbBtn.className = `reel-thumb ${index === 0 ? 'active' : ''}`;
-    thumbBtn.setAttribute('aria-label', `View ${item.title}`);
-    thumbBtn.innerHTML = `<img src="${mainImg}" alt="${escapeHtml(item.title)}" loading="lazy">`;
-
-    thumbBtn.addEventListener('click', () => {
-      document.querySelectorAll('.reel-thumb').forEach(t => t.classList.remove('active'));
-      thumbBtn.classList.add('active');
-      
-      displayArtworkOnStage(item);
-    });
-
-    reel.appendChild(thumbBtn);
-  });
-
-  // 2. Load the first artwork onto the Hero Stage
-  displayArtworkOnStage(items[0]);
 }
 
 function displayArtworkOnStage(item) {
@@ -247,10 +218,9 @@ function displayArtworkOnStage(item) {
         try {
           await navigator.share(shareData);
         } catch (err) {
-          // User closed/cancelled the share sheet
+          // User cancelled share
         }
       } else {
-        // Fallback for desktop: copy link to clipboard
         try {
           await navigator.clipboard.writeText(shareUrl);
           const originalText = stageShare.textContent;
@@ -265,7 +235,7 @@ function displayArtworkOnStage(item) {
     };
   }
 
-  // Rebuild image-wrapper content dynamically to ensure clean anchor click events
+  // Rebuild image-wrapper content dynamically
   const imageWrapper = document.querySelector('.image-wrapper');
   if (imageWrapper) {
     imageWrapper.innerHTML = '';
@@ -278,7 +248,6 @@ function displayArtworkOnStage(item) {
     mainAnchor.setAttribute('data-title', `${escapeHtml(item.title)} ${imageList.length > 1 ? '(1/' + imageList.length + ')' : ''}`);
     mainAnchor.setAttribute('data-description', `${escapeHtml(item.materials || '')} • ${escapeHtml(item.dimensions || '')}`);
     
-    // Prevent default browser link jumping
     mainAnchor.addEventListener('click', (e) => e.preventDefault());
 
     const heroImg = document.createElement('img');
@@ -302,7 +271,7 @@ function displayArtworkOnStage(item) {
       imageWrapper.appendChild(extraLink);
     }
 
-    // Add badge for multi-photo pieces that triggers the same lightbox
+    // Add badge for multi-photo pieces
     if (imageList.length > 1) {
       const badge = document.createElement('span');
       badge.className = 'photo-count';
@@ -315,7 +284,7 @@ function displayArtworkOnStage(item) {
     }
   }
 
-  // Re-initialize GLightbox instance cleanly for stage elements
+  // Re-initialize GLightbox
   if (typeof GLightbox !== 'undefined') {
     if (lightboxInstance) lightboxInstance.destroy();
     lightboxInstance = GLightbox({ selector: '.stage-glightbox' });
@@ -323,21 +292,17 @@ function displayArtworkOnStage(item) {
 }
 
 function clearStage() {
-  document.getElementById('main-art-title').textContent = 'No Artwork Available';
-  document.getElementById('main-art-price').textContent = '';
-  document.getElementById('main-art-meta').textContent = '';
-  document.getElementById('main-art-materials').textContent = '';
+  const title = document.getElementById('main-art-title');
+  const price = document.getElementById('main-art-price');
+  const meta = document.getElementById('main-art-meta');
+  const materials = document.getElementById('main-art-materials');
   const wrapper = document.querySelector('.image-wrapper');
+  
+  if (title) title.textContent = 'No Artwork Available';
+  if (price) price.textContent = '';
+  if (meta) meta.textContent = '';
+  if (materials) materials.textContent = '';
   if (wrapper) wrapper.innerHTML = '';
-}
-
-function getPrimaryImage(item) {
-  if (Array.isArray(item.images) && item.images.length > 0) {
-    return item.images[0];
-  } else if (item.image) {
-    return item.image;
-  }
-  return 'assets/images/placeholder.jpg';
 }
 
 function escapeHtml(str) {
