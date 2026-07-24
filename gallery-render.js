@@ -62,7 +62,7 @@ function applyFiltersAndSort() {
     } else if (sortValue === 'price-high') {
       return (b.price || 0) - (a.price || 0);
     } else if (sortValue === 'size-small') {
-      return (parseInt(a.dimensions) || 0) - (parseInt(b.dimensions) || 0);
+      return (parseInt(a.dimensions) || 0) - (parseInt(a.dimensions) || 0);
     } else if (sortValue === 'size-large') {
       return (parseInt(b.dimensions) || 0) - (parseInt(a.dimensions) || 0);
     } else {
@@ -73,6 +73,22 @@ function applyFiltersAndSort() {
   });
 
   filteredItems = items;
+  
+  // Check if a specific artwork was shared via URL (e.g. ?art=Title)
+  const urlParams = new URLSearchParams(window.location.search);
+  const sharedArt = urlParams.get('art');
+  
+  if (sharedArt) {
+    const matchIndex = items.findIndex(i => 
+      String(i.id) === sharedArt || encodeURIComponent(i.title) === sharedArt
+    );
+    if (matchIndex > -1) {
+      // Move shared item to top of render list
+      const [matchedItem] = items.splice(matchIndex, 1);
+      items.unshift(matchedItem);
+    }
+  }
+
   renderReelAndStage(filteredItems);
 }
 
@@ -117,6 +133,7 @@ function displayArtworkOnStage(item) {
   const stageMeta = document.getElementById('main-art-meta');
   const stageMaterials = document.getElementById('main-art-materials');
   const stageInquire = document.getElementById('main-art-inquire');
+  const stageShare = document.getElementById('main-art-share');
 
   const imageList = Array.isArray(item.images) && item.images.length > 0 
     ? item.images 
@@ -138,6 +155,42 @@ function displayArtworkOnStage(item) {
   if (stageMaterials) stageMaterials.textContent = item.materials || '';
   if (stageInquire) stageInquire.href = mailLink;
 
+  // Bind Native Share Action
+  if (stageShare) {
+    stageShare.onclick = async (e) => {
+      e.preventDefault();
+      
+      const artIdentifier = item.id || encodeURIComponent(item.title);
+      const shareUrl = `${window.location.origin}${window.location.pathname}?art=${artIdentifier}`;
+      
+      const shareData = {
+        title: item.title,
+        text: `Take a look at "${item.title}" (${item.dimensions || ''})`,
+        url: shareUrl
+      };
+
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+        } catch (err) {
+          // User closed/cancelled the share sheet
+        }
+      } else {
+        // Fallback for desktop: copy link to clipboard
+        try {
+          await navigator.clipboard.writeText(shareUrl);
+          const originalText = stageShare.textContent;
+          stageShare.textContent = 'Link Copied!';
+          setTimeout(() => {
+            stageShare.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy link:', err);
+        }
+      }
+    };
+  }
+
   // Rebuild image-wrapper content dynamically to ensure clean anchor click events
   const imageWrapper = document.querySelector('.image-wrapper');
   if (imageWrapper) {
@@ -151,7 +204,7 @@ function displayArtworkOnStage(item) {
     mainAnchor.setAttribute('data-title', `${escapeHtml(item.title)} ${imageList.length > 1 ? '(1/' + imageList.length + ')' : ''}`);
     mainAnchor.setAttribute('data-description', `${escapeHtml(item.materials || '')} • ${escapeHtml(item.dimensions || '')}`);
     
-    // Prevent default standard page navigation on tap
+    // Prevent default browser link jumping
     mainAnchor.addEventListener('click', (e) => e.preventDefault());
 
     const heroImg = document.createElement('img');
