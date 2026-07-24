@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784905040811,
+    "title": "Windswept pine island",
+    "category": "Paintings",
+    "dimensions": "16x30",
+    "materials": "Acrylic and oil on professional grade canvas",
+    "price": 380,
+    "priceDisplay": "$380.00",
+    "images": [
+      "assets/images/windswept-pine-island-front-1784905040811.jpg",
+      "assets/images/windswept-pine-island-view-2-1784905040811.jpg",
+      "assets/images/windswept-pine-island-view-3-1784905040811.jpg"
+    ],
+    "dateAdded": "2026-07-24T14:57:24.942Z"
+  },
+  {
     "id": 1784904845079,
     "title": "Georgian bay island",
     "category": "Paintings",
