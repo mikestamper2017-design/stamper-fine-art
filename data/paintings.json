@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784906854318,
+    "title": "Mountains",
+    "category": "Paintings",
+    "dimensions": "14x18",
+    "materials": "Acrylic and oil on canvas custom framed in cedar",
+    "price": 200,
+    "priceDisplay": "$200.00",
+    "images": [
+      "assets/images/mountains-front-1784906854318.jpg",
+      "assets/images/mountains-view-2-1784906854318.jpg",
+      "assets/images/mountains-view-3-1784906854318.jpg"
+    ],
+    "dateAdded": "2026-07-24T15:27:43.781Z"
+  },
+  {
     "id": 1784906671168,
     "title": "Snowy trees",
     "category": "Paintings",
