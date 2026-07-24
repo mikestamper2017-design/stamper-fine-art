@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784899865457,
+    "title": "Storm passing",
+    "category": "Watercolour",
+    "dimensions": "5.5x8.5",
+    "materials": "Cotton paper",
+    "price": 60,
+    "priceDisplay": "$60",
+    "images": [
+      "assets/images/storm-passing-front-1784899865457.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:31:06.860Z"
+  },
+  {
     "id": 1784899770758,
     "title": "Two sided art: stillness and moving water",
     "category": "Watercolour",
