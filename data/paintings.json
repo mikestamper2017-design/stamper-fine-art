@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784902862924,
+    "title": "Trio",
+    "category": "Watercolour",
+    "dimensions": "8x10",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/trio-front-1784902862924.jpg"
+    ],
+    "dateAdded": "2026-07-24T14:21:12.748Z"
+  },
+  {
     "id": 1784902751438,
     "title": "Calm beach days",
     "category": "Watercolour",
