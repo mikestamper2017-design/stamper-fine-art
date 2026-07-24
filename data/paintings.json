@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784904323510,
+    "title": "Orange sunset",
+    "category": "Paintings",
+    "dimensions": "12x24",
+    "materials": "Acrylic on professional grade canvas",
+    "price": 230,
+    "priceDisplay": "$230.00",
+    "images": [
+      "assets/images/orange-sunset-front-1784904323510.jpg",
+      "assets/images/orange-sunset-view-2-1784904323510.jpg",
+      "assets/images/orange-sunset-view-3-1784904323510.jpg"
+    ],
+    "dateAdded": "2026-07-24T14:45:30.390Z"
+  },
+  {
     "id": 1784904139970,
     "title": "Ant island",
     "category": "Paintings",
