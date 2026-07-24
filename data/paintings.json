@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784900314303,
+    "title": "Beach stroll",
+    "category": "Watercolour",
+    "dimensions": "5.5x8.5",
+    "materials": "100% cotton paper",
+    "price": 60,
+    "priceDisplay": "$60",
+    "images": [
+      "assets/images/beach-stroll-front-1784900314303.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:38:36.183Z"
+  },
+  {
     "id": 1784900246856,
     "title": "Under the willow",
     "category": "Watercolour",
