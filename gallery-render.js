@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   await loadCatalog();
   setupFilterButtons();
   
-  // Attach sort listener if select exists
   const sortSelect = document.getElementById('sort-select');
   if (sortSelect) {
     sortSelect.addEventListener('change', applyFiltersAndSort);
@@ -16,7 +15,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function loadCatalog() {
   try {
-    // Fetch fresh JSON without caching issues
     const response = await fetch(`data/paintings.json?v=${Date.now()}`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -68,7 +66,6 @@ function applyFiltersAndSort() {
     } else if (sortValue === 'size-large') {
       return (parseInt(b.dimensions) || 0) - (parseInt(a.dimensions) || 0);
     } else {
-      // Default: Newest first
       const dateA = a.id || new Date(a.dateAdded || 0).getTime();
       const dateB = b.id || new Date(b.dateAdded || 0).getTime();
       return dateB - dateA;
@@ -91,45 +88,30 @@ function renderReelAndStage(items) {
     return;
   }
 
-  let isFirstThumb = true;
+  // 1. Create exactly ONE thumbnail per artwork item in the reel
+  items.forEach((item, index) => {
+    const mainImg = getPrimaryImage(item);
+    
+    const thumbBtn = document.createElement('button');
+    thumbBtn.className = `reel-thumb ${index === 0 ? 'active' : ''}`;
+    thumbBtn.setAttribute('aria-label', `View ${item.title}`);
+    thumbBtn.innerHTML = `<img src="${mainImg}" alt="${escapeHtml(item.title)}" loading="lazy">`;
 
-  // 1. Loop through each artwork item
-  items.forEach((item) => {
-    // Get all images for this item (handles arrays or single image string)
-    const imageList = Array.isArray(item.images) && item.images.length > 0 
-      ? item.images 
-      : (item.image ? [item.image] : ['assets/images/placeholder.jpg']);
-
-    // 2. Create a thumbnail for EVERY photo in the item's image array
-    imageList.forEach((imgUrl, imgIndex) => {
-      const thumbBtn = document.createElement('button');
-      thumbBtn.className = `reel-thumb ${isFirstThumb ? 'active' : ''}`;
+    thumbBtn.addEventListener('click', () => {
+      document.querySelectorAll('.reel-thumb').forEach(t => t.classList.remove('active'));
+      thumbBtn.classList.add('active');
       
-      const viewLabel = imageList.length > 1 ? ` (View ${imgIndex + 1})` : '';
-      thumbBtn.setAttribute('aria-label', `View ${item.title}${viewLabel}`);
-      thumbBtn.innerHTML = `<img src="${imgUrl}" alt="${escapeHtml(item.title)}${viewLabel}" loading="lazy">`;
-
-      thumbBtn.addEventListener('click', () => {
-        // Update active thumbnail indicator border
-        document.querySelectorAll('.reel-thumb').forEach(t => t.classList.remove('active'));
-        thumbBtn.classList.add('active');
-        
-        // Display specific image view on main stage
-        displayArtworkOnStage(item, imgUrl, imgIndex);
-      });
-
-      reel.appendChild(thumbBtn);
-
-      if (isFirstThumb) {
-        // Display first photo on the main stage initially
-        displayArtworkOnStage(item, imgUrl, 0);
-        isFirstThumb = false;
-      }
+      displayArtworkOnStage(item);
     });
+
+    reel.appendChild(thumbBtn);
   });
+
+  // 2. Load the first artwork onto the Hero Stage
+  displayArtworkOnStage(items[0]);
 }
 
-function displayArtworkOnStage(item, targetImgUrl, imgIndex = 0) {
+function displayArtworkOnStage(item) {
   const stageImg = document.getElementById('main-art-img');
   const stageLightbox = document.getElementById('stage-lightbox-link');
   const stageTitle = document.getElementById('main-art-title');
@@ -142,32 +124,88 @@ function displayArtworkOnStage(item, targetImgUrl, imgIndex = 0) {
     ? item.images 
     : (item.image ? [item.image] : ['assets/images/placeholder.jpg']);
 
-  const activeImg = targetImgUrl || imageList[0];
-  const viewSuffix = imageList.length > 1 ? ` • View ${imgIndex + 1} of ${imageList.length}` : '';
+  const mainImg = imageList[0];
 
-  // Mailto link dynamically created for the selected artwork
+  // Direct Mailto Link
   const emailSubject = encodeURIComponent(`Inquiry: ${item.title}`);
   const emailBody = encodeURIComponent(
     `Hello Mike,\n\nI am interested in acquiring "${item.title}" (${item.dimensions || ''}, ${item.priceDisplay || ''}). Please let me know if it is still available.\n\nThank you!`
   );
   const mailLink = `mailto:mike_stamper@hotmail.com?subject=${emailSubject}&body=${emailBody}`;
 
-  // Update DOM elements
+  // Update DOM Text Details
   if (stageImg) {
-    stageImg.src = activeImg;
+    stageImg.src = mainImg;
     stageImg.alt = escapeHtml(item.title);
   }
-  if (stageLightbox) stageLightbox.href = activeImg;
   if (stageTitle) stageTitle.textContent = item.title;
   if (stagePrice) stagePrice.textContent = item.priceDisplay || '';
-  if (stageMeta) stageMeta.textContent = `${item.category || ''} ${item.dimensions ? '• ' + item.dimensions : ''}${viewSuffix}`;
+  if (stageMeta) stageMeta.textContent = `${item.category || ''} ${item.dimensions ? '• ' + item.dimensions : ''}`;
   if (stageMaterials) stageMaterials.textContent = item.materials || '';
   if (stageInquire) stageInquire.href = mailLink;
 
-  // Re-initialize GLightbox for full-screen preview
+  // Build the Lightbox Gallery Container inside the image wrapper
+  const imageWrapper = document.querySelector('.image-wrapper');
+  if (imageWrapper) {
+    // Remove old hidden lightbox elements if present
+    const existingLightboxGroup = document.getElementById('lightbox-group');
+    if (existingLightboxGroup) existingLightboxGroup.remove();
+
+    const lightboxGroup = document.createElement('div');
+    lightboxGroup.id = 'lightbox-group';
+
+    // Generate hidden <a> anchors for all photos (Primary + Details/Back views)
+    imageList.forEach((imgUrl, i) => {
+      const a = document.createElement('a');
+      a.href = imgUrl;
+      a.className = 'stage-glightbox';
+      a.setAttribute('data-gallery', 'hero-gallery');
+      a.setAttribute('data-title', `${escapeHtml(item.title)} ${imageList.length > 1 ? `(${i + 1}/${imageList.length})` : ''}`);
+      a.setAttribute('data-description', `${escapeHtml(item.materials || '')} • ${escapeHtml(item.dimensions || '')}`);
+      
+      // First link wraps/binds to the main hero click
+      if (i === 0) {
+        a.id = 'stage-lightbox-trigger';
+      } else {
+        a.style.display = 'none';
+      }
+      lightboxGroup.appendChild(a);
+    });
+
+    imageWrapper.appendChild(lightboxGroup);
+
+    // Remove existing photo count badge if present
+    const oldBadge = imageWrapper.querySelector('.photo-count');
+    if (oldBadge) oldBadge.remove();
+
+    // Add badge if piece has multiple detail shots
+    if (imageList.length > 1) {
+      const badge = document.createElement('span');
+      badge.className = 'photo-count';
+      badge.style.cursor = 'pointer';
+      badge.textContent = `Tap Image to View ${imageList.length} Photos & Details`;
+      badge.addEventListener('click', triggerLightbox);
+      imageWrapper.appendChild(badge);
+    }
+  }
+
+  // Click handler on main image to launch full gallery
+  if (stageImg) {
+    stageImg.style.cursor = 'pointer';
+    stageImg.onclick = triggerLightbox;
+  }
+
+  // Initialize GLightbox instance
   if (typeof GLightbox !== 'undefined') {
     if (lightboxInstance) lightboxInstance.destroy();
-    lightboxInstance = GLightbox({ selector: '.glightbox' });
+    lightboxInstance = GLightbox({ selector: '.stage-glightbox' });
+  }
+}
+
+function triggerLightbox() {
+  const trigger = document.getElementById('stage-lightbox-trigger');
+  if (trigger && lightboxInstance) {
+    lightboxInstance.open();
   }
 }
 
@@ -177,9 +215,19 @@ function clearStage() {
   document.getElementById('main-art-meta').textContent = '';
   document.getElementById('main-art-materials').textContent = '';
   document.getElementById('main-art-img').src = '';
+  const oldBadge = document.querySelector('.image-wrapper .photo-count');
+  if (oldBadge) oldBadge.remove();
 }
 
-// Utility helper to prevent HTML injection
+function getPrimaryImage(item) {
+  if (Array.isArray(item.images) && item.images.length > 0) {
+    return item.images[0];
+  } else if (item.image) {
+    return item.image;
+  }
+  return 'assets/images/placeholder.jpg';
+}
+
 function escapeHtml(str) {
   if (!str) return '';
   return String(str)
