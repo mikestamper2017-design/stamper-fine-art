@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784902751438,
+    "title": "Calm beach days",
+    "category": "Watercolour",
+    "dimensions": "9x12",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/calm-beach-days-front-1784902751438.jpg"
+    ],
+    "dateAdded": "2026-07-24T14:19:13.733Z"
+  },
+  {
     "id": 1784902608520,
     "title": "Calm under pressure",
     "category": "Watercolour",
