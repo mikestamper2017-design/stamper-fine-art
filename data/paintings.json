@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784902534240,
+    "title": "Stanley Park",
+    "category": "Watercolour",
+    "dimensions": "9x12",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/stanley-park-front-1784902534240.jpg"
+    ],
+    "dateAdded": "2026-07-24T14:15:36.523Z"
+  },
+  {
     "id": 1784902443133,
     "title": "Two sided art: simplistically and wave study",
     "category": "Watercolour",
