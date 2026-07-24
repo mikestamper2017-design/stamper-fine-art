@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784903637969,
+    "title": "Inuksuk lookout",
+    "category": "Paintings",
+    "dimensions": "24x36",
+    "materials": "Acrylic and oil on professional grade canvas",
+    "price": 680,
+    "priceDisplay": "$680.00",
+    "images": [
+      "assets/images/inuksuk-lookout-front-1784903637969.jpg",
+      "assets/images/inuksuk-lookout-view-2-1784903637969.jpg",
+      "assets/images/inuksuk-lookout-view-3-1784903637969.jpg"
+    ],
+    "dateAdded": "2026-07-24T14:34:04.414Z"
+  },
+  {
     "id": 1784903455557,
     "title": "Waterfalls",
     "category": "Paintings",
