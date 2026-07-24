@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784903064765,
+    "title": "Lake reflection",
+    "category": "Watercolour",
+    "dimensions": "8x10",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/lake-reflection-front-1784903064765.jpg"
+    ],
+    "dateAdded": "2026-07-24T14:24:29.982Z"
+  },
+  {
     "id": 1784902988958,
     "title": "In the pines",
     "category": "Watercolour",
