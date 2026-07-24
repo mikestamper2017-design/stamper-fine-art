@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784923828750,
+    "title": "In the bay",
+    "category": "Watercolour",
+    "dimensions": "8.5x11",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/in-the-bay-front-1784923828750.jpg"
+    ],
+    "dateAdded": "2026-07-24T20:10:30.435Z"
+  },
+  {
     "id": 1784923619378,
     "title": "Rainy city",
     "category": "Watercolour",
