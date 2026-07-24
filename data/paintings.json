@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784921515028,
+    "title": "Cocktail hour",
+    "category": "Watercolour",
+    "dimensions": "12x14",
+    "materials": "100% cotton paper",
+    "price": 150,
+    "priceDisplay": "$150",
+    "images": [
+      "assets/images/cocktail-hour-front-1784921515028.jpg"
+    ],
+    "dateAdded": "2026-07-24T19:31:57.812Z"
+  },
+  {
     "id": 1784921417957,
     "title": "Two sided art: dreamy sunset and in the line up",
     "category": "Watercolour",
