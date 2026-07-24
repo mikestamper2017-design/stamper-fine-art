@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784898639033,
+    "title": "The push 2",
+    "category": "Watercolour",
+    "dimensions": "6x8 ",
+    "materials": "100% cotton paper",
+    "price": 80,
+    "priceDisplay": "$80",
+    "images": [
+      "assets/images/the-push-2-front-1784898639033.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:10:40.839Z"
+  },
+  {
     "id": 1784898568923,
     "title": "The push",
     "category": "Watercolour",
