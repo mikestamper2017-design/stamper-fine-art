@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784905360220,
+    "title": "Pine point",
+    "category": "Paintings",
+    "dimensions": "20x20",
+    "materials": "Acrylic and oil on professional grade canvas ",
+    "price": 320,
+    "priceDisplay": "$320.00",
+    "images": [
+      "assets/images/pine-point-front-1784905360220.jpg",
+      "assets/images/pine-point-view-2-1784905360220.jpg",
+      "assets/images/pine-point-view-3-1784905360220.jpg"
+    ],
+    "dateAdded": "2026-07-24T15:02:50.280Z"
+  },
+  {
     "id": 1784905190689,
     "title": "Black and white pines",
     "category": "Paintings",
