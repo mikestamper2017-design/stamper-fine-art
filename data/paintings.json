@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784922363695,
+    "title": "Misty morning",
+    "category": "Watercolour",
+    "dimensions": "9x12",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/misty-morning-front-1784922363695.jpg"
+    ],
+    "dateAdded": "2026-07-24T19:46:05.145Z"
+  },
+  {
     "id": 1784922223539,
     "title": "Happiness",
     "category": "Watercolour",
