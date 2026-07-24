@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784922223539,
+    "title": "Happiness",
+    "category": "Watercolour",
+    "dimensions": "9x12",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/happiness-front-1784922223539.jpg"
+    ],
+    "dateAdded": "2026-07-24T19:43:45.132Z"
+  },
+  {
     "id": 1784922031645,
     "title": "Path to the lineup",
     "category": "Watercolour",
