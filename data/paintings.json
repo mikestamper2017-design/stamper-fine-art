@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784921618586,
+    "title": "Big day out back",
+    "category": "Watercolour",
+    "dimensions": "12x14",
+    "materials": "100% cotton paper",
+    "price": 150,
+    "priceDisplay": "$150",
+    "images": [
+      "assets/images/big-day-out-back-front-1784921618586.jpg"
+    ],
+    "dateAdded": "2026-07-24T19:33:47.395Z"
+  },
+  {
     "id": 1784921554803,
     "title": "Cocktail hour",
     "category": "Watercolour",
