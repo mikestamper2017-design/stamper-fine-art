@@ -17,7 +17,7 @@
     </div>
   </header>
 
-  <main class="gallery-container">
+  <main class="container">
     
     <!-- Controls Bar: Category Filters & Sorting -->
     <section class="controls-bar">
@@ -44,9 +44,41 @@
 
     </section>
 
-    <!-- Dynamic Art Grid -->
-    <div id="art-grid" class="art-grid">
-      <!-- Cards render dynamically via app.js -->
+    <!-- Active Featured Artwork Stage -->
+    <section id="featured-stage" class="art-stage">
+      <div class="image-wrapper">
+        <a id="stage-lightbox-link" href="" class="glightbox">
+          <img id="main-art-img" src="" alt="Featured Artwork" />
+        </a>
+      </div>
+      
+      <div class="stage-details">
+        <div class="card-header">
+          <h2 id="main-art-title" class="item-title">Select Artwork</h2>
+          <span id="main-art-price" class="item-price"></span>
+        </div>
+        <p id="main-art-meta" class="item-meta"></p>
+        <p id="main-art-materials" class="item-materials"></p>
+        <a id="main-art-inquire" href="mailto:mike_stamper@hotmail.com?subject=Art%20Inquiry" class="btn-inquire">Inquire / Acquire</a>
+      </div>
+    </section>
+
+    <!-- Horizontal Art Strip Reel -->
+    <section class="reel-container">
+      <div class="reel-header">
+        <span>Quick Browse Collection</span>
+        <span class="reel-hint">Swipe or click to view</span>
+      </div>
+      
+      <!-- Dynamic Thumbnail Strip rendered via JavaScript -->
+      <div id="art-strip-reel" class="art-strip-reel">
+        <!-- Thumbnails populated by gallery-render.js -->
+      </div>
+    </section>
+
+    <!-- Fallback Grid View for Catalog Overview -->
+    <div id="art-grid" class="art-grid" style="display: none;">
+      <!-- Standard Cards render dynamically if needed -->
     </div>
 
   </main>
@@ -54,7 +86,7 @@
   <!-- Contact Footer -->
   <footer class="site-footer">
     <div class="footer-content">
-      <h3>Inquiries & Acquisitions</h3>
+      <h3>Inquiries &amp; Acquisitions</h3>
       <p>Interested in a piece or commissioned artwork? Send an inquiry directly.</p>
       <a id="contact-btn" href="mailto:mike_stamper@hotmail.com?subject=Art%20Inquiry" class="btn-primary">Inquire About Works</a>
     </div>
