@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784907433535,
+    "title": "Through the pines",
+    "category": "Paintings",
+    "dimensions": "36x48",
+    "materials": "Acrylic and oil on professional grade canvas",
+    "price": 1200,
+    "priceDisplay": "$1200.00",
+    "images": [
+      "assets/images/through-the-pines-front-1784907433535.jpg",
+      "assets/images/through-the-pines-view-2-1784907433535.jpg",
+      "assets/images/through-the-pines-view-3-1784907433535.jpg"
+    ],
+    "dateAdded": "2026-07-24T15:37:21.865Z"
+  },
+  {
     "id": 1784907285402,
     "title": "Bonsai pine",
     "category": "Paintings",
