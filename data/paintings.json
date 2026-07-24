@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784900101901,
+    "title": "Salt in the air",
+    "category": "Watercolour",
+    "dimensions": "5.5x7.5",
+    "materials": "100% cotton paper",
+    "price": 60,
+    "priceDisplay": "$60",
+    "images": [
+      "assets/images/salt-in-the-air-front-1784900101901.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:35:03.534Z"
+  },
+  {
     "id": 1784900024023,
     "title": "In the shade",
     "category": "Watercolour",
