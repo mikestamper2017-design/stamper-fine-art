@@ -1,5 +1,19 @@
 [
   {
+    "id": 1784899086707,
+    "title": "Two sided art: simple days and inside",
+    "category": "Watercolour",
+    "dimensions": "5.5x8",
+    "materials": "100% cotton paper",
+    "price": 80,
+    "priceDisplay": "$80",
+    "images": [
+      "assets/images/two-sided-art-simple-days-and-inside-front-1784899086707.jpg",
+      "assets/images/two-sided-art-simple-days-and-inside-view-2-1784899086707.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:18:11.155Z"
+  },
+  {
     "id": 1784898923864,
     "title": "Two sided art: sunburst and reflections",
     "category": "Watercolour",
