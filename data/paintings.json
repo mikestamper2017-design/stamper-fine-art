@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784906264686,
+    "title": "El Salvador sunrise",
+    "category": "Paintings",
+    "dimensions": "24x48",
+    "materials": "Acrylic and oil on professional canvas framed in pine ",
+    "price": 1100,
+    "priceDisplay": "$1100.00",
+    "images": [
+      "assets/images/el-salvador-sunrise-front-1784906264686.jpg",
+      "assets/images/el-salvador-sunrise-view-2-1784906264686.jpg",
+      "assets/images/el-salvador-sunrise-view-3-1784906264686.jpg"
+    ],
+    "dateAdded": "2026-07-24T15:17:49.118Z"
+  },
+  {
     "id": 1784906091598,
     "title": "Purple sunset",
     "category": "Paintings",
