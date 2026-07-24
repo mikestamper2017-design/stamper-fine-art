@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784898568923,
+    "title": "The push",
+    "category": "Watercolour",
+    "dimensions": "6x8",
+    "materials": "100% cotton paper",
+    "price": 80,
+    "priceDisplay": "$80",
+    "images": [
+      "assets/images/the-push-front-1784898568923.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:09:30.615Z"
+  },
+  {
     "id": 1784898473906,
     "title": "Tree lines",
     "category": "Watercolour",
