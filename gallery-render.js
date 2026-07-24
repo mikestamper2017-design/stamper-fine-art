@@ -1,5 +1,7 @@
 let catalogData = [];
 let activeCategory = 'all';
+let filteredItems = [];
+let lightboxInstance = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
   await loadCatalog();
@@ -14,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function loadCatalog() {
   try {
-    // Append current timestamp to force browsers to fetch fresh JSON every time
+    // Fetch fresh JSON without caching issues
     const response = await fetch(`data/paintings.json?v=${Date.now()}`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -23,9 +25,9 @@ async function loadCatalog() {
     applyFiltersAndSort();
   } catch (err) {
     console.error("Could not load catalog:", err);
-    const grid = document.getElementById('art-grid');
-    if (grid) {
-      grid.innerHTML = `<p class="no-results">Error loading catalog. Please try refreshing.</p>`;
+    const stage = document.getElementById('featured-stage');
+    if (stage) {
+      stage.innerHTML = `<p class="no-results">Error loading catalog. Please try refreshing.</p>`;
     }
   }
 }
@@ -61,99 +63,112 @@ function applyFiltersAndSort() {
       return (a.price || 0) - (b.price || 0);
     } else if (sortValue === 'price-high') {
       return (b.price || 0) - (a.price || 0);
+    } else if (sortValue === 'size-small') {
+      return (parseInt(a.dimensions) || 0) - (parseInt(b.dimensions) || 0);
+    } else if (sortValue === 'size-large') {
+      return (parseInt(b.dimensions) || 0) - (parseInt(a.dimensions) || 0);
     } else {
-      // Default: Newest first (by ID timestamp or dateAdded)
+      // Default: Newest first
       const dateA = a.id || new Date(a.dateAdded || 0).getTime();
       const dateB = b.id || new Date(b.dateAdded || 0).getTime();
       return dateB - dateA;
     }
   });
 
-  renderGrid(items);
+  filteredItems = items;
+  renderReelAndStage(filteredItems);
 }
 
-function renderGrid(items) {
-  const grid = document.getElementById('art-grid');
-  if (!grid) return;
-  
-  grid.innerHTML = '';
+function renderReelAndStage(items) {
+  const reel = document.getElementById('art-strip-reel');
+  if (!reel) return;
+
+  reel.innerHTML = '';
 
   if (items.length === 0) {
-    grid.innerHTML = `<p class="no-results">No artwork currently listed in this category.</p>`;
+    reel.innerHTML = `<p class="no-results">No artwork found in this category.</p>`;
+    clearStage();
     return;
   }
 
+  // 1. Populate Thumbnail Strip
   items.forEach((item, index) => {
-    const card = document.createElement('article');
-    card.className = 'art-card';
+    const mainImg = getPrimaryImage(item);
+    
+    const thumbBtn = document.createElement('button');
+    thumbBtn.className = `reel-thumb ${index === 0 ? 'active' : ''}`;
+    thumbBtn.setAttribute('aria-label', `View ${item.title}`);
+    thumbBtn.innerHTML = `<img src="${mainImg}" alt="${escapeHtml(item.title)}" loading="lazy">`;
 
-    // Safely handle both multi-photo arrays (images: []) and legacy single strings (image: "")
-    let imageList = [];
-    if (Array.isArray(item.images) && item.images.length > 0) {
-      imageList = item.images;
-    } else if (item.image) {
-      imageList = [item.image];
-    } else {
-      imageList = ['assets/images/placeholder.jpg'];
-    }
+    thumbBtn.addEventListener('click', () => {
+      // Update active thumbnail border
+      document.querySelectorAll('.reel-thumb').forEach(t => t.classList.remove('active'));
+      thumbBtn.classList.add('active');
+      
+      // Update main display stage
+      displayArtworkOnStage(item);
+    });
 
-    const mainImg = imageList[0];
-    const hasMultiple = imageList.length > 1;
-
-    // Mailto link for direct inquiries
-    const emailSubject = encodeURIComponent(`Inquiry: ${item.title}`);
-    const emailBody = encodeURIComponent(
-      `Hello Mike,\n\nI am interested in acquiring "${item.title}" (${item.dimensions || ''}, ${item.priceDisplay || ''}). Please let me know if it is still available.\n\nThank you!`
-    );
-    const mailLink = `mailto:your-email@example.com?subject=${emailSubject}&body=${emailBody}`;
-
-    // Generate hidden lightbox links for secondary photos (Back / Detail views)
-    let extraLightboxLinks = '';
-    for (let i = 1; i < imageList.length; i++) {
-      extraLightboxLinks += `
-        <a href="${imageList[i]}" 
-           class="glightbox" 
-           data-gallery="gallery-${index}" 
-           data-title="${escapeHtml(item.title)} (View ${i + 1})" 
-           data-description="${escapeHtml(item.materials || '')} • ${escapeHtml(item.dimensions || '')}" 
-           style="display:none;"></a>
-      `;
-    }
-
-    card.innerHTML = `
-      <div class="image-wrapper">
-        <a href="${mainImg}" 
-           class="glightbox" 
-           data-gallery="gallery-${index}" 
-           data-title="${escapeHtml(item.title)}" 
-           data-description="${escapeHtml(item.materials || '')} • ${escapeHtml(item.dimensions || '')}">
-          <img src="${mainImg}" alt="${escapeHtml(item.title)}" loading="lazy">
-        </a>
-        ${hasMultiple ? `<span class="photo-badge">${imageList.length} Photos</span>` : ''}
-        ${extraLightboxLinks}
-      </div>
-      <div class="card-details">
-        <div class="card-header">
-          <h2 class="item-title">${escapeHtml(item.title)}</h2>
-          <span class="item-price">${escapeHtml(item.priceDisplay || '')}</span>
-        </div>
-        <p class="item-meta">${escapeHtml(item.category || '')} ${item.dimensions ? '• ' + escapeHtml(item.dimensions) : ''}</p>
-        <p class="item-materials">${escapeHtml(item.materials || '')}</p>
-        <div class="card-action">
-          <a href="${mailLink}" class="btn-inquire">Inquire / Acquire</a>
-        </div>
-      </div>
-    `;
-    grid.appendChild(card);
+    reel.appendChild(thumbBtn);
   });
 
-  // Re-initialize GLightbox for new DOM elements if available
+  // 2. Default to displaying the first item on stage
+  displayArtworkOnStage(items[0]);
+}
+
+function displayArtworkOnStage(item) {
+  const mainImg = getPrimaryImage(item);
+  
+  // Mailto link dynamically created for the selected artwork
+  const emailSubject = encodeURIComponent(`Inquiry: ${item.title}`);
+  const emailBody = encodeURIComponent(
+    `Hello Mike,\n\nI am interested in acquiring "${item.title}" (${item.dimensions || ''}, ${item.priceDisplay || ''}). Please let me know if it is still available.\n\nThank you!`
+  );
+  const mailLink = `mailto:mike_stamper@hotmail.com?subject=${emailSubject}&body=${emailBody}`;
+
+  // Update DOM elements
+  const stageImg = document.getElementById('main-art-img');
+  const stageLightbox = document.getElementById('stage-lightbox-link');
+  const stageTitle = document.getElementById('main-art-title');
+  const stagePrice = document.getElementById('main-art-price');
+  const stageMeta = document.getElementById('main-art-meta');
+  const stageMaterials = document.getElementById('main-art-materials');
+  const stageInquire = document.getElementById('main-art-inquire');
+
+  if (stageImg) stageImg.src = mainImg;
+  if (stageImg) stageImg.alt = escapeHtml(item.title);
+  if (stageLightbox) stageLightbox.href = mainImg;
+  if (stageTitle) stageTitle.textContent = item.title;
+  if (stagePrice) stagePrice.textContent = item.priceDisplay || '';
+  if (stageMeta) stageMeta.textContent = `${item.category || ''} ${item.dimensions ? '• ' + item.dimensions : ''}`;
+  if (stageMaterials) stageMaterials.textContent = item.materials || '';
+  if (stageInquire) stageInquire.href = mailLink;
+
+  // Re-initialize GLightbox for full-screen preview
   if (typeof GLightbox !== 'undefined') {
-    GLightbox({ selector: '.glightbox' });
+    if (lightboxInstance) lightboxInstance.destroy();
+    lightboxInstance = GLightbox({ selector: '.glightbox' });
   }
 }
 
-// Utility helper to prevent HTML injection in titles/descriptions
+function clearStage() {
+  document.getElementById('main-art-title').textContent = 'No Artwork Available';
+  document.getElementById('main-art-price').textContent = '';
+  document.getElementById('main-art-meta').textContent = '';
+  document.getElementById('main-art-materials').textContent = '';
+  document.getElementById('main-art-img').src = '';
+}
+
+function getPrimaryImage(item) {
+  if (Array.isArray(item.images) && item.images.length > 0) {
+    return item.images[0];
+  } else if (item.image) {
+    return item.image;
+  }
+  return 'assets/images/placeholder.jpg';
+}
+
+// Utility helper to prevent HTML injection
 function escapeHtml(str) {
   if (!str) return '';
   return String(str)
