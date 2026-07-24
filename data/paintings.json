@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784903807878,
+    "title": "Cliff lookout",
+    "category": "Paintings",
+    "dimensions": "12x24",
+    "materials": "Acrylic on professional grade canvas",
+    "price": 230,
+    "priceDisplay": "$230.00",
+    "images": [
+      "assets/images/cliff-lookout-front-1784903807878.jpg",
+      "assets/images/cliff-lookout-view-2-1784903807878.jpg",
+      "assets/images/cliff-lookout-view-3-1784903807878.jpg"
+    ],
+    "dateAdded": "2026-07-24T14:36:52.338Z"
+  },
+  {
     "id": 1784903637969,
     "title": "Inuksuk lookout",
     "category": "Paintings",
