@@ -1,5 +1,20 @@
 [
   {
+    "id": 1784906671168,
+    "title": "Snowy trees",
+    "category": "Paintings",
+    "dimensions": "11x14 ",
+    "materials": "Acrylic and oil on canvas framed in cedar",
+    "price": 140,
+    "priceDisplay": "$140.00",
+    "images": [
+      "assets/images/snowy-trees-front-1784906671168.jpg",
+      "assets/images/snowy-trees-view-2-1784906671168.jpg",
+      "assets/images/snowy-trees-view-3-1784906671168.jpg"
+    ],
+    "dateAdded": "2026-07-24T15:24:46.272Z"
+  },
+  {
     "id": 1784906519513,
     "title": "Pine on the rocks",
     "category": "Paintings",
