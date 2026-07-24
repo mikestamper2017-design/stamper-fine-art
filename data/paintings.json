@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784901047046,
+    "title": "Marsh colours",
+    "category": "Watercolour",
+    "dimensions": "8.5x12",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/marsh-colours-front-1784901047046.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:50:48.740Z"
+  },
+  {
     "id": 1784900962415,
     "title": "Rainy market",
     "category": "Watercolour",
