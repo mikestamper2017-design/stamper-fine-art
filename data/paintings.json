@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784900024023,
+    "title": "In the shade",
+    "category": "Watercolour",
+    "dimensions": "5.5x7.5",
+    "materials": "100% cotton paper",
+    "price": 60,
+    "priceDisplay": "$60",
+    "images": [
+      "assets/images/in-the-shade-front-1784900024023.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:33:45.892Z"
+  },
+  {
     "id": 1784899940683,
     "title": "Calm reflections",
     "category": "Watercolour",
