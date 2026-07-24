@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784901181298,
+    "title": "Heading to the island",
+    "category": "Watercolour",
+    "dimensions": "8.5x12",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/heading-to-the-island-front-1784901181298.jpg"
+    ],
+    "dateAdded": "2026-07-24T13:53:02.822Z"
+  },
+  {
     "id": 1784901117520,
     "title": "Canoe at sunset",
     "category": "Watercolour",
