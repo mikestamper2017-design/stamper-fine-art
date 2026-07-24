@@ -1,5 +1,18 @@
 [
   {
+    "id": 1784902925466,
+    "title": "After the fire",
+    "category": "Watercolour",
+    "dimensions": "8x10",
+    "materials": "100% cotton paper",
+    "price": 120,
+    "priceDisplay": "$120",
+    "images": [
+      "assets/images/after-the-fire-front-1784902925466.jpg"
+    ],
+    "dateAdded": "2026-07-24T14:22:07.159Z"
+  },
+  {
     "id": 1784902862924,
     "title": "Trio",
     "category": "Watercolour",
